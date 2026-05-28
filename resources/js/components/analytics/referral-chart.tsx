@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import type { ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
 interface ReferralData {
     referral_source: string;
@@ -54,7 +55,7 @@ export function ReferralChart({ data, className }: ReferralChartProps) {
                                 borderRadius: '8px',
                                 color: 'oklch(0.98 0 0)',
                             }}
-                            formatter={((value: number) => [value.toLocaleString(), 'Visits']) as any}
+                            formatter={(value: ValueType | undefined) => [Number(value ?? 0).toLocaleString(), 'Visits']}
                         />
                         <Legend
                             wrapperStyle={{

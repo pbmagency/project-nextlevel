@@ -25,7 +25,7 @@ import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Dashboard', href: '/admin' },
-    { title: 'Analytics', href: '/admin' },
+    { title: 'Analytics' },
 ];
 
 interface AnalyticsProps {

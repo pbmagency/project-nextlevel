@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import { useMemo } from 'react';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import type { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
 interface RevenueChartProps {
     data: Record<string, any[]>;
@@ -73,13 +74,13 @@ export function RevenueChart({ data, className }: RevenueChartProps) {
                                 borderRadius: '8px',
                                 color: 'oklch(0.98 0 0)',
                             }}
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                            formatter={((value: any, name: any) => {
+                            formatter={(value: ValueType | undefined, name: NameType | undefined) => {
                                 if (name === 'revenue') {
-                                    return [formatCurrency(value), 'Revenue'];
+                                    return [formatCurrency(Number(value ?? 0)), 'Revenue'];
                                 }
-                                return [value, String(name).charAt(0).toUpperCase() + String(name).slice(1)];
-                            }) as any}
+                                const n = String(name ?? '');
+                                return [value, n.charAt(0).toUpperCase() + n.slice(1)];
+                            }}
                         />
                         <Line
                             type="monotone"
