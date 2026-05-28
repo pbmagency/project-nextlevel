@@ -47,7 +47,7 @@ export default function Landing() {
         }
         // Server-side: CTA click + conversion (lead intent)
         trackCTA('pricing', text, dest, 'AddToCart', eventId);
-        trackConversion('register_intent', { button_text: text, event_id: eventId });
+        trackConversion('registration', { button_text: text, event_id: eventId });
     };
 
     return (
