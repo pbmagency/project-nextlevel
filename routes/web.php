@@ -10,6 +10,9 @@ Route::inertia('/', 'landing')->name('home');
 // ── Analytics tracking endpoint (public, uses session CSRF) ──────────────────
 Route::post('/analytics/track', [AnalyticsController::class, 'track'])->name('analytics.track');
 
+// ── Dashboard redirect (required by guest middleware) ─────────────────────────
+Route::get('/dashboard', fn() => redirect('/admin'))->middleware(['auth', 'verified'])->name('dashboard');
+
 // ── Admin routes ──────────────────────────────────────────────────────────────
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AnalyticsController::class, 'index'])->name('analytics');
