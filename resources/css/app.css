@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+    /* Brand Colors — PBM Agency */
+    --color-primary:      #1E3A5F;  /* Royal Blue */
+    --color-primary-dark: #152b47;
+    --color-accent:       #2563EB;  /* Blue 600 */
+    --color-surface:      #0F172A;  /* Slate 900 */
+    --color-surface-mid:  #1E293B;  /* Slate 800 */
+    --color-gold:         #F59E0B;  /* Amber — badge/highlight */
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
