@@ -56,11 +56,14 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
         const el = scrollRef.current;
         if (!el) return;
         let raf: number;
+        let pos = 0; // accumulator untuk sub-pixel scroll
 
         const tick = () => {
             if (!pausedRef.current) {
-                el.scrollLeft += 0.3;
+                pos += 0.4;
+                el.scrollLeft = Math.floor(pos);
                 if (el.scrollLeft >= el.scrollWidth / 2) {
+                    pos = 0;
                     el.scrollLeft = 0;
                 }
             }
