@@ -40,4 +40,8 @@ return [
         'access_token' => env('META_ACCESS_TOKEN', ''),
     ],
 
+    'clarity' => [
+        'id' => env('VITE_CLARITY_ID', ''),
+    ],
+
 ];

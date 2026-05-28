@@ -39,9 +39,14 @@ export default function Landing() {
         trackCTA(location, text, dest);
     };
 
-    /** Payment / registration CTA — fires both CTA + Conversion events */
+    /** Payment / registration CTA — fires Meta Pixel AddToCart + backend events */
     const handlePayClick = (text: string, dest: string, eventId: string) => {
-        trackCTA('pricing', text, dest, 'InitiateCheckout', eventId);
+        // Browser-side Meta Pixel (dedup via eventId)
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+            (window as any).fbq('track', 'AddToCart', { currency: 'IDR', value: 2000000 }, { eventID: eventId });
+        }
+        // Server-side CAPI + analytics
+        trackCTA('pricing', text, dest, 'AddToCart', eventId);
         trackConversion('register_intent', { button_text: text, event_id: eventId });
         trackPayment('initiated', { event_id: eventId });
     };
