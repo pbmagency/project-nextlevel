@@ -23,7 +23,7 @@ if (typeof document !== 'undefined') {
 }
 
 export default function Landing() {
-    const { trackVisit, trackCTA, trackConversion, trackPayment } = useAnalytics();
+    const { trackVisit, trackCTA, trackConversion } = useAnalytics();
 
     // Activate scroll-depth & dwell-time tracking
     useScrollTracking();
@@ -39,16 +39,15 @@ export default function Landing() {
         trackCTA(location, text, dest);
     };
 
-    /** Payment / registration CTA — fires Meta Pixel AddToCart + backend events */
+    /** Pricing CTA — user intent to register via WhatsApp */
     const handlePayClick = (text: string, dest: string, eventId: string) => {
-        // Browser-side Meta Pixel (dedup via eventId)
+        // Browser-side Meta Pixel AddToCart (dedup via eventId)
         if (typeof window !== 'undefined' && (window as any).fbq) {
             (window as any).fbq('track', 'AddToCart', { currency: 'IDR', value: 2000000 }, { eventID: eventId });
         }
-        // Server-side CAPI + analytics
+        // Server-side: CTA click + conversion (lead intent)
         trackCTA('pricing', text, dest, 'AddToCart', eventId);
         trackConversion('register_intent', { button_text: text, event_id: eventId });
-        trackPayment('initiated', { event_id: eventId });
     };
 
     return (
