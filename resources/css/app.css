@@ -145,7 +145,7 @@ html {
 .ticker-track {
     display: flex;
     width: max-content;
-    animation: scroll-ticker 12s linear infinite;
+    animation: scroll-ticker 22s linear infinite;
 }
 
 .ticker-track:hover {
