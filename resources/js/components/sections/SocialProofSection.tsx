@@ -44,14 +44,18 @@ export default function SocialProofSection() {
 
             {/* Infinite Scroll Logo Ticker */}
             <div
-                className="ticker-mask overflow-hidden cursor-pointer group"
+                className="group relative cursor-pointer overflow-hidden"
                 onClick={openLightbox}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openLightbox(); }}
                 aria-label="Klik untuk melihat logo perusahaan secara detail"
-                title="Klik untuk melihat detail"
             >
+                {/* Edge fade — left */}
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#1C1C1E] to-transparent sm:w-24" />
+                {/* Edge fade — right */}
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#1C1C1E] to-transparent sm:w-24" />
+
                 <div className="ticker-track">
                     {Array.from({ length: REPEAT }).map((_, i) => (
                         <img
@@ -59,15 +63,16 @@ export default function SocialProofSection() {
                             src={LOGO_SRC}
                             alt={i === 0 ? 'Logo perusahaan klien PBM' : ''}
                             aria-hidden={i > 0}
-                            className="h-28 w-auto max-w-none flex-shrink-0 object-contain select-none transition-transform duration-300 group-hover:scale-[1.02] sm:h-36 lg:h-44"
+                            className="h-28 w-auto max-w-none flex-shrink-0 select-none object-contain sm:h-36 lg:h-44"
                             draggable={false}
                         />
                     ))}
                 </div>
+
                 {/* Hover hint */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <span className="bg-black/70 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="flex items-center gap-2 rounded-full bg-black/70 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-sm">
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
                         </svg>
                         Klik untuk memperbesar
