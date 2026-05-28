@@ -54,14 +54,9 @@ class MetaConversionService
 
         $userData = $this->buildUserData($request);
 
-        $level       = $eventData['level'] ?? 'Starter';
-        $price       = match ($level) {
-            'Intermediate' => 350000,
-            'Bundling'     => 375000,
-            default        => 250000,
-        };
-        $productId   = 'toefl-' . strtolower($level);
-        $contentName = "TOEFL Full Bright Level {$level}";
+        $price       = (int) env('VITE_COURSE_PRICE', 2000000);
+        $productId   = 'pbm-sales-training';
+        $contentName = 'Sales & Marketing Skills Training';
 
         $content = (new \FacebookAds\Object\ServerSide\Content)
             ->setProductId($productId)
