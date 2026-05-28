@@ -102,8 +102,8 @@ export default function Landing() {
                 </main>
 
                 {/* ── Footer ───────────────────────────────── */}
-                {/* pb-20 ensures footer content isn't hidden behind the floating WA button on mobile */}
-                <div className="pb-20 sm:pb-0">
+                {/* pb-16 ensures footer content isn't hidden behind the floating WA button on mobile */}
+                <div className="pb-16 sm:pb-0">
                     <Footer />
                 </div>
 

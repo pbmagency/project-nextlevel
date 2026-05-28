@@ -59,7 +59,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
 
         const tick = () => {
             if (!pausedRef.current) {
-                el.scrollLeft += 0.6;
+                el.scrollLeft += 0.3;
                 if (el.scrollLeft >= el.scrollWidth / 2) {
                     el.scrollLeft = 0;
                 }
@@ -166,6 +166,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                 <SectionCta
                     location="testimoni"
                     onClick={onCtaClick}
+                    showMentorCta
                     socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"
                 />
             </SectionWrapper>
