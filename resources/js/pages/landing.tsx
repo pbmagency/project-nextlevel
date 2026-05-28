@@ -89,7 +89,7 @@ export default function Landing() {
                     <BenefitSection onCtaClick={handleCtaClick} />
 
                     {/* ── 6. Mentor ────────────────────────── */}
-                    <MentorSection onCtaClick={handleCtaClick} />
+                    <MentorSection />
 
                     {/* ── 7. Testimonials ──────────────────── */}
                     <TestimoniSection onCtaClick={handleCtaClick} />

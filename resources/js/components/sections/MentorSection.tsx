@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { BookOpen, Building2, CheckCircle2, Play, Star, Users, X } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
-import SectionCta from '@/components/ui/section-cta';
 
 const STATS = [
     { icon: Users,     value: '1.000.000+', label: 'Orang Diinspirasi' },
@@ -28,11 +27,7 @@ const NOTABLE_CLIENTS = ['BCA', 'Unilever', 'Prudential', 'Samsung', 'AXA', 'Cit
 
 const VIDEO_ID = 'qkjNsTmorDs';
 
-interface MentorSectionProps {
-    onCtaClick: (location: string, text: string, dest: string) => void;
-}
-
-export default function MentorSection({ onCtaClick }: MentorSectionProps) {
+export default function MentorSection() {
     const [videoOpen, setVideoOpen] = useState(false);
     const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
@@ -134,11 +129,6 @@ export default function MentorSection({ onCtaClick }: MentorSectionProps) {
                     </div>
                 </div>
 
-                <SectionCta
-                    location="mentor"
-                    onClick={onCtaClick}
-                    socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"
-                />
             </SectionWrapper>
 
             {/* Video Modal */}

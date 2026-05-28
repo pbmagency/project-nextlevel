@@ -166,7 +166,6 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                 <SectionCta
                     location="testimoni"
                     onClick={onCtaClick}
-                    showMentorCta
                     socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"
                 />
             </SectionWrapper>
