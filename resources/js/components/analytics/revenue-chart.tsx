@@ -73,13 +73,13 @@ export function RevenueChart({ data, className }: RevenueChartProps) {
                                 borderRadius: '8px',
                                 color: 'oklch(0.98 0 0)',
                             }}
-                            formatter={(value, name) => {
-                                const n = name as string;
-                                if (n === 'revenue') {
-                                    return [formatCurrency(value as number), 'Revenue'];
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            formatter={((value: any, name: any) => {
+                                if (name === 'revenue') {
+                                    return [formatCurrency(value), 'Revenue'];
                                 }
-                                return [value, n.charAt(0).toUpperCase() + n.slice(1)];
-                            }}
+                                return [value, String(name).charAt(0).toUpperCase() + String(name).slice(1)];
+                            }) as any}
                         />
                         <Line
                             type="monotone"

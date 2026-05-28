@@ -25,7 +25,7 @@ import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Dashboard', href: '/admin' },
-    { title: 'Analytics' },
+    { title: 'Analytics', href: '/admin' },
 ];
 
 interface AnalyticsProps {
@@ -73,7 +73,7 @@ export default function Analytics({
 
     const handleExport = () => {
         window.open(
-            `/admin/export?range=${encodeURIComponent(selectedRange)}`,
+            `/admin/export?range=${selectedRange}`,
             '_blank',
         );
     };

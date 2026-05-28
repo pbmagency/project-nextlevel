@@ -54,7 +54,7 @@ export function ReferralChart({ data, className }: ReferralChartProps) {
                                 borderRadius: '8px',
                                 color: 'oklch(0.98 0 0)',
                             }}
-                            formatter={(value) => [(value as number).toLocaleString(), 'Visits']}
+                            formatter={((value: number) => [value.toLocaleString(), 'Visits']) as any}
                         />
                         <Legend
                             wrapperStyle={{
