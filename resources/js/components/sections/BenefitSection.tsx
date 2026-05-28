@@ -35,7 +35,7 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
                     {MATERI.map((item) => (
                         <li
                             key={item}
-                            className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-700"
+                            className="flex items-start gap-2.5 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2.5 text-xs text-slate-700 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm"
                         >
                             <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-500" />
                             {item}

@@ -5,9 +5,9 @@ import SectionCta from '@/components/ui/section-cta';
 
 const EVENT_DETAILS = [
     { Icon: Calendar, label: 'Tanggal', value: 'Senin, 27 Juli 2026' },
-    { Icon: Clock,    label: 'Waktu',   value: '09.30 – 16.00 WIB' },
-    { Icon: MapPin,   label: 'Lokasi',  value: 'Hotel DoubleTree by Hilton Kemayoran, Jakarta Pusat' },
-    { Icon: Users,    label: 'Format',  value: 'Offline · Intensif · Interaktif' },
+    { Icon: Clock, label: 'Waktu', value: '09.30 – 16.00 WIB' },
+    { Icon: MapPin, label: 'Lokasi', value: 'Hotel DoubleTree by Hilton Kemayoran, Jakarta Pusat' },
+    { Icon: Users, label: 'Format', value: 'Offline · Intensif · Interaktif' },
 ];
 
 interface SolutionSectionProps {
@@ -32,7 +32,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                             <img
                                 src="/storage/misc/hotel.webp"
                                 alt="Venue Hotel DoubleTree by Hilton Kemayoran"
-                                className="h-72 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-80 lg:h-full lg:min-h-[420px]"
+                                className="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-72 lg:h-full lg:min-h-[420px]"
                                 loading="lazy"
                             />
                         </div>
@@ -43,13 +43,13 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                                 DETAIL WORKSHOP
                             </p>
                             <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
-                                Executive Masterclass:{' '}
-                                <span className="text-blue-600">Sales &amp; Marketing Skills Training</span>
+                                Sales &amp; Marketing{' '}
+                                <span className="text-blue-600">Skills Training</span>
                             </h2>
                             <p className="mt-4 leading-relaxed text-slate-500">
                                 Sebuah masterclass offline eksklusif bersama Achievement Motivator{' '}
-                                <strong className="text-slate-800">Haryanto Kandani</strong>. Program intensif ini dirancang 
-                                khusus untuk membekali Anda dengan framework taktis yang siap diimplementasikan langsung di lapangan, 
+                                <strong className="text-slate-800">Haryanto Kandani</strong>. Program intensif ini dirancang
+                                khusus untuk membekali Anda dengan framework taktis yang siap diimplementasikan langsung di lapangan,
                                 guna mendongkrak performa penjualan bisnis Anda secara signifikan.
                             </p>
 

@@ -40,7 +40,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             <button
                 onClick={() => setOpen(!open)}
                 aria-expanded={open}
-                className="flex w-full cursor-pointer items-center justify-between py-4 text-left text-sm font-semibold text-slate-900 hover:text-blue-600"
+                className="flex w-full cursor-pointer items-center justify-between py-4 text-left text-xs font-semibold text-slate-900 hover:text-blue-600 sm:text-sm"
             >
                 <span>{q}</span>
                 <ChevronDown
@@ -74,7 +74,7 @@ export default function FAQSection({ onCtaClick }: FAQSectionProps) {
                     <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">Pertanyaan Umum</h2>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-white px-6 shadow-sm">
+                <div className="rounded-2xl border border-slate-200 bg-white px-4 shadow-sm sm:px-6">
                     {FAQS.map((faq) => (
                         <FaqItem key={faq.q} q={faq.q} a={faq.a} />
                     ))}

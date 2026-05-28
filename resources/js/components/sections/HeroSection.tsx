@@ -44,7 +44,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             </div>
 
                             {/* Headline — dream outcome */}
-                            <h1 className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[3.25rem]">
+                            <h1 className="text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-[3.25rem]">
                                 Raih Target Penjualan Setiap Bulan dan{' '}
                                 <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                                     Jadilah Top Performer yang Selalu Diandalkan Tim Anda
@@ -61,7 +61,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             </p>
 
                             {/* Urgency tags */}
-                            <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
+                            <div className="mt-6 flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:justify-start">
                                 {URGENCY_TAGS.map((tag) => (
                                     <span
                                         key={tag}
@@ -99,7 +99,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             </div>
 
                             {/* Social proof */}
-                            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-slate-500 lg:justify-start">
+                            <div className="mt-5 flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-xs text-slate-500 sm:gap-x-5 sm:gap-y-2 sm:text-sm lg:justify-start">
                                 {TRUST_BULLETS.map((item) => (
                                     <span key={item} className="flex items-center gap-1.5">
                                         <CheckCircle size={14} className="text-blue-500" />

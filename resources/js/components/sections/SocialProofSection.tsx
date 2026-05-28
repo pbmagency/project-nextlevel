@@ -59,7 +59,7 @@ export default function SocialProofSection() {
                             src={LOGO_SRC}
                             alt={i === 0 ? 'Logo perusahaan klien PBM' : ''}
                             aria-hidden={i > 0}
-                            className="h-44 w-auto max-w-none flex-shrink-0 object-contain select-none transition-transform duration-300 group-hover:scale-[1.02]"
+                            className="h-28 w-auto max-w-none flex-shrink-0 object-contain select-none transition-transform duration-300 group-hover:scale-[1.02] sm:h-36 lg:h-44"
                             draggable={false}
                         />
                     ))}
@@ -111,10 +111,10 @@ export default function SocialProofSection() {
             )}
 
             {/* Stats */}
-            <div className="mt-10 flex flex-wrap justify-center gap-8 text-center">
+            <div className="mt-10 flex flex-wrap justify-center gap-5 text-center sm:gap-8">
                 {STATS.map((stat) => (
                     <div key={stat.label}>
-                        <div className="text-2xl font-black text-white">{stat.value}</div>
+                        <div className="text-xl font-black text-white sm:text-2xl">{stat.value}</div>
                         <div className="mt-0.5 text-sm text-slate-400">{stat.label}</div>
                     </div>
                 ))}

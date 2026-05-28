@@ -17,7 +17,7 @@ export default function ProblemSection() {
                     <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
                         Kenali Diri Anda
                     </p>
-                    <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
+                    <h2 className="text-2xl font-black text-slate-900 sm:text-3xl lg:text-4xl">
                         Apakah Anda Mengalami Hal Ini?
                     </h2>
                 </div>

@@ -54,14 +54,14 @@ export default function MentorSection({ onCtaClick }: MentorSectionProps) {
                 </div>
 
                 {/* Credential stats — prominent di atas */}
-                <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+                <div className="mt-10 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4">
                     {STATS.map(({ icon: Icon, value, label }) => (
                         <div
                             key={label}
                             className="flex flex-col items-center rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center"
                         >
                             <Icon size={20} className="text-blue-500" />
-                            <p className="mt-2 text-xl font-black text-slate-900">{value}</p>
+                            <p className="mt-2 text-lg font-black text-slate-900 sm:text-xl">{value}</p>
                             <p className="mt-0.5 text-xs leading-snug text-slate-500">{label}</p>
                         </div>
                     ))}
@@ -76,7 +76,7 @@ export default function MentorSection({ onCtaClick }: MentorSectionProps) {
                             <img
                                 src="/storage/mentor/hardyanto.webp"
                                 alt="Haryanto Kandani - Achievement Motivator"
-                                className="h-72 w-auto cursor-pointer object-contain drop-shadow-xl sm:h-80"
+                                className="h-56 w-auto cursor-pointer object-contain drop-shadow-xl sm:h-72 lg:h-80"
                                 onClick={() => setLightboxSrc('/storage/mentor/hardyanto.webp')}
                             />
                             <span className="mt-3 inline-block rounded-full border border-blue-600/30 px-4 py-1.5 text-xs font-semibold text-blue-600">
@@ -109,7 +109,7 @@ export default function MentorSection({ onCtaClick }: MentorSectionProps) {
                         {/* Credential bullet list */}
                         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                             {HIGHLIGHTS.map((item) => (
-                                <li key={item} className="flex items-start gap-2 text-sm leading-snug text-slate-700">
+                                <li key={item} className="flex items-start gap-2 text-xs leading-snug text-slate-700 sm:text-sm">
                                     <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-blue-500" />
                                     {item}
                                 </li>

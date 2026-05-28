@@ -52,7 +52,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                     </p>
                 </div>
 
-                <div className="mt-12 grid items-start gap-8 lg:grid-cols-2">
+                <div className="mt-12 grid items-start gap-6 sm:gap-8 lg:grid-cols-2">
 
                     {/* Kiri: foto mentor + guarantee cards */}
                     <div className="flex flex-col gap-6">
@@ -61,7 +61,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                                 <img
                                     src={MENTOR_PHOTO}
                                     alt="Haryanto Kandani - Achievement Motivator"
-                                    className="h-72 w-full object-contain sm:h-80 transition-transform duration-300 group-hover:scale-105"
+                                    className="h-52 w-full object-contain transition-transform duration-300 group-hover:scale-105 sm:h-72 lg:h-80"
                                     loading="lazy"
                                 />
                             </div>
@@ -78,7 +78,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
 
                         <div className="grid gap-3">
                             {GUARANTEES.map(({ icon: Icon, title, desc }) => (
-                                <div key={title} className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4">
+                                <div key={title} className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3 sm:p-4">
                                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100">
                                         <Icon size={16} className="text-blue-600" />
                                     </div>
@@ -107,7 +107,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                                         </span>
                                     </div>
                                     <div className="mt-1 flex items-end gap-3">
-                                        <span className="text-4xl font-black text-slate-900">Rp 2.000.000</span>
+                                        <span className="text-3xl font-black text-slate-900 sm:text-4xl">Rp 2.000.000</span>
                                         <span className="mb-1 text-sm font-semibold text-blue-600">Super Early Bird</span>
                                     </div>
                                     <div className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-700">

@@ -38,7 +38,7 @@ export default function SectionCta({
 
     return (
         <div className={`mt-10 text-center ${className}`}>
-            <div className="mx-auto flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+            <div className="mx-auto flex w-full max-w-sm flex-col gap-2 sm:max-w-none sm:flex-row sm:justify-center sm:gap-3">
                 <a
                     href={href}
                     onClick={() => onClick?.(location, text, href)}
@@ -63,11 +63,11 @@ export default function SectionCta({
             </div>
 
             {items.length > 0 && (
-                <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 sm:gap-x-5 sm:gap-y-2">
                     {items.map((item) => (
                         <span
                             key={item}
-                            className={`flex items-center gap-1.5 text-sm font-medium ${textColor}`}
+                            className={`flex items-center gap-1.5 text-xs font-medium sm:text-sm ${textColor}`}
                         >
                             <CheckCircle2 size={14} className={`shrink-0 ${iconColor}`} />
                             {item}

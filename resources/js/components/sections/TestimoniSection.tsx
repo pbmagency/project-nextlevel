@@ -89,7 +89,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                 </div>
 
                 {/* Editorial: foto mentor kiri + 2 quotes kanan */}
-                <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-stretch">
+                <div className="mt-10 grid gap-4 sm:gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-stretch">
 
                     <div
                         className="group cursor-pointer overflow-hidden rounded-3xl shadow-md"
@@ -110,7 +110,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                                 className="flex flex-1 flex-col rounded-2xl border border-slate-200/70 bg-white px-5 py-4 shadow-sm"
                             >
                                 <StarRating />
-                                <blockquote className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 italic">
+                                <blockquote className="mt-2.5 flex-1 text-xs leading-relaxed text-slate-600 italic sm:text-sm">
                                     "{t.text}"
                                 </blockquote>
                                 <div className="mt-3 flex items-center gap-2.5 border-t border-slate-100 pt-3">
@@ -142,7 +142,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                         {photoCards.map((item, i) => (
                             <div
                                 key={i}
-                                className={`aspect-square w-36 shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ${item.src ? 'cursor-pointer' : ''}`}
+                                className={`aspect-square w-24 shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:w-32 lg:w-36 ${item.src ? 'cursor-pointer' : ''}`}
                                 onClick={() => item.src && setLightboxSrc(item.src)}
                             >
                                 {item.src ? (
