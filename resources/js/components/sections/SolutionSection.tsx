@@ -40,17 +40,17 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                         {/* Kanan: label + heading + deskripsi + cards */}
                         <div>
                             <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-                                Tentang Acara
+                                DETAIL WORKSHOP
                             </p>
                             <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
-                                Sales &amp; Marketing{' '}
-                                <span className="text-blue-600">Skills Training</span>
+                                Executive Masterclass:{' '}
+                                <span className="text-blue-600">Sales &amp; Marketing Skills Training</span>
                             </h2>
                             <p className="mt-4 leading-relaxed text-slate-500">
-                                Satu hari penuh bersama Achievement Motivator{' '}
-                                <strong className="text-slate-800">Haryanto Kandani</strong>, training intensif yang
-                                dirancang untuk mengubah cara Anda menjual secara permanen. Bukan seminar motivasi biasa.
-                                Ini adalah ruang belajar yang menghasilkan perubahan nyata.
+                                Sebuah masterclass offline eksklusif bersama Achievement Motivator{' '}
+                                <strong className="text-slate-800">Haryanto Kandani</strong>. Program intensif ini dirancang 
+                                khusus untuk membekali Anda dengan framework taktis yang siap diimplementasikan langsung di lapangan, 
+                                guna mendongkrak performa penjualan bisnis Anda secara signifikan.
                             </p>
 
                             <div className="mt-6 grid grid-cols-2 gap-3">

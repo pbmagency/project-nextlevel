@@ -20,13 +20,13 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
         <SectionWrapper id="benefit" bg="white" className="py-20">
             <div className="mx-auto max-w-2xl text-center">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-                    Yang Akan Anda Kuasai
+                    KURIKULUM TAKTIS
                 </p>
                 <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
-                    Skill Nyata yang Mengubah Karir Sales Anda
+                    6 Pilar Utama untuk Menguasai Pasar &amp; Menutup Penjualan
                 </h2>
                 <p className="mt-4 text-slate-500">
-                    Setiap materi dirancang dari pengalaman nyata di lapangan, bukan teori buku teks.
+                    Setiap pilar dirancang berdasarkan pengalaman nyata selama 20 tahun di lapangan, bukan sekadar teori akademis.
                 </p>
             </div>
 
