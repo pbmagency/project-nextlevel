@@ -12,8 +12,8 @@ jobs:
     env:
       SERVER_IP: '72.61.142.238'
       SERVER_USER: 'root'
-      TARGET_DIR_LARAVEL: '/home/pbmagency.id/laravel-sub1'
-      TARGET_DIR_PUBLIC: '/home/pbmagency.id/sub1'
+      TARGET_DIR_LARAVEL: '/home/pbmagency.id/laravel-sub2'
+      TARGET_DIR_PUBLIC: '/home/pbmagency.id/sub-2'
 
     steps:
       - name: Checkout Code
@@ -86,7 +86,7 @@ jobs:
             cp ${{ env.TARGET_DIR_PUBLIC }}/build/manifest.json ${{ env.TARGET_DIR_LARAVEL }}/public/build/manifest.json
 
             cd ${{ env.TARGET_DIR_PUBLIC }}
-            ln -sfn ../laravel/storage/app/public storage
+            ln -sfn ../laravel-sub2/storage/app/public storage
 
             cd ${{ env.TARGET_DIR_LARAVEL }}
             php artisan optimize:clear
