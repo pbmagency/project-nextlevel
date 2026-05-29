@@ -3,9 +3,12 @@
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\LabsController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 // ── Public landing page ───────────────────────────────────────────────────────
-Route::inertia('/', 'landing')->name('home');
+Route::get('/', function () {
+    return Inertia::render('landing')->clearHistory();
+})->name('home');
 
 // ── Analytics tracking endpoint (public, uses session CSRF) ──────────────────
 Route::post('/analytics/track', [AnalyticsController::class, 'track'])->name('analytics.track');

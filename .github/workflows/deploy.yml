@@ -89,8 +89,10 @@ jobs:
             ln -sfn ../laravel-sub2/storage/app/public storage
 
             cd ${{ env.TARGET_DIR_LARAVEL }}
+            rm -f bootstrap/cache/packages.php bootstrap/cache/services.php
             php artisan optimize:clear
             php artisan migrate --force
+            php artisan db:seed --force
 
             chown -R pbmag2242:pbmag2242 ${{ env.TARGET_DIR_LARAVEL }}
             chown -R pbmag2242:pbmag2242 ${{ env.TARGET_DIR_PUBLIC }}
