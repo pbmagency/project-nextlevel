@@ -26,8 +26,8 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2">
-                    <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${scrolled ? 'text-white' : 'text-slate-900'}`}>
-                        PBM <span className="text-blue-600">Agency</span>
+                    <span className="text-lg font-bold tracking-tight text-white">
+                        PBM <span className="text-blue-400">Agency</span>
                     </span>
                 </a>
 

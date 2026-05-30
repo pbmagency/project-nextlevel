@@ -80,13 +80,13 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
         <>
             <SectionWrapper id="testimoni" bg="slate" className="py-20">
                 <div className="mx-auto max-w-2xl text-center">
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
+                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
                         Apa Kata Mereka
                     </p>
-                    <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
+                    <h2 className="text-3xl font-black text-white sm:text-4xl">
                         Hasil Nyata dari Peserta Kami
                     </h2>
-                    <p className="mt-4 text-slate-500">
+                    <p className="mt-4 text-slate-400">
                         Bukan janji, ini bukti nyata perubahan yang terjadi setelah mengikuti training.
                     </p>
                 </div>
@@ -110,18 +110,18 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                         {TESTIMONIALS.map((t) => (
                             <div
                                 key={t.name}
-                                className="flex flex-1 flex-col rounded-2xl border border-slate-200/70 bg-white px-5 py-4 shadow-sm"
+                                className="flex flex-1 flex-col rounded-2xl border border-white/5 bg-[#161620] px-5 py-4 shadow-sm"
                             >
                                 <StarRating />
-                                <blockquote className="mt-2.5 flex-1 text-xs leading-relaxed text-slate-600 italic sm:text-sm">
+                                <blockquote className="mt-2.5 flex-1 text-xs leading-relaxed text-slate-400 italic sm:text-sm">
                                     "{t.text}"
                                 </blockquote>
-                                <div className="mt-3 flex items-center gap-2.5 border-t border-slate-100 pt-3">
-                                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-bold text-slate-400">
+                                <div className="mt-3 flex items-center gap-2.5 border-t border-white/10 pt-3">
+                                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-slate-400">
                                         {t.initials}
                                     </div>
                                     <div>
-                                        <p className="text-xs font-bold text-slate-900">{t.name}</p>
+                                        <p className="text-xs font-bold text-white">{t.name}</p>
                                         <p className="mt-0.5 text-xs text-slate-400">{t.role}</p>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                         {photoCards.map((item, i) => (
                             <div
                                 key={i}
-                                className={`aspect-square w-24 shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:w-32 lg:w-36 ${item.src ? 'cursor-pointer' : ''}`}
+                                className={`aspect-square w-24 shrink-0 overflow-hidden rounded-2xl border border-white/5 bg-[#161620] shadow-sm sm:w-32 lg:w-36 ${item.src ? 'cursor-pointer' : ''}`}
                                 onClick={() => item.src && setLightboxSrc(item.src)}
                             >
                                 {item.src ? (
@@ -156,8 +156,8 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                                         loading="lazy"
                                     />
                                 ) : (
-                                    <div className="flex h-full flex-col items-center justify-center gap-1.5 bg-slate-50">
-                                        <ImageIcon size={22} className="text-slate-300" />
+                                    <div className="flex h-full flex-col items-center justify-center gap-1.5 bg-[#161620]">
+                                        <ImageIcon size={22} className="text-slate-500" />
                                         <p className="text-xs font-medium text-slate-400">{item.name}</p>
                                     </div>
                                 )}

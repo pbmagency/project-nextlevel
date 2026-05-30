@@ -14,26 +14,26 @@ export default function ProblemSection() {
         <SectionWrapper id="problem" bg="white" className="py-20">
             <div className="mx-auto max-w-2xl">
                 <div className="mb-10 text-center">
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
+                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
                         Kenali Diri Anda
                     </p>
-                    <h2 className="text-2xl font-black text-slate-900 sm:text-3xl lg:text-4xl">
+                    <h2 className="text-2xl font-black text-white sm:text-3xl lg:text-4xl">
                         Apakah Anda Mengalami Hal Ini?
                     </h2>
                 </div>
 
-                <div className="flex flex-col gap-4 mb-10">
+                <div className="mb-10 flex flex-col gap-4">
                     {PROBLEMS.map((point) => (
-                        <div key={point} className="flex items-start gap-4">
-                            <span className="mt-0.5 shrink-0 text-xl font-black leading-none text-red-500">✗</span>
-                            <p className="text-base font-medium leading-snug text-slate-800">{point}</p>
+                        <div key={point} className="flex items-start gap-4 rounded-xl border border-white/5 bg-[#161620] px-4 py-3.5">
+                            <span className="mt-0.5 shrink-0 text-lg font-black leading-none text-red-500">✗</span>
+                            <p className="text-sm font-medium leading-snug text-slate-300 sm:text-base">{point}</p>
                         </div>
                     ))}
                 </div>
 
                 <p className="text-center text-base leading-relaxed text-slate-500">
                     Banyak sales gagal bukan karena kurang kerja keras, tapi karena salah strategi.{' '}
-                    <strong className="text-slate-800">Kalau cara yang sama terus dipakai, hasilnya pun akan tetap sama.</strong>
+                    <strong className="text-slate-300">Kalau cara yang sama terus dipakai, hasilnya pun akan tetap sama.</strong>
                 </p>
             </div>
         </SectionWrapper>

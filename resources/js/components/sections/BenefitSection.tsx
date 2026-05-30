@@ -17,15 +17,15 @@ interface BenefitSectionProps {
 
 export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
     return (
-        <SectionWrapper id="benefit" bg="white" className="py-20">
+        <SectionWrapper id="benefit" bg="slate" className="py-20">
             <div className="mx-auto max-w-2xl text-center">
-                <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-                    KURIKULUM TAKTIS
+                <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
+                    Kurikulum Taktis
                 </p>
-                <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
+                <h2 className="text-2xl font-black text-white sm:text-3xl lg:text-4xl">
                     6 Pilar Utama untuk Menguasai Pasar &amp; Menutup Penjualan
                 </h2>
-                <p className="mt-4 text-slate-500">
+                <p className="mt-4 text-slate-400">
                     Setiap pilar dirancang berdasarkan pengalaman nyata selama 20 tahun di lapangan, bukan sekadar teori akademis.
                 </p>
             </div>
@@ -33,10 +33,7 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
             <div className="mx-auto mt-12 max-w-4xl">
                 <ul className="grid gap-3 sm:grid-cols-2">
                     {MATERI.map((item) => (
-                        <li
-                            key={item}
-                            className="flex items-start gap-2.5 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2.5 text-xs text-slate-700 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm"
-                        >
+                        <li key={item} className="flex items-start gap-2.5 rounded-xl border border-white/5 bg-[#0A0A0F] px-3 py-2.5 text-xs text-slate-300 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm">
                             <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-500" />
                             {item}
                         </li>
@@ -47,7 +44,7 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
             <SectionCta
                 location="benefit"
                 onClick={onCtaClick}
-                showMentorCta
+                dark
                 socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"
             />
         </SectionWrapper>

@@ -10,9 +10,9 @@ interface SectionWrapperProps {
 
 export default function SectionWrapper({ children, bg = 'white', className = '', id }: SectionWrapperProps) {
     const backgrounds: Record<string, string> = {
-        white: 'bg-white',
-        slate: 'bg-slate-50',
-        dark:  'bg-[#1C1C1E]',
+        white: 'bg-[#0A0A0F]',
+        slate: 'bg-[#111118]',
+        dark:  'bg-[#050508]',
     };
 
     return (

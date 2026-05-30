@@ -37,10 +37,10 @@ export default function MentorSection() {
 
                 {/* Header */}
                 <div className="mx-auto max-w-2xl text-center">
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
+                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">
                         Fasilitator
                     </p>
-                    <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
+                    <h2 className="text-3xl font-black text-white sm:text-4xl">
                         Belajar Langsung dari Praktisinya
                     </h2>
                     <p className="mt-4 text-slate-500">
@@ -53,10 +53,10 @@ export default function MentorSection() {
                     {STATS.map(({ icon: Icon, value, label }) => (
                         <div
                             key={label}
-                            className="flex flex-col items-center rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center"
+                            className="flex flex-col items-center rounded-2xl border border-white/5 bg-[#111118] p-4 text-center"
                         >
                             <Icon size={20} className="text-blue-500" />
-                            <p className="mt-2 text-lg font-black text-slate-900 sm:text-xl">{value}</p>
+                            <p className="mt-2 text-lg font-black text-white sm:text-xl">{value}</p>
                             <p className="mt-0.5 text-xs leading-snug text-slate-500">{label}</p>
                         </div>
                     ))}
@@ -74,14 +74,14 @@ export default function MentorSection() {
                                 className="h-56 w-auto cursor-pointer object-contain drop-shadow-xl sm:h-72 lg:h-80"
                                 onClick={() => setLightboxSrc('/storage/mentor/hardyanto.webp')}
                             />
-                            <span className="mt-3 inline-block rounded-full border border-blue-600/30 px-4 py-1.5 text-xs font-semibold text-blue-600">
+                            <span className="mt-3 inline-block rounded-full border border-blue-600/30 px-4 py-1.5 text-xs font-semibold text-blue-400">
                                 Achievement Motivator
                             </span>
                             <button
                                 onClick={() => setVideoOpen(true)}
-                                className="mt-3 inline-flex cursor-pointer items-center gap-2.5 rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition-colors hover:border-blue-300 hover:bg-blue-100"
+                                className="mt-3 inline-flex cursor-pointer items-center gap-2.5 rounded-xl border border-blue-500/30 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-400 shadow-sm transition-colors hover:bg-blue-500/20"
                             >
-                                <Play size={15} className="fill-current text-blue-600" />
+                                <Play size={15} className="fill-current text-blue-400" />
                                 Tonton Video Profil
                             </button>
                         </div>
@@ -89,13 +89,13 @@ export default function MentorSection() {
 
                     {/* Bio */}
                     <div className="flex-1">
-                        <h3 className="text-2xl font-black text-slate-900">Haryanto Kandani</h3>
-                        <p className="mt-1 font-medium text-blue-600">Achievement Motivator · Founder Next Level Training & Motivation</p>
+                        <h3 className="text-2xl font-black text-white">Haryanto Kandani</h3>
+                        <p className="mt-1 font-medium text-blue-400">Achievement Motivator · Founder Next Level Training & Motivation</p>
 
-                        <p className="mt-4 leading-relaxed text-slate-600">
+                        <p className="mt-4 leading-relaxed text-slate-400">
                             Praktisi Sales & Marketing dan Achievement Motivator dengan rekam jejak yang tak tertandingi.
                             Dipercaya oleh ratusan perusahaan besar, termasuk{' '}
-                            <strong className="text-slate-800">
+                            <strong className="text-white">
                                 {NOTABLE_CLIENTS.join(', ')}
                             </strong>{' '}
                             serta atlit olimpiade, finalis ajang nasional, hingga jutaan audiens di seluruh Indonesia.
@@ -104,7 +104,7 @@ export default function MentorSection() {
                         {/* Credential bullet list */}
                         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                             {HIGHLIGHTS.map((item) => (
-                                <li key={item} className="flex items-start gap-2 text-xs leading-snug text-slate-700 sm:text-sm">
+                                <li key={item} className="flex items-start gap-2 text-xs leading-snug text-slate-300 sm:text-sm">
                                     <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-blue-500" />
                                     {item}
                                 </li>

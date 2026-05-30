@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { Calendar, Clock, MapPin, Users, X } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import SectionCta from '@/components/ui/section-cta';
 
-const EVENT_DETAILS = [
-    { Icon: Calendar, label: 'Tanggal', value: 'Senin, 27 Juli 2026' },
-    { Icon: Clock, label: 'Waktu', value: '09.30 – 16.00 WIB' },
-    { Icon: MapPin, label: 'Lokasi', value: 'Hotel DoubleTree by Hilton Kemayoran, Jakarta Pusat' },
-    { Icon: Users, label: 'Format', value: 'Offline · Intensif · Interaktif' },
+const GOALS = [
+    'Closing rate naik signifikan dalam 30 hari pertama',
+    'Percaya diri menghadapi keberatan dan negosiasi berat',
+    'Setiap percakapan dengan prospek lebih terarah dan efektif',
+    'Tidak lagi bergantung pada keberuntungan untuk closing',
+    'Diakui sebagai top performer di tim Anda',
 ];
 
 interface SolutionSectionProps {
@@ -15,94 +15,69 @@ interface SolutionSectionProps {
 }
 
 export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
-    const [lightboxOpen, setLightboxOpen] = useState(false);
-
     return (
-        <>
-            <SectionWrapper id="solution" bg="slate" className="py-20">
-                <div className="mx-auto max-w-5xl">
+        <SectionWrapper id="solution" bg="white" className="py-20">
+            <div className="mx-auto max-w-5xl">
 
-                    <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
+                <div className="mb-12 text-center">
+                    <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
+                        Solusinya Ada di Sini
+                    </p>
+                    <h2 className="text-2xl font-black text-white sm:text-3xl lg:text-4xl">
+                        1 Hari yang Mengubah Cara Anda Menjual{' '}
+                        <span className="text-blue-400">Selamanya</span>
+                    </h2>
+                </div>
 
-                        {/* Kiri: foto hotel */}
-                        <div
-                            className="group cursor-pointer overflow-hidden rounded-3xl shadow-lg"
-                            onClick={() => setLightboxOpen(true)}
-                        >
-                            <img
-                                src="/storage/misc/hotel.webp"
-                                alt="Venue Hotel DoubleTree by Hilton Kemayoran"
-                                className="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-72 lg:h-full lg:min-h-[420px]"
-                                loading="lazy"
-                            />
-                        </div>
+                <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
 
-                        {/* Kanan: label + heading + deskripsi + cards */}
-                        <div>
-                            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-                                DETAIL WORKSHOP
-                            </p>
-                            <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
-                                Sales &amp; Marketing{' '}
-                                <span className="text-blue-600">Skills Training</span>
-                            </h2>
-                            <p className="mt-4 leading-relaxed text-slate-500">
-                                Sebuah masterclass offline eksklusif bersama Achievement Motivator{' '}
-                                <strong className="text-slate-800">Haryanto Kandani</strong>. Program intensif ini dirancang
-                                khusus untuk membekali Anda dengan framework taktis yang siap diimplementasikan langsung di lapangan,
-                                guna mendongkrak performa penjualan bisnis Anda secara signifikan.
-                            </p>
-
-                            <div className="mt-6 grid grid-cols-2 gap-3">
-                                {EVENT_DETAILS.map(({ Icon, label, value }) => (
-                                    <div
-                                        key={label}
-                                        className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
-                                    >
-                                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50">
-                                            <Icon size={17} className="text-blue-600" />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">{label}</p>
-                                            <p className="mt-0.5 text-sm font-bold leading-snug text-slate-800">{value}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
+                    {/* Kiri: foto Haryanto */}
+                    <div className="overflow-hidden rounded-3xl shadow-2xl shadow-black/60">
+                        <img
+                            src="/storage/mentor/hardyanto.webp"
+                            alt="Haryanto Kandani - Achievement Motivator"
+                            className="w-full object-cover object-top"
+                            loading="lazy"
+                        />
                     </div>
 
-                    <SectionCta
-                        location="solution"
-                        onClick={onCtaClick}
-                        showMentorCta
-                        socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"
-                    />
-                </div>
-            </SectionWrapper>
+                    {/* Kanan: goals + desc */}
+                    <div>
+                        <p className="leading-relaxed text-slate-400">
+                            Bersama <strong className="text-white">Haryanto Kandani</strong>, Anda tidak hanya belajar teori.
+                            Anda mendapatkan framework yang sudah terbukti selama{' '}
+                            <strong className="text-white">20+ tahun di lapangan</strong> — langsung bisa diterapkan keesokan harinya.
+                        </p>
 
-            {/* Lightbox */}
-            {lightboxOpen && (
-                <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
-                    onClick={() => setLightboxOpen(false)}
-                >
-                    <button
-                        onClick={() => setLightboxOpen(false)}
-                        className="absolute right-4 top-4 z-10 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-slate-700 text-white transition-colors hover:bg-slate-600"
-                        aria-label="Tutup gambar"
-                    >
-                        <X size={18} />
-                    </button>
-                    <img
-                        src="/storage/misc/hotel.webp"
-                        alt="Venue Hotel DoubleTree by Hilton Kemayoran"
-                        className="max-h-[90vh] max-w-full rounded-xl object-contain shadow-2xl"
-                        onClick={(e) => e.stopPropagation()}
-                    />
+                        <p className="mt-4 font-semibold text-white">
+                            Setelah 1 hari bersama kami, Anda akan mampu:
+                        </p>
+
+                        <ul className="mt-4 space-y-3">
+                            {GOALS.map((goal) => (
+                                <li key={goal} className="flex items-start gap-3">
+                                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-blue-500" />
+                                    <span className="text-sm leading-relaxed text-slate-300">{goal}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="mt-6 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3">
+                            <p className="text-sm text-blue-400">
+                                <strong className="text-blue-300">Offline · 1 Hari Intensif</strong> — Senin, 27 Juli 2026 · Hotel DoubleTree by Hilton Kemayoran
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
-            )}
-        </>
+
+                <SectionCta
+                    location="solution"
+                    onClick={onCtaClick}
+                    showMentorCta
+                    socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"
+                />
+            </div>
+        </SectionWrapper>
     );
 }

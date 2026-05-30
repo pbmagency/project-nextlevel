@@ -9,17 +9,18 @@ import Navbar             from '@/components/sections/Navbar';
 import HeroSection        from '@/components/sections/HeroSection';
 import SocialProofSection from '@/components/sections/SocialProofSection';
 import ProblemSection     from '@/components/sections/ProblemSection';
+import AgitationSection   from '@/components/sections/AgitationSection';
 import SolutionSection    from '@/components/sections/SolutionSection';
-import BenefitSection     from '@/components/sections/BenefitSection';
 import TestimoniSection   from '@/components/sections/TestimoniSection';
+import BenefitSection     from '@/components/sections/BenefitSection';
 import MentorSection      from '@/components/sections/MentorSection';
 import PricingSection     from '@/components/sections/PricingSection';
 import FAQSection         from '@/components/sections/FAQSection';
 import Footer             from '@/components/sections/Footer';
 
-// Force light mode — this landing page is always light
+// Force dark mode for landing page
 if (typeof document !== 'undefined') {
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('dark');
 }
 
 export default function Landing() {
@@ -68,7 +69,7 @@ export default function Landing() {
                 <meta property="og:type" content="website" />
             </Head>
 
-            <div className="min-h-screen bg-white font-sans antialiased">
+            <div className="min-h-screen bg-[#0A0A0F] font-sans antialiased">
                 {/* ── Navigation ───────────────────────────── */}
                 <Navbar onCtaClick={handleCtaClick} />
 
@@ -82,22 +83,25 @@ export default function Landing() {
                     {/* ── 3. Problem ───────────────────────── */}
                     <ProblemSection />
 
-                    {/* ── 4. Solution ──────────────────────── */}
+                    {/* ── 4. Agitation ─────────────────────── */}
+                    <AgitationSection />
+
+                    {/* ── 5. Solution / Workshop ───────────── */}
                     <SolutionSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 5. Benefits / Curriculum ─────────── */}
-                    <BenefitSection onCtaClick={handleCtaClick} />
-
-                    {/* ── 6. Mentor ────────────────────────── */}
-                    <MentorSection />
-
-                    {/* ── 7. Testimonials ──────────────────── */}
+                    {/* ── 6. Testimonials ──────────────────── */}
                     <TestimoniSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 8. Pricing ───────────────────────── */}
+                    {/* ── 7. Benefits / Curriculum ─────────── */}
+                    <BenefitSection onCtaClick={handleCtaClick} />
+
+                    {/* ── 8. Mentor / Pengajar ─────────────── */}
+                    <MentorSection />
+
+                    {/* ── 9. Pricing ───────────────────────── */}
                     <PricingSection onPayClick={handlePayClick} />
 
-                    {/* ── 9. FAQ ───────────────────────────── */}
+                    {/* ── 10. FAQ ──────────────────────────── */}
                     <FAQSection onCtaClick={handleCtaClick} />
                 </main>
 

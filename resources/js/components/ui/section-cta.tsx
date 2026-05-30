@@ -33,8 +33,8 @@ export default function SectionCta({
         ? socialProof.split(' • ').map((s) => s.trim()).filter(Boolean)
         : [];
 
-    const iconColor = dark ? 'text-blue-400' : 'text-blue-500';
-    const textColor = dark ? 'text-slate-400' : 'text-slate-500';
+    const iconColor = 'text-blue-400';
+    const textColor = dark ? 'text-slate-500' : 'text-slate-400';
 
     return (
         <div className={`mt-10 text-center ${className}`}>
