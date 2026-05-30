@@ -56,7 +56,7 @@ export default function FAQSection({ onCtaClick }: FAQSectionProps) {
                             Hubungi Kami via WhatsApp
                         </Button>
                     </a>
-                    <p className="mt-3 text-sm text-slate-500">Telah melatih 100.000+ Sales · 20 tahun pengalaman</p>
+                    <p className="mt-3 text-sm text-slate-500">Telah melatih 100.000+ Sales, 20 tahun pengalaman</p>
                 </div>
             </div>
         </SectionWrapper>

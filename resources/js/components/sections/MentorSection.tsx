@@ -90,7 +90,7 @@ export default function MentorSection() {
                     {/* Bio */}
                     <div className="flex-1">
                         <h3 className="text-2xl font-black text-white">Haryanto Kandani</h3>
-                        <p className="mt-1 font-medium text-blue-400">Achievement Motivator · Founder Next Level Training & Motivation</p>
+                        <p className="mt-1 font-medium text-blue-400">Achievement Motivator, Founder Next Level Training & Motivation</p>
 
                         <p className="mt-4 leading-relaxed text-slate-400">
                             Praktisi Sales & Marketing dan Achievement Motivator dengan rekam jejak yang tak tertandingi.

@@ -96,8 +96,8 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                         <div className="overflow-hidden rounded-3xl border-2 border-blue-500/60 bg-[#0A0A0F] shadow-2xl shadow-blue-900/20">
                             <div className="p-5 sm:p-8">
                                 <p className="text-sm font-semibold text-blue-400">Sales & Marketing Skills Training</p>
-                                <p className="mt-1 text-sm text-slate-400">Offline · Hotel DoubleTree by Hilton Kemayoran – Jakarta Pusat</p>
-                                <p className="mt-0.5 text-sm text-slate-400">Senin, 27 Juli 2026 · 09.30 – 16.00 WIB</p>
+                                <p className="mt-1 text-sm text-slate-400">Offline, Hotel DoubleTree by Hilton Kemayoran – Jakarta Pusat</p>
+                                <p className="mt-0.5 text-sm text-slate-400">Senin, 27 Juli 2026, 09.30 – 16.00 WIB</p>
 
                                 <div className="mt-6">
                                     <div className="flex items-center gap-2">
@@ -131,12 +131,12 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                                     className="mt-8 w-full"
                                     onClick={handleRegister}
                                 >
-                                    Bayar Sekarang · Rp 2.000.000
+                                    Bayar Sekarang  Rp 2.000.000
                                 </Button>
 
                                 <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400">
                                     <Lock size={12} className="shrink-0" />
-                                    Reseat gratis · Tidak puas? Hubungi kami
+                                    Reseat gratis. Tidak puas? Hubungi kami
                                 </p>
                             </div>
                         </div>

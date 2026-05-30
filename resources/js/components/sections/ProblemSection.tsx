@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, XCircle } from 'lucide-react';
+import { ArrowDown, ArrowRight, CheckCircle2, XCircle } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 
 const BEFORE = [
@@ -52,10 +52,11 @@ export default function ProblemSection() {
                         </ul>
                     </div>
 
-                    {/* Arrow */}
+                    {/* Arrow — down on mobile, right on desktop */}
                     <div className="flex shrink-0 items-center justify-center">
                         <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-500 shadow-lg shadow-blue-900/60">
-                            <ArrowRight size={20} className="text-white" />
+                            <ArrowDown size={20} className="text-white sm:hidden" />
+                            <ArrowRight size={20} className="hidden text-white sm:block" />
                         </div>
                     </div>
 

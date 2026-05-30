@@ -5,7 +5,7 @@ const CONSEQUENCES = [
     {
         icon: TrendingDown,
         title: 'Target terus naik, hasil tetap stagnan',
-        desc: 'Setiap bulan target bertambah, tapi teknik yang sama hanya menghasilkan angka yang sama — atau bahkan lebih buruk.',
+        desc: 'Setiap bulan target bertambah, tapi teknik yang sama hanya menghasilkan angka yang sama, bahkan lebih buruk.',
     },
     {
         icon: Users,
@@ -20,7 +20,7 @@ const CONSEQUENCES = [
     {
         icon: DollarSign,
         title: 'Income tidak mencerminkan usaha Anda',
-        desc: 'Anda layak dibayar lebih — tapi tanpa perubahan strategi, gap antara usaha dan penghasilan akan terus melebar.',
+        desc: 'Anda layak dibayar lebih, tapi tanpa perubahan strategi, gap antara usaha dan penghasilan akan terus melebar.',
     },
 ];
 
@@ -62,7 +62,7 @@ export default function AgitationSection() {
                         Kapan waktunya berubah, kalau bukan sekarang?
                     </p>
                     <p className="mt-2 text-slate-400">
-                        Setiap bulan yang berlalu tanpa perubahan adalah biaya yang tidak kelihatan — tapi terasa.
+                        Setiap bulan yang berlalu tanpa perubahan adalah biaya yang tidak kelihatan, tapi terasa.
                     </p>
                 </div>
             </div>

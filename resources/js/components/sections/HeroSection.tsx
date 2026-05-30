@@ -37,7 +37,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
 
                             <div className="mb-5 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold text-blue-400 sm:text-sm">
                                 <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400 motion-reduce:animate-none" />
-                                Senin, 27 Juli 2026 · Hotel DoubleTree by Hilton Kemayoran
+                                Senin, 27 Juli 2026, Hotel DoubleTree by Hilton Kemayoran
                             </div>
 
                             <h1 className="text-2xl font-black leading-tight tracking-tight text-white sm:text-3xl lg:text-[3.25rem]">

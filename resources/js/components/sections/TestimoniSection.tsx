@@ -6,13 +6,13 @@ import SectionCta from '@/components/ui/section-cta';
 const TESTIMONIALS = [
     {
         name: 'Robert Tan',
-        role: 'Principal · Multiland Indonesia Property Agent',
+        role: 'Principal, Multiland Indonesia Property Agent',
         initials: 'RT',
         text: 'Sejak mengikuti seminar yang Bapak Haryanto Kandani bawakan, team marketing kami mencapai hasil yang sangat luar biasa tahun ini. Target yang diberikan oleh perusahaan, dapat diraih oleh agen-agen marketing kami hanya dalam waktu 5 bulan.',
     },
     {
         name: 'Laras Puruhita',
-        role: 'Manager · PT. Panca Sinar Kasih',
+        role: 'Manager, PT. Panca Sinar Kasih',
         initials: 'LP',
         text: 'Membawa hal yang positif dan memberikan terobosan baru. Serta memberikan masukan baru yang baik, inovatif dan positif untuk kehidupan pribadi dan dapat diaplikasikan di dalam pekerjaan juga.',
     },
@@ -23,14 +23,14 @@ const TESTIMONIALS = [
  * Format: { src: '/storage/testimoni/nama.webp', name: 'Nama Peserta', role: 'Jabatan · Perusahaan' }
  */
 const PHOTO_ITEMS: { src?: string; name: string; role: string }[] = [
-    { name: 'Peserta 1', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 2', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 3', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 4', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 5', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 6', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 7', role: 'Sales · Perusahaan' },
-    { name: 'Peserta 8', role: 'Sales · Perusahaan' },
+    { name: 'Peserta 1', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 2', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 3', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 4', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 5', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 6', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 7', role: 'Sales, Perusahaan' },
+    { name: 'Peserta 8', role: 'Sales, Perusahaan' },
 ];
 
 function StarRating() {
