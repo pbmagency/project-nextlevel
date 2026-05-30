@@ -17,11 +17,7 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
 
     return (
         <nav
-            className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-                scrolled
-                    ? 'border-b border-slate-800/60 bg-[#1C1C1E]/95 backdrop-blur-md'
-                    : 'border-b border-transparent bg-transparent'
-            }`}
+            className="fixed top-0 z-50 w-full border-b border-white/5 bg-[#080D18]/95 backdrop-blur-md"
         >
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
                 {/* Logo */}
