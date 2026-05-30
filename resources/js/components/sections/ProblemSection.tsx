@@ -34,10 +34,10 @@ export default function ProblemSection() {
                 </div>
 
                 {/* Before / After comparison */}
-                <div className="relative grid gap-4 sm:grid-cols-2">
+                <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
 
                     {/* Before */}
-                    <div className="rounded-2xl border border-white/5 bg-[#0D1117] p-6">
+                    <div className="flex-1 rounded-2xl border border-white/5 bg-[#0D1117] p-6">
                         <div className="mb-5 flex items-center gap-2">
                             <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
                             <p className="font-bold text-white">Kondisi Saat Ini</p>
@@ -52,15 +52,15 @@ export default function ProblemSection() {
                         </ul>
                     </div>
 
-                    {/* Arrow — center overlay */}
-                    <div className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 sm:flex">
+                    {/* Arrow */}
+                    <div className="flex shrink-0 items-center justify-center">
                         <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-500 shadow-lg shadow-blue-900/60">
                             <ArrowRight size={20} className="text-white" />
                         </div>
                     </div>
 
                     {/* After */}
-                    <div className="rounded-2xl border border-blue-500/20 bg-[#0D1B2E] p-6">
+                    <div className="flex-1 rounded-2xl border border-blue-500/20 bg-[#0D1B2E] p-6">
                         <div className="mb-5 flex items-center gap-2">
                             <span className="h-2.5 w-2.5 rounded-full bg-blue-400" />
                             <p className="font-bold text-white">Setelah Mengikuti Pelatihan</p>
