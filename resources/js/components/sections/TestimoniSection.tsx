@@ -96,10 +96,10 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
 
                     <div
                         className="group cursor-pointer overflow-hidden rounded-3xl shadow-md"
-                        onClick={() => setLightboxSrc('/storage/mentor/Krem (bw).webp')}
+                        onClick={() => setLightboxSrc('/storage/mentor/krem-bw.webp')}
                     >
                         <img
-                            src="/storage/mentor/Krem (bw).webp"
+                            src="/storage/mentor/krem-bw.webp"
                             alt="Haryanto Kandani - Achievement Motivator"
                             className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                             loading="lazy"

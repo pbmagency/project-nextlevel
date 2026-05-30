@@ -21,7 +21,7 @@ const GUARANTEES = [
     { icon: ThumbsUp,    title: 'Dukungan Penuh',   desc: 'Tim kami siap membantu Anda setelah mengikuti program.' },
 ];
 
-const MENTOR_PHOTO = '/storage/mentor/POTO 1_HITAM1.webp';
+const MENTOR_PHOTO = '/storage/mentor/poto-hitam1.webp';
 
 interface PricingSectionProps {
     onPayClick: (text: string, dest: string, eventId: string) => void;
