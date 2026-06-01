@@ -22,7 +22,8 @@ export default function FloatingVideo() {
     const src =
         `https://www.youtube.com/embed/${VIDEO_ID}` +
         `?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}` +
-        `&controls=0&rel=0&modestbranding=1&enablejsapi=1`;
+        `&controls=0&rel=0&modestbranding=1&enablejsapi=1` +
+        `&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0`;
 
     return (
         <div className="fixed bottom-4 right-4 z-40 w-56 overflow-hidden rounded-2xl shadow-2xl shadow-black/70 ring-1 ring-white/10 sm:bottom-6 sm:right-6 sm:w-72">
@@ -50,7 +51,7 @@ export default function FloatingVideo() {
             </div>
 
             {/* Video */}
-            <div className="aspect-video">
+            <div className="relative aspect-video">
                 <iframe
                     ref={iframeRef}
                     src={src}
@@ -58,6 +59,8 @@ export default function FloatingVideo() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     className="h-full w-full"
                 />
+                {/* Block YouTube UI overlay (skip/prev/logo) */}
+                <div className="absolute inset-0 z-10" />
             </div>
         </div>
     );
