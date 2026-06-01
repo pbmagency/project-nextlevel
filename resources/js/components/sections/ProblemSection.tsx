@@ -10,9 +10,9 @@ const SCENARIOS = [
 ];
 
 const ROOT_FACTORS = [
-    'Seberapa kuat psychological framework Anda dalam menjual',
-    'Seberapa efektif teknik handling objection Anda',
-    'Seberapa besar trust yang Anda bangun sejak awal percakapan',
+    'Seberapa kuat teknik Anda dalam menjual',
+    'Seberapa efektif cara Anda menangani penolakan',
+    'Seberapa besar trust yang Anda bangun sejak awal',
 ];
 
 const WORST_CASE = [
@@ -27,16 +27,16 @@ export default function ProblemSection() {
             <div className="mx-auto max-w-5xl">
 
                 {/* Row 1 — both cols stretch to same height */}
-                <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch lg:gap-8">
+                <div className="grid gap-4 lg:grid-cols-2 lg:items-start lg:gap-8">
 
                     {/* Kiri: Scenarios card */}
                     <div className="flex flex-col rounded-2xl border border-red-500/15 bg-[#0E0E15] p-6 lg:p-8">
                         <p className="mb-6 text-center text-sm font-black uppercase tracking-widest text-white">
                             Pernah ada di posisi ini?
                         </p>
-                        <ul className="flex flex-1 flex-col justify-between gap-0">
+                        <ul className="flex flex-col gap-0">
                             {SCENARIOS.map((s) => (
-                                <li key={s} className="flex items-start gap-3 border-b border-white/5 py-4 first:pt-0 last:border-0 last:pb-0">
+                                <li key={s} className="flex items-start gap-3 border-b border-white/5 py-3.5 first:pt-0 last:border-0 last:pb-0">
                                     <AlertCircle size={17} className="mt-0.5 shrink-0 text-red-500" />
                                     <span className="text-sm leading-relaxed text-slate-300">{s}</span>
                                 </li>
@@ -52,7 +52,7 @@ export default function ProblemSection() {
                                     Faktanya
                                 </p>
                                 {/* Fix 3: more extreme size contrast */}
-                                <h2 className="text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                                <h2 className="text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-4xl">
                                     Yang bikin sales{' '}
                                     <span className="relative text-blue-400">
                                         closing konsisten
@@ -71,7 +71,7 @@ export default function ProblemSection() {
                                     {ROOT_FACTORS.map((f) => (
                                         <li key={f} className="flex items-start gap-3">
                                             <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-400" />
-                                            <span className="text-sm leading-relaxed text-slate-200">{f}</span>
+                                            <span className="text-base leading-relaxed text-slate-200">{f}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -94,7 +94,7 @@ export default function ProblemSection() {
                             {WORST_CASE.map((w) => (
                                 <li key={w} className="flex items-center gap-3 border-b border-white/5 py-3.5 last:border-0">
                                     <X size={15} className="shrink-0 text-red-500" />
-                                    <span className="text-sm text-slate-300">{w}</span>
+                                    <span className="text-base text-slate-300">{w}</span>
                                 </li>
                             ))}
                         </ul>

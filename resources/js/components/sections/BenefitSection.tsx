@@ -25,15 +25,12 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
                 <h2 className="text-2xl font-black text-white sm:text-3xl lg:text-4xl">
                     6 Pilar Utama untuk Menguasai Pasar &amp; Menutup Penjualan
                 </h2>
-                <p className="mt-4 text-slate-400">
-                    Setiap pilar dirancang berdasarkan pengalaman nyata selama 20 tahun di lapangan, bukan sekadar teori akademis.
-                </p>
             </div>
 
             <div className="mx-auto mt-12 max-w-4xl">
                 <ul className="grid gap-3 sm:grid-cols-2">
                     {MATERI.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 rounded-xl border border-white/5 bg-[#0A0A0F] px-3 py-2.5 text-xs text-slate-300 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm">
+                        <li key={item} className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#0A0A0F] px-4 py-3.5 text-sm leading-relaxed text-slate-300 sm:text-base">
                             <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-500" />
                             {item}
                         </li>

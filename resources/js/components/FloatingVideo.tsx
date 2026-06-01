@@ -25,7 +25,7 @@ export default function FloatingVideo() {
         `&controls=0&rel=0&modestbranding=1&enablejsapi=1`;
 
     return (
-        <div className="fixed bottom-24 right-4 z-40 w-56 overflow-hidden rounded-2xl shadow-2xl shadow-black/70 ring-1 ring-white/10 sm:bottom-8 sm:right-6 sm:w-72">
+        <div className="fixed bottom-4 right-4 z-40 w-56 overflow-hidden rounded-2xl shadow-2xl shadow-black/70 ring-1 ring-white/10 sm:bottom-6 sm:right-6 sm:w-72">
             {/* Top bar */}
             <div className="flex items-center justify-between bg-black/80 px-3 py-1.5 backdrop-blur-sm">
                 <span className="text-xs font-semibold text-white/70">

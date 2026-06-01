@@ -13,17 +13,18 @@ const TRUST_BULLETS = [
 
 export default function HeroSection({ onCtaClick }: HeroSectionProps) {
     return (
-        <section className="relative overflow-hidden bg-[#0A0A0F] min-h-dvh flex flex-col justify-end pt-24 pb-16 lg:pb-24">
+        <section className="relative overflow-hidden bg-[#0A0A0F] flex flex-col justify-end pt-16 pb-4 min-h-[80dvh] lg:min-h-dvh lg:justify-center lg:pt-24 lg:pb-24">
 
-            {/* Speaker — transparent image, right side, fades at bottom */}
+            {/* Speaker — mirrored, shifted right on mobile */}
             <div
-                className="pointer-events-none absolute inset-y-0 right-0 select-none w-full lg:w-[58%]"
+                className="pointer-events-none absolute top-14 bottom-0 right-0 select-none w-full lg:inset-y-0 lg:w-[58%]"
                 aria-hidden="true"
             >
                 <img
                     src="/storage/mentor/haryanto-hero-transparent.webp"
                     alt=""
-                    className="h-full w-full object-contain object-bottom"
+                    className="h-full w-full object-cover"
+                    style={{ transform: 'scaleX(-1)', objectPosition: '70% top' }}
                     loading="eager"
                 />
                 {/* bottom fade */}
@@ -50,8 +51,8 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                         Leganya
                     </span>
                     <span
-                        className="mt-1 block font-black text-slate-400"
-                        style={{ fontSize: 'clamp(1rem, 2.8vw, 1.75rem)' }}
+                        className="mt-2 inline-block rounded-lg bg-black/50 px-3 py-1.5 font-bold text-white backdrop-blur-sm"
+                        style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.75rem)' }}
                     >
                         Saat Target Bulanan Konsisten Tercapai
                     </span>
@@ -78,7 +79,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 </div>
 
                 {/* Trust bullets */}
-                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-500 sm:text-sm">
+                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-300 sm:text-sm lg:inline-flex lg:rounded-xl lg:bg-black/50 lg:px-4 lg:py-2.5 lg:backdrop-blur-sm">
                     {TRUST_BULLETS.map((item) => (
                         <span key={item} className="flex items-center gap-1.5">
                             <CheckCircle size={13} className="shrink-0 text-blue-500" />

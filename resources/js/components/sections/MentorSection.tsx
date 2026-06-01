@@ -4,7 +4,7 @@ import SectionWrapper from '@/components/ui/section-wrapper';
 
 const STATS = [
     { icon: Users,     value: '1.000.000+', label: 'Orang Diinspirasi' },
-    { icon: Building2, value: '30+ Kota',   label: 'Seminar & Training' },
+    { icon: Building2, value: '100.000+',   label: 'Sales Telah Dilatih' },
     { icon: Star,      value: '20+ Tahun',  label: 'Pengalaman di Lapangan' },
     { icon: BookOpen,  value: '130+',       label: 'Angkatan Training' },
 ];
@@ -36,9 +36,6 @@ export default function MentorSection() {
                     <h2 className="text-3xl font-black text-white sm:text-4xl">
                         Belajar Langsung dari Praktisinya
                     </h2>
-                    <p className="mt-4 text-slate-500">
-                        Bukan teori. Rekam jejak nyata yang berbicara.
-                    </p>
                 </div>
 
                 {/* Photo + Bio */}

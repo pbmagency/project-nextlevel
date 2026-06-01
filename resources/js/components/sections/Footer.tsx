@@ -30,14 +30,6 @@ const SOCIALS = [
     },
 ];
 
-const NAV_LINKS = [
-    { label: 'Tentang Program', href: '#benefit' },
-    { label: 'Fasilitator',     href: '#mentor' },
-    { label: 'Testimoni',       href: '#testimoni' },
-    { label: 'Harga',           href: '#pricing' },
-    { label: 'FAQ',             href: '#faq' },
-];
-
 const EVENT_DETAILS = [
     { Icon: MapPin,    text: 'Hotel DoubleTree by Hilton Kemayoran – Jakarta Pusat' },
     { Icon: Clock,     text: 'Senin, 27 Juli 2026, 09.30 – 16.00 WIB' },
@@ -50,8 +42,9 @@ export default function Footer() {
 
     return (
         <footer className="bg-slate-900 text-slate-400">
-            <div className="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-6 sm:pb-16">
-                <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+            <div className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6">
+                <div className="grid gap-10 sm:grid-cols-2">
+
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2">
@@ -64,7 +57,6 @@ export default function Footer() {
                             Spesialis pelatihan Sales & Marketing. Menginspirasi lebih dari 1.000.000 orang
                             di 30+ kota besar Indonesia.
                         </p>
-                        {/* Social media */}
                         <div className="mt-5 flex items-center gap-3">
                             {SOCIALS.map((s) => (
                                 <a
@@ -73,7 +65,7 @@ export default function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={s.label}
-                                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-700 text-slate-400 transition-colors hover:border-slate-500 hover:text-white"
+                                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-slate-400 transition-colors hover:border-slate-500 hover:text-white"
                                 >
                                     {s.icon}
                                 </a>
@@ -81,33 +73,14 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Nav */}
-                    <div>
-                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-300">
-                            Navigasi
-                        </h4>
-                        <ul className="space-y-2">
-                            {NAV_LINKS.map((link) => (
-                                <li key={link.href}>
-                                    <a
-                                        href={link.href}
-                                        className="text-sm transition-colors hover:text-white"
-                                    >
-                                        {link.label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
                     {/* Event info */}
                     <div>
                         <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-300">
                             Detail Event
                         </h4>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-3">
                             {EVENT_DETAILS.map(({ Icon, text }) => (
-                                <li key={text} className="flex items-start gap-2 text-sm">
+                                <li key={text} className="flex items-start gap-2.5 text-sm">
                                     <Icon size={15} className="mt-0.5 shrink-0 text-slate-500" />
                                     <span>{text}</span>
                                 </li>
@@ -116,7 +89,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-12 border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+                <div className="mt-10 border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
                     <p>© {year} PBM Agency. All rights reserved.</p>
                     <p className="mt-1">Sales &amp; Marketing Skills Training oleh Haryanto Kandani</p>
                 </div>
