@@ -5,7 +5,7 @@ import SectionWrapper from '@/components/ui/section-wrapper';
 const LOGO_SRC = '/storage/misc/logo-perusahaan.webp';
 
 const LOGOS = [
-    { src: '/storage/social/bca-logo.webp',           alt: 'BCA' },
+    { src: '/storage/social/bca-logo-2.webp',          alt: 'BCA' },
     { src: '/storage/social/unilever-logo.webp',      alt: 'Unilever' },
     { src: '/storage/social/prudential-logo.webp',    alt: 'Prudential' },
     { src: '/storage/social/samsung-logo.webp',       alt: 'Samsung' },
@@ -14,7 +14,7 @@ const LOGOS = [
     { src: '/storage/social/ibm-logo.webp',           alt: 'IBM' },
     { src: '/storage/social/loreal-logo.webp',        alt: "L'Oreal" },
     { src: '/storage/social/fedex-logo.webp',         alt: 'FedEx' },
-    { src: '/storage/social/bankindonesia-logo.webp', alt: 'Bank Indonesia' },
+    { src: '/storage/social/bankindonesia-logo-2.webp', alt: 'Bank Indonesia' },
     { src: '/storage/social/agunggroup-logo.webp',    alt: 'Agung Group' },
     { src: '/storage/social/agungland-logo.webp',     alt: 'Agung Land' },
 ];
