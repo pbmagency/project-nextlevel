@@ -34,7 +34,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                     {/* Kiri: foto Haryanto */}
                     <div className="overflow-hidden rounded-3xl shadow-2xl shadow-black/60">
                         <img
-                            src="/storage/mentor/haryanto-mengajar.webp"
+                            src="/storage/mentor/haryanto-mengajar_upscaled.webp"
                             alt="Haryanto Kandani - Achievement Motivator"
                             className="w-full object-cover object-top"
                             loading="lazy"
