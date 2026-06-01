@@ -1,82 +1,131 @@
-import { ArrowDown, ArrowRight, CheckCircle2, XCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle2, ChevronDown, X } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 
-const BEFORE = [
-    'Kesulitan mencapai target penjualan bulanan',
-    'Terjebak pusaran banting harga antar kompetitor',
-    'Tidak tahu cara membalikkan penolakan konsumen',
-    'Bingung memetakan strategi untuk pasar baru',
+const SCENARIOS = [
+    'Sudah presentasi panjang lebar, prospek bilang "nanti ya"',
+    'Tahu produk lebih baik dari kompetitor, tapi kalah di negosiasi harga',
+    'Sudah kerja ekstra keras, tapi angka closing tetap stagnan bulan demi bulan',
+    'Prospek tertarik di awal, tapi menghilang sebelum keputusan',
+    'Target sudah diumumkan — tapi minggu depan masih bahas hal yang sama',
 ];
 
-const AFTER = [
-    'Grafik performa penjualan melonjak tajam secara berkala',
-    'Bernegosiasi berwibawa tanpa mengorbankan margin',
-    'Mahir membalikkan penolakan menjadi persetujuan',
-    'Menguasai strategi adaptif untuk menjangkau pasar baru',
+const ROOT_FACTORS = [
+    'Seberapa kuat psychological framework Anda dalam menjual',
+    'Seberapa efektif teknik handling objection Anda',
+    'Seberapa besar trust yang Anda bangun sejak awal percakapan',
+];
+
+const WORST_CASE = [
+    'Closing rate tidak bergerak bulan demi bulan',
+    'Target terus meleset, karir stagnan',
+    'Income tidak mencerminkan kerja keras Anda',
 ];
 
 export default function ProblemSection() {
     return (
-        <SectionWrapper id="problem" bg="slate" className="py-24">
+        <SectionWrapper id="problem" bg="dark" className="py-20">
             <div className="mx-auto max-w-5xl">
 
-                {/* Header */}
-                <div className="mb-14 text-center">
-                    <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-blue-500">
-                        Transformasi yang Dijanjikan
-                    </p>
-                    <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
-                        Dari frustrasi hari ini,{' '}
-                        <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                            menuju performa penjualan yang melonjak.
-                        </span>
-                    </h2>
-                </div>
+                {/* Row 1 — both cols stretch to same height */}
+                <div className="grid gap-4 lg:grid-cols-2 lg:items-stretch lg:gap-8">
 
-                {/* Before / After comparison */}
-                <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
-
-                    {/* Before */}
-                    <div className="flex-1 rounded-2xl border border-white/5 bg-[#0D1117] p-6">
-                        <div className="mb-5 flex items-center gap-2">
-                            <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
-                            <p className="font-bold text-white">Kondisi Saat Ini</p>
-                        </div>
-                        <ul className="space-y-4">
-                            {BEFORE.map((item) => (
-                                <li key={item} className="flex items-start gap-3 border-b border-white/5 pb-4 last:border-0 last:pb-0">
-                                    <XCircle size={18} className="mt-0.5 shrink-0 text-red-500/70" />
-                                    <span className="text-sm leading-relaxed text-slate-400">{item}</span>
+                    {/* Kiri: Scenarios card */}
+                    <div className="flex flex-col rounded-2xl border border-red-500/15 bg-[#0E0E15] p-6 lg:p-8">
+                        <p className="mb-6 text-center text-sm font-black uppercase tracking-widest text-white">
+                            Pernah ada di posisi ini?
+                        </p>
+                        <ul className="flex flex-1 flex-col justify-between gap-0">
+                            {SCENARIOS.map((s) => (
+                                <li key={s} className="flex items-start gap-3 border-b border-white/5 py-4 first:pt-0 last:border-0 last:pb-0">
+                                    <AlertCircle size={17} className="mt-0.5 shrink-0 text-red-500" />
+                                    <span className="text-sm leading-relaxed text-slate-300">{s}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Arrow — down on mobile, right on desktop */}
-                    <div className="flex shrink-0 items-center justify-center">
-                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-500 shadow-lg shadow-blue-900/60">
-                            <ArrowDown size={20} className="text-white sm:hidden" />
-                            <ArrowRight size={20} className="hidden text-white sm:block" />
+                    {/* Kanan: Root cause — fills same height */}
+                    <div className="flex flex-col rounded-2xl p-6 lg:p-6">
+                        <div className="flex flex-1 flex-col justify-center gap-5">
+                            <div>
+                                <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-blue-500">
+                                    Faktanya
+                                </p>
+                                {/* Fix 3: more extreme size contrast */}
+                                <h2 className="text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                                    Yang bikin sales{' '}
+                                    <span className="relative text-blue-400">
+                                        closing konsisten
+                                        <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-blue-400/40" />
+                                    </span>
+                                    {' '}bukan cuma kerja keras atau pengetahuan produk Anda.
+                                </h2>
+                            </div>
+
+                            <div>
+                                {/* Fix 3: smaller subtext, clear contrast from headline */}
+                                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-500">
+                                    Tapi seberapa dalam Anda menguasai:
+                                </p>
+                                <ul className="flex flex-col gap-3">
+                                    {ROOT_FACTORS.map((f) => (
+                                        <li key={f} className="flex items-start gap-3">
+                                            <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-400" />
+                                            <span className="text-sm leading-relaxed text-slate-200">{f}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    {/* After */}
-                    <div className="flex-1 rounded-2xl border border-blue-500/20 bg-[#0D1B2E] p-6">
-                        <div className="mb-5 flex items-center gap-2">
-                            <span className="h-2.5 w-2.5 rounded-full bg-blue-400" />
-                            <p className="font-bold text-white">Setelah Mengikuti Pelatihan</p>
-                        </div>
-                        <ul className="space-y-4">
-                            {AFTER.map((item) => (
-                                <li key={item} className="flex items-start gap-3 border-b border-white/5 pb-4 last:border-0 last:pb-0">
-                                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-blue-400/80" />
-                                    <span className="text-sm leading-relaxed text-slate-300">{item}</span>
+                {/* Fix 5: consistent gap */}
+                {/* Row 2 — 2-col, mirrors top rhythm */}
+                <div className="mt-4 grid overflow-hidden rounded-2xl border border-red-500/10 lg:mt-8 lg:grid-cols-2">
+
+                    {/* Kiri: worst case */}
+                    <div className="bg-[#0D0D14] p-6 lg:p-8">
+                        <h3 className="text-xl font-black text-white sm:text-2xl">
+                            Kalau ini tidak{' '}
+                            <span className="text-red-400">diperbaiki...</span>
+                        </h3>
+                        <ul className="mt-5 flex flex-col gap-0">
+                            {WORST_CASE.map((w) => (
+                                <li key={w} className="flex items-center gap-3 border-b border-white/5 py-3.5 last:border-0">
+                                    <X size={15} className="shrink-0 text-red-500" />
+                                    <span className="text-sm text-slate-300">{w}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
+                    {/* Kanan: empathy uplift */}
+                    <div className="flex flex-col justify-center border-t border-white/5 bg-[#111118] p-6 lg:border-l lg:border-t-0 lg:p-8">
+                        <p className="text-2xl font-black text-white sm:text-3xl">
+                            Padahal Anda{' '}
+                            <span className="text-blue-400">capable.</span>
+                        </p>
+                        <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                            Yang kurang bukan kerja keras Anda. Yang kurang hanya framework dan teknik yang tepat.
+                        </p>
+                        <p className="mt-4 text-xs font-bold uppercase tracking-widest text-blue-500">
+                            Dan itu bisa dipelajari dalam 1 hari.
+                        </p>
+                    </div>
                 </div>
+
+                {/* Fix 6: directional CTA */}
+                <div className="mt-4 flex justify-center lg:mt-8">
+                    <a
+                        href="#solution"
+                        className="inline-flex flex-col items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 transition-colors hover:text-blue-400"
+                    >
+                        Lihat solusinya
+                        <ChevronDown size={16} className="animate-bounce motion-reduce:animate-none" />
+                    </a>
+                </div>
+
             </div>
         </SectionWrapper>
     );

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { ImageIcon, Star, X } from 'lucide-react';
+import { useState } from 'react';
+import { Star, X } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import SectionCta from '@/components/ui/section-cta';
 
@@ -7,30 +7,39 @@ const TESTIMONIALS = [
     {
         name: 'Robert Tan',
         role: 'Principal, Multiland Indonesia Property Agent',
-        initials: 'RT',
-        text: 'Sejak mengikuti seminar yang Bapak Haryanto Kandani bawakan, team marketing kami mencapai hasil yang sangat luar biasa tahun ini. Target yang diberikan oleh perusahaan, dapat diraih oleh agen-agen marketing kami hanya dalam waktu 5 bulan.',
+        photo: '/storage/testimoni/robert-tan.webp',
+        text: 'Sungguh luar biasa! Sejak mengikuti seminar yang Bapak Haryanto Kandani bawakan, team marketing kami mencapai hasil yang sangat luar biasa tahun ini. Target yang diberikan oleh perusahaan dapat diraih oleh agen-agen marketing kami hanya dalam waktu 5 bulan.',
     },
     {
         name: 'Laras Puruhita',
         role: 'Manager, PT. Panca Sinar Kasih',
-        initials: 'LP',
+        photo: '/storage/testimoni/laras-puruhita.webp',
         text: 'Membawa hal yang positif dan memberikan terobosan baru. Serta memberikan masukan baru yang baik, inovatif dan positif untuk kehidupan pribadi dan dapat diaplikasikan di dalam pekerjaan juga.',
     },
-];
-
-/**
- * Isi array ini dengan foto peserta saat sudah tersedia.
- * Format: { src: '/storage/testimoni/nama.webp', name: 'Nama Peserta', role: 'Jabatan · Perusahaan' }
- */
-const PHOTO_ITEMS: { src?: string; name: string; role: string }[] = [
-    { name: 'Peserta 1', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 2', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 3', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 4', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 5', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 6', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 7', role: 'Sales, Perusahaan' },
-    { name: 'Peserta 8', role: 'Sales, Perusahaan' },
+    {
+        name: 'Ricky Sucitra',
+        role: 'Student, Swinburne University',
+        photo: '/storage/testimoni/ricky-sucitra.webp',
+        text: 'Workshop ini sangat membantu saya mengenal diri saya sendiri dan bagaimana untuk menjadi yang terbaik dari diri saya. Perubahan dimulai dari dalam diri sendiri. Mental Achiever!',
+    },
+    {
+        name: 'Mia Hermiyanti',
+        role: 'Account Executive, PT. David Roy Indonesia',
+        photo: '/storage/testimoni/mia-hermiyanti.webp',
+        text: 'Sangat memotivasi saya untuk bisa meraih pencapaian yang tertunda karena faktor external dan internal. Dan saya ingin merubah pola pandang negatif saya ke arah yang lebih positif.',
+    },
+    {
+        name: 'Daniel Indrianto',
+        role: 'Asst. CEO Bukit Mediterania Samarinda, Member of Agung Podomoro Group',
+        photo: '/storage/testimoni/daniel-indrianto.webp',
+        text: "Mr. Haryanto's motivation lecture is really moving ourselves instantly to get motivated. His lecture is lively, fun, easy to digest, and straight professionalism. Overall is excellent!",
+    },
+    {
+        name: 'Hengky Tan Malaka',
+        role: 'Wealth Director, PT. AXA Financial Indonesia',
+        photo: '/storage/testimoni/hengky-tan-malaka.webp',
+        text: 'Saat mengikuti seminar Pak Haryanto Kandani pendekatannya logis dengan bahasa yang sederhana tapi dapat menyentuh, membuat suatu perasaan bergejolak sehingga menimbulkan keyakinan yang kuat dalam memotivasi diri. Hal ini menjadi modal utama kesuksesan.',
+    },
 ];
 
 function StarRating() {
@@ -48,33 +57,7 @@ interface TestimoniSectionProps {
 }
 
 export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) {
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const pausedRef = useRef(false);
     const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
-
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
-        let raf: number;
-        let pos = 0; // accumulator untuk sub-pixel scroll
-
-        const tick = () => {
-            if (!pausedRef.current) {
-                pos += 0.4;
-                el.scrollLeft = Math.floor(pos);
-                if (el.scrollLeft >= el.scrollWidth / 2) {
-                    pos = 0;
-                    el.scrollLeft = 0;
-                }
-            }
-            raf = requestAnimationFrame(tick);
-        };
-
-        raf = requestAnimationFrame(tick);
-        return () => cancelAnimationFrame(raf);
-    }, []);
-
-    const photoCards = [...PHOTO_ITEMS, ...PHOTO_ITEMS];
 
     return (
         <>
@@ -91,79 +74,31 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                     </p>
                 </div>
 
-                {/* Editorial: foto mentor kiri + 2 quotes kanan */}
-                <div className="mt-10 grid gap-4 sm:gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-stretch">
-
-                    <div
-                        className="group cursor-pointer overflow-hidden rounded-3xl shadow-md"
-                        onClick={() => setLightboxSrc('/storage/mentor/krem-bw.webp')}
-                    >
-                        <img
-                            src="/storage/mentor/krem-bw.webp"
-                            alt="Haryanto Kandani - Achievement Motivator"
-                            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-4">
-                        {TESTIMONIALS.map((t) => (
-                            <div
-                                key={t.name}
-                                className="flex flex-1 flex-col rounded-2xl border border-white/5 bg-[#161620] px-5 py-4 shadow-sm"
-                            >
-                                <StarRating />
-                                <blockquote className="mt-2.5 flex-1 text-xs leading-relaxed text-slate-400 italic sm:text-sm">
-                                    "{t.text}"
-                                </blockquote>
-                                <div className="mt-3 flex items-center gap-2.5 border-t border-white/10 pt-3">
-                                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-slate-400">
-                                        {t.initials}
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-bold text-white">{t.name}</p>
-                                        <p className="mt-0.5 text-xs text-slate-400">{t.role}</p>
-                                    </div>
+                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {TESTIMONIALS.map((t) => (
+                        <div
+                            key={t.name}
+                            className="flex flex-col rounded-2xl border border-white/5 bg-[#161620] px-5 py-5 shadow-sm"
+                        >
+                            <StarRating />
+                            <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-slate-300 italic">
+                                "{t.text}"
+                            </blockquote>
+                            <div className="mt-4 flex items-center gap-3 border-t border-white/10 pt-4">
+                                <img
+                                    src={t.photo}
+                                    alt={t.name}
+                                    className="h-10 w-10 shrink-0 cursor-pointer rounded-full object-cover object-top ring-2 ring-white/10"
+                                    loading="lazy"
+                                    onClick={() => setLightboxSrc(t.photo)}
+                                />
+                                <div>
+                                    <p className="text-sm font-bold text-white">{t.name}</p>
+                                    <p className="mt-0.5 text-xs leading-snug text-slate-400">{t.role}</p>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-
-                </div>
-
-                {/* Infinite scroll foto peserta — pause on hover */}
-                <div className="mt-8">
-                    <p className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-slate-400">
-                        Foto Peserta Training
-                    </p>
-                    <div
-                        ref={scrollRef}
-                        className="flex gap-3 overflow-hidden"
-                        onMouseEnter={() => { pausedRef.current = true; }}
-                        onMouseLeave={() => { pausedRef.current = false; }}
-                    >
-                        {photoCards.map((item, i) => (
-                            <div
-                                key={i}
-                                className={`aspect-square w-24 shrink-0 overflow-hidden rounded-2xl border border-white/5 bg-[#161620] shadow-sm sm:w-32 lg:w-36 ${item.src ? 'cursor-pointer' : ''}`}
-                                onClick={() => item.src && setLightboxSrc(item.src)}
-                            >
-                                {item.src ? (
-                                    <img
-                                        src={item.src}
-                                        alt={item.name}
-                                        className="h-full w-full object-cover"
-                                        loading="lazy"
-                                    />
-                                ) : (
-                                    <div className="flex h-full flex-col items-center justify-center gap-1.5 bg-[#161620]">
-                                        <ImageIcon size={22} className="text-slate-500" />
-                                        <p className="text-xs font-medium text-slate-400">{item.name}</p>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
 
                 <SectionCta
@@ -174,10 +109,9 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                 />
             </SectionWrapper>
 
-            {/* Lightbox */}
             {lightboxSrc && (
                 <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+                    className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
                     onClick={() => setLightboxSrc(null)}
                 >
                     <button
@@ -189,7 +123,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                     </button>
                     <img
                         src={lightboxSrc}
-                        alt="Foto peserta training"
+                        alt="Foto testimoni"
                         className="max-h-[90vh] max-w-full rounded-xl object-contain shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                     />
