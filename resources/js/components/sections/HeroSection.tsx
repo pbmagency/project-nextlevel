@@ -24,7 +24,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     src="/storage/mentor/haryanto-hero-transparent.webp"
                     alt=""
                     className="h-full w-full object-cover"
-                    style={{ transform: 'scaleX(-1)', objectPosition: '70% top' }}
+                    style={{ transform: 'scaleX(-1) translateX(-8%)', objectPosition: '80% top' }}
                     loading="eager"
                 />
                 {/* bottom fade */}
@@ -40,18 +40,24 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 <h1 className="leading-[0.88] tracking-tight">
                     <span
                         className="block font-black uppercase text-blue-400"
-                        style={{ fontSize: 'clamp(2.2rem, 7vw, 5.5rem)' }}
+                        style={{
+                            fontSize: 'clamp(2.2rem, 7vw, 5.5rem)',
+                            textShadow: '0 4px 24px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)',
+                        }}
                     >
                         Rasakan
                     </span>
                     <span
                         className="block font-black uppercase text-white"
-                        style={{ fontSize: 'clamp(4rem, 13vw, 10rem)' }}
+                        style={{
+                            fontSize: 'clamp(4rem, 13vw, 10rem)',
+                            textShadow: '0 4px 32px rgba(0,0,0,0.95), 0 2px 12px rgba(0,0,0,0.9)',
+                        }}
                     >
                         Leganya
                     </span>
                     <span
-                        className="mt-2 inline-block rounded-lg bg-black/50 px-3 py-1.5 font-bold text-white backdrop-blur-sm"
+                        className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 font-bold text-white"
                         style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.75rem)' }}
                     >
                         Saat Target Bulanan Konsisten Tercapai

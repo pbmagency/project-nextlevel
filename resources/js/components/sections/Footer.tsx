@@ -49,9 +49,9 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center gap-2">
                             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-                                <span className="text-sm font-black text-white">P</span>
+                                <span className="text-sm font-black text-white">N</span>
                             </div>
-                            <span className="font-black text-white">PBM Agency</span>
+                            <span className="font-black text-white">Next Level</span>
                         </div>
                         <p className="mt-4 text-sm leading-relaxed">
                             Spesialis pelatihan Sales & Marketing. Menginspirasi lebih dari 1.000.000 orang
@@ -90,7 +90,7 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-10 border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
-                    <p>© {year} PBM Agency. All rights reserved.</p>
+                    <p>© {year} Next Level. All rights reserved.</p>
                     <p className="mt-1">Sales &amp; Marketing Skills Training oleh Haryanto Kandani</p>
                 </div>
             </div>

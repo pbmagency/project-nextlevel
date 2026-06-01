@@ -21,7 +21,7 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2">
                     <span className="text-lg font-bold tracking-tight text-white">
-                        PBM <span className="text-blue-400">Agency</span>
+                        Next <span className="text-blue-400">Level</span>
                     </span>
                 </a>
 

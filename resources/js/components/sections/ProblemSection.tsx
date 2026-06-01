@@ -2,11 +2,11 @@ import { AlertCircle, CheckCircle2, ChevronDown, X } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 
 const SCENARIOS = [
-    'Sudah presentasi panjang lebar, prospek bilang "nanti ya"',
+    'Sudah presentasi panjang lebar, prospek bilang "nanti dikabarin ya"',
     'Tahu produk lebih baik dari kompetitor, tapi kalah di negosiasi harga',
-    'Sudah kerja ekstra keras, tapi angka closing tetap stagnan bulan demi bulan',
-    'Prospek tertarik di awal, tapi menghilang sebelum keputusan',
-    'Target sudah diumumkan — tapi minggu depan masih bahas hal yang sama',
+    'Sudah kerja ekstra keras, tapi angka closing tetap stagnan setiap bulan',
+    'Prospek tertarik di awal, tapi menghilang setelah penawaran',
+    'Sudah masuk pertengahan bulan, tapi target masih terasa jauh',
 ];
 
 const ROOT_FACTORS = [

@@ -27,7 +27,7 @@ export default function SocialProofSection() {
         <SectionWrapper id="social-proof" bg="dark" className="pt-8 pb-10 lg:py-12">
 
             <p className="mb-8 text-center text-[0.65rem] font-bold uppercase tracking-[0.3em] text-slate-500 sm:text-xs">
-                Dipercaya oleh ratusan perusahaan nasional &amp; multinasional
+                Dipercaya oleh Perusahaan Nasional &amp; Multinasional Terkemuka
             </p>
 
             {/* 12-logo grid */}
@@ -41,29 +41,13 @@ export default function SocialProofSection() {
                         <img
                             src={src}
                             alt={alt}
-                            className="h-full w-full object-contain opacity-70 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
+                            className="h-full w-full object-contain opacity-85 transition-opacity duration-200 hover:opacity-100"
                             loading="lazy"
                         />
                     </div>
                 ))}
             </div>
 
-            {/* Infinite marquee — 1 gambar panjang, 6 copy agar full width */}
-            <div className="ticker-mask mt-10 overflow-hidden">
-                <div className="ticker-track">
-                    {Array.from({ length: 6 }).map((_, i) => (
-                        <img
-                            key={i}
-                            src={LOGO_SRC}
-                            alt={i === 0 ? 'Logo perusahaan klien PBM Agency' : ''}
-                            aria-hidden={i > 0}
-                            className="h-16 w-auto max-w-none shrink-0 select-none object-contain opacity-60 sm:h-24 lg:h-28"
-                            draggable={false}
-                            loading="lazy"
-                        />
-                    ))}
-                </div>
-            </div>
 
         </SectionWrapper>
 

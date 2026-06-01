@@ -15,6 +15,7 @@ import BenefitSection     from '@/components/sections/BenefitSection';
 import MentorSection      from '@/components/sections/MentorSection';
 import PricingSection     from '@/components/sections/PricingSection';
 import FAQSection         from '@/components/sections/FAQSection';
+import ClientBannerSection from '@/components/sections/ClientBannerSection';
 import Footer             from '@/components/sections/Footer';
 import FloatingVideo      from '@/components/FloatingVideo';
 
@@ -98,7 +99,10 @@ export default function Landing() {
                     {/* ── 9. Pricing ───────────────────────── */}
                     <PricingSection onPayClick={handlePayClick} />
 
-                    {/* ── 10. FAQ ──────────────────────────── */}
+                    {/* ── 10. Client Banner ────────────────── */}
+                    <ClientBannerSection />
+
+                    {/* ── 11. FAQ ──────────────────────────── */}
                     <FAQSection onCtaClick={handleCtaClick} />
                 </main>
 
