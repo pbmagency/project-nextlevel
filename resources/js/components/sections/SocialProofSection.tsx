@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { X } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 
-const LOGO_SRC = '/storage/misc/logo-perusahaan.webp';
-
 const LOGOS = [
     { src: '/storage/social/bca-logo-2.webp',          alt: 'BCA' },
     { src: '/storage/social/unilever-logo.webp',      alt: 'Unilever' },
@@ -12,10 +10,10 @@ const LOGOS = [
     { src: '/storage/social/axa-logo.webp',           alt: 'AXA' },
     { src: '/storage/social/citibank-logo.webp',      alt: 'Citibank' },
     { src: '/storage/social/ibm-logo.webp',           alt: 'IBM' },
-    { src: '/storage/social/loreal-logo.webp',        alt: "L'Oreal" },
+    { src: '/storage/social/ciputra-logo.webp',       alt: 'Ciputra' },
     { src: '/storage/social/fedex-logo.webp',         alt: 'FedEx' },
     { src: '/storage/social/bankindonesia-logo-2.webp', alt: 'Bank Indonesia' },
-    { src: '/storage/social/agunggroup-logo.webp',    alt: 'Agung Group' },
+    { src: '/storage/social/lippo-logo.webp',          alt: 'Lippo' },
     { src: '/storage/social/agungland-logo.webp',     alt: 'Agung Land' },
 ];
 
