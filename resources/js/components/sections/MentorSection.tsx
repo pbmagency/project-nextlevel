@@ -52,6 +52,9 @@ export default function MentorSection() {
                         <span className="mt-3 inline-block rounded-full border border-blue-600/30 px-4 py-1.5 text-xs font-semibold text-blue-400">
                             Achievement Motivator
                         </span>
+                        <span className="mt-2 inline-block rounded-full border border-blue-600/30 px-4 py-1.5 text-xs font-semibold text-blue-400">
+                            Sales &amp; Leadership Coach
+                        </span>
                         <button
                             onClick={() => setVideoOpen(true)}
                             className="mt-3 inline-flex cursor-pointer items-center gap-2.5 rounded-xl border border-blue-500/30 bg-blue-500/10 px-5 py-3 text-sm font-semibold text-blue-400 shadow-sm transition-colors hover:bg-blue-500/20"

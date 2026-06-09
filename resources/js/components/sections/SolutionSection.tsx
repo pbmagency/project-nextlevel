@@ -53,7 +53,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                         {/* Kanan: goals */}
                         <div>
                             <p className="leading-relaxed text-slate-400">
-                                Bersama <strong className="text-white">Haryanto Kandani</strong>, Anda tidak hanya belajar teori.
+                                Bersama <strong className="text-white">Coach Haryanto Kandani</strong>, Anda tidak hanya belajar teori.
                                 Anda mendapatkan framework yang sudah terbukti selama{' '}
                                 <strong className="text-white">20+ tahun di lapangan</strong>, langsung bisa diterapkan keesokan harinya.
                             </p>
@@ -73,7 +73,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
 
                             <div className="mt-6 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3">
                                 <p className="text-sm text-blue-400">
-                                    <strong className="text-blue-300">Offline, 1 Hari Intensif</strong>. Senin, 27 Juli 2026, Hotel DoubleTree by Hilton Kemayoran
+                                    <strong className="text-blue-300">Offline, 1 Hari Intensif</strong>. Senin, 27 Juli 2026, Hotel DoubleTree by Hilton Kemayoran, Jakarta Pusat
                                 </p>
                             </div>
                         </div>

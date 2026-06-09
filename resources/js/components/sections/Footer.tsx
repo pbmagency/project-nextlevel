@@ -1,4 +1,4 @@
-import { Clock, MapPin, RefreshCw, Wallet } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 
 const SOCIALS = [
     {
@@ -31,10 +31,8 @@ const SOCIALS = [
 ];
 
 const EVENT_DETAILS = [
-    { Icon: MapPin,    text: 'Hotel DoubleTree by Hilton Kemayoran – Jakarta Pusat' },
-    { Icon: Clock,     text: 'Senin, 27 Juli 2026, 09.30 – 16.00 WIB' },
-    { Icon: Wallet,    text: 'Rp 2.000.000 / orang (Super Early Bird)' },
-    { Icon: RefreshCw, text: 'Reseat & Refresh, ikuti kelas berkali-kali gratis' },
+    { Icon: MapPin, text: 'Hotel DoubleTree by Hilton Kemayoran – Jakarta Pusat' },
+    { Icon: Clock,  text: 'Senin, 27 Juli 2026, 09.30 – 16.00 WIB' },
 ];
 
 export default function Footer() {
@@ -91,7 +89,7 @@ export default function Footer() {
 
                 <div className="mt-10 border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
                     <p>© {year} Next Level. All rights reserved.</p>
-                    <p className="mt-1">Sales &amp; Marketing Skills Training oleh Haryanto Kandani</p>
+                    <p className="mt-1">Sales &amp; Marketing Skills Training oleh Coach Haryanto Kandani</p>
                 </div>
             </div>
         </footer>

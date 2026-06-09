@@ -1,4 +1,4 @@
-import { CheckCircle, Lock, RefreshCw, ShieldCheck, Tag, ThumbsUp, Zap } from 'lucide-react';
+import { CheckCircle, Gift, Headphones, Lock, RefreshCw, ShieldCheck, Tag, ThumbsUp, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import { generateEventId } from '@/hooks/use-analytics';
@@ -15,9 +15,10 @@ const INCLUDES = [
 ];
 
 const GUARANTEES = [
-    { icon: RefreshCw,   title: 'Reseat Gratis',   desc: 'Tidak bisa hadir? Ikuti kloter berikutnya tanpa biaya tambahan.' },
-    { icon: ShieldCheck, title: 'Materi Terbukti', desc: 'Semua strategi diuji 20+ tahun langsung di lapangan.' },
-    { icon: ThumbsUp,    title: 'Dukungan Penuh',  desc: 'Tim kami siap membantu Anda setelah mengikuti program.' },
+    { icon: RefreshCw,   title: 'Batch Berikutnya Gratis', desc: 'Ikut sekali, ulangi training di batch berikutnya tanpa biaya tambahan — selamanya.' },
+    { icon: ShieldCheck, title: 'Materi Terbukti',         desc: 'Semua strategi diuji 20+ tahun langsung di lapangan.' },
+    { icon: ThumbsUp,    title: 'Garansi Uang Kembali',    desc: 'Sudah ikut full day tapi tidak puas? Minta refund langsung ke panitia — kami kembalikan penuh, tanpa syarat ribet.' },
+    { icon: Headphones,  title: 'Dukungan Penuh',          desc: 'Tim kami siap membantu Anda setelah mengikuti program.' },
 ];
 
 interface PricingSectionProps {
@@ -44,7 +45,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                     Satu Hari yang Mengubah Karir Anda
                 </h2>
                 <p className="mt-4 text-slate-400">
-                    Program ini hanya diadakan <strong>2–3 bulan sekali</strong>. Jangan lewatkan kesempatan ini.
+                    Program ini hanya diadakan <strong>6 bulan sekali</strong>. Jangan lewatkan kesempatan ini.
                 </p>
             </div>
 
@@ -80,7 +81,16 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                             </div>
                         </div>
 
-                        <ul className="mt-6 space-y-2.5">
+                        {/* Reseat highlight */}
+                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3">
+                            <Gift size={18} className="shrink-0 text-emerald-400" />
+                            <div>
+                                <p className="text-sm font-bold text-emerald-400">Ikut 1×, Batch Berikutnya Gratis</p>
+                                <p className="text-xs text-emerald-400/70">Ulangi setiap batch tanpa bayar lagi — selamanya.</p>
+                            </div>
+                        </div>
+
+                        <ul className="mt-4 space-y-2.5">
                             {INCLUDES.map((item) => (
                                 <li key={item} className="flex items-start gap-2.5 text-sm text-slate-400">
                                     <CheckCircle size={16} className="mt-0.5 shrink-0 text-blue-500" />
@@ -100,7 +110,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
 
                         <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400">
                             <Lock size={12} className="shrink-0" />
-                            Reseat gratis. Tidak puas? Hubungi kami
+                            Tidak puas setelah full day? Uang kembali penuh, tanpa repot.
                         </p>
                     </div>
                 </div>
@@ -108,12 +118,12 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                 {/* Urgency notice */}
                 <div className="mt-4 flex items-start gap-2 rounded-xl bg-amber-500/10 p-4 text-sm text-amber-400 sm:items-center">
                     <Zap size={16} className="mt-0.5 shrink-0 sm:mt-0" />
-                    <span>Program ini hanya diadakan 2–3 bulan sekali. Kloter berikutnya mungkin penuh lebih cepat.</span>
+                    <span>Program ini hanya diadakan 6 bulan sekali. Batch berikutnya mungkin penuh lebih cepat.</span>
                 </div>
             </div>
 
             {/* Guarantee cards — below pricing */}
-            <div className="mx-auto mt-8 grid max-w-lg gap-3 sm:grid-cols-3 sm:max-w-3xl">
+            <div className="mx-auto mt-8 grid max-w-lg gap-3 sm:grid-cols-2 sm:max-w-2xl">
                 {GUARANTEES.map(({ icon: Icon, title, desc }) => (
                     <div key={title} className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#111118] p-4">
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10">

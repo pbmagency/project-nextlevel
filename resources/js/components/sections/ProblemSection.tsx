@@ -7,6 +7,7 @@ const SCENARIOS = [
     'Sudah kerja ekstra keras, tapi angka closing tetap stagnan setiap bulan',
     'Prospek tertarik di awal, tapi menghilang setelah penawaran',
     'Sudah masuk pertengahan bulan, tapi target masih terasa jauh',
+    'Sudah kasih tim training berkali-kali, tapi angka closing tim tidak bergerak juga',
 ];
 
 const ROOT_FACTORS = [
@@ -19,6 +20,7 @@ const WORST_CASE = [
     'Closing rate tidak bergerak bulan demi bulan',
     'Target terus meleset, karir stagnan',
     'Income tidak mencerminkan kerja keras Anda',
+    'Budget training sudah keluar, tapi tim tidak juga menunjukkan hasil',
 ];
 
 export default function ProblemSection() {
@@ -80,9 +82,8 @@ export default function ProblemSection() {
                     </div>
                 </div>
 
-                {/* Fix 5: consistent gap */}
                 {/* Row 2 — 2-col, mirrors top rhythm */}
-                <div className="mt-4 grid overflow-hidden rounded-2xl border border-red-500/10 lg:mt-8 lg:grid-cols-2">
+                <div className="mt-12 grid overflow-hidden rounded-2xl border border-red-500/10 lg:mt-20 lg:grid-cols-2">
 
                     {/* Kiri: worst case */}
                     <div className="bg-[#0D0D14] p-6 lg:p-8">

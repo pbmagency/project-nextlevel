@@ -20,14 +20,17 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 className="pointer-events-none absolute top-14 bottom-0 right-0 select-none w-full lg:inset-y-0 lg:w-[58%]"
                 aria-hidden="true"
             >
-                <img
-                    src="/storage/mentor/haryanto-hero-transparent.webp"
-                    alt=""
-                    className="h-full w-full object-cover"
-                    style={{ transform: 'scaleX(-1) translateX(-8%)', objectPosition: '80% top' }}
-                    loading="eager"
-                />
-                {/* bottom fade */}
+                {/* Scale wrapper — origin bottom-right so head lands at headline level */}
+                <div className="absolute inset-0 origin-bottom-right scale-[0.88] lg:scale-[0.82]">
+                    <img
+                        src="/storage/mentor/haryanto-hero-transparent.webp"
+                        alt=""
+                        className="h-full w-full object-cover"
+                        style={{ transform: 'scaleX(-1) translateX(-8%)', objectPosition: '80% top' }}
+                        loading="eager"
+                    />
+                </div>
+                {/* bottom fade — full size, covers scaled image + black area */}
                 <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/70 to-transparent" />
                 {/* left fade on desktop */}
                 <div className="absolute inset-y-0 left-0 w-56 bg-gradient-to-r from-[#0A0A0F] to-transparent hidden lg:block" />
@@ -36,12 +39,18 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
             {/* Content */}
             <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
 
+                {/* Context label */}
+                <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-300 backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                    Sales &amp; Marketing Skills Training — Next Level
+                </p>
+
                 {/* Editorial headline */}
                 <h1 className="leading-[0.88] tracking-tight">
                     <span
                         className="block font-black uppercase text-blue-400"
                         style={{
-                            fontSize: 'clamp(2.2rem, 7vw, 5.5rem)',
+                            fontSize: 'clamp(2.2rem, 5.5vw, 4rem)',
                             textShadow: '0 4px 24px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)',
                         }}
                     >
@@ -50,7 +59,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     <span
                         className="block font-black uppercase text-white"
                         style={{
-                            fontSize: 'clamp(4rem, 13vw, 10rem)',
+                            fontSize: 'clamp(4rem, 10vw, 7.5rem)',
                             textShadow: '0 4px 32px rgba(0,0,0,0.95), 0 2px 12px rgba(0,0,0,0.9)',
                         }}
                     >
@@ -58,7 +67,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     </span>
                     <span
                         className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 font-bold text-white"
-                        style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.75rem)' }}
+                        style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)' }}
                     >
                         Saat Target Bulanan Konsisten Tercapai
                     </span>

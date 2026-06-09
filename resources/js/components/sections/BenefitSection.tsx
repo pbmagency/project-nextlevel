@@ -1,14 +1,14 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, RefreshCw } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import SectionCta from '@/components/ui/section-cta';
 
 const MATERI = [
-    'Success Mindset & Fighting Spirit sebagai Sales Profesional',
-    'The Psychology of Selling: Memahami psikologi di balik keputusan konsumen dalam membeli produk',
-    'Teknik Negosiasi: Seni bernegosiasi agar kesepakatan berjalan sukses tanpa mengorbankan margin profit',
-    'Handling Objection: Strategi mematahkan berbagai alasan, keraguan, dan keberatan dari calon pembeli',
-    'Closing the Sales: Metode taktis mengeksekusi penutupan penjualan secara cepat dan instan',
-    'Hypno Selling: Teknik komunikasi penjualan yang mempengaruhi keputusan pembelian secara natural',
+    { title: 'Success Mindset & Fighting Spirit', desc: 'Membangun mental juara dan semangat pantang menyerah sebagai sales profesional' },
+    { title: 'The Psychology of Selling', desc: 'Memahami psikologi di balik keputusan konsumen dalam membeli produk' },
+    { title: 'Teknik Negosiasi', desc: 'Seni bernegosiasi agar kesepakatan berjalan sukses tanpa mengorbankan margin profit' },
+    { title: 'Handling Objection', desc: 'Strategi mematahkan berbagai alasan, keraguan, dan keberatan dari calon pembeli' },
+    { title: 'Closing the Sales', desc: 'Metode taktis mengeksekusi penutupan penjualan secara cepat dan instan' },
+    { title: 'Hypno Selling', desc: 'Teknik komunikasi penjualan yang mempengaruhi keputusan pembelian secara natural' },
 ];
 
 interface BenefitSectionProps {
@@ -20,7 +20,7 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
         <SectionWrapper id="benefit" bg="slate" className="py-20">
             <div className="mx-auto max-w-2xl text-center">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
-                    Kurikulum Taktis
+                    Materi Training
                 </p>
                 <h2 className="text-2xl font-black text-white sm:text-3xl lg:text-4xl">
                     6 Pilar Utama untuk Menguasai Pasar &amp; Menutup Penjualan
@@ -30,12 +30,27 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
             <div className="mx-auto mt-12 max-w-4xl">
                 <ul className="grid gap-3 sm:grid-cols-2">
                     {MATERI.map((item) => (
-                        <li key={item} className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#0A0A0F] px-4 py-3.5 text-sm leading-relaxed text-slate-300 sm:text-base">
+                        <li key={item.title} className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#0A0A0F] px-4 py-3.5 text-sm leading-relaxed sm:text-base">
                             <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-500" />
-                            {item}
+                            <span>
+                                <span className="font-semibold text-white">{item.title}:</span>
+                                {' '}
+                                <span className="text-slate-400">{item.desc}</span>
+                            </span>
                         </li>
                     ))}
                 </ul>
+
+                {/* Reseat benefit callout */}
+                <div className="mt-6 flex items-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/8 px-5 py-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15">
+                        <RefreshCw size={18} className="text-emerald-400" />
+                    </div>
+                    <div>
+                        <p className="font-bold text-emerald-400">Ikut 1×, Batch Berikutnya Gratis — Selamanya</p>
+                        <p className="mt-0.5 text-sm text-slate-400">Sekali daftar, Anda bisa ulangi training di batch berikutnya tanpa biaya tambahan.</p>
+                    </div>
+                </div>
             </div>
 
             <SectionCta
