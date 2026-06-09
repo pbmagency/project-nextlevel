@@ -20,7 +20,7 @@ export default function FloatingVideo() {
     };
 
     const src =
-        `https://www.youtube.com/embed/${VIDEO_ID}` +
+        `https://www.youtube-nocookie.com/embed/${VIDEO_ID}` +
         `?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}` +
         `&controls=0&rel=0&modestbranding=1&enablejsapi=1` +
         `&iv_load_policy=3&cc_load_policy=0&disablekb=1&fs=0`;
