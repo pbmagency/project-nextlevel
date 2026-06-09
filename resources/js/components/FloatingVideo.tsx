@@ -1,12 +1,26 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Volume2, VolumeX, X } from 'lucide-react';
 
 const VIDEO_ID = 'qkjNsTmorDs';
+const DEFER_MS  = 3000;
 
 export default function FloatingVideo() {
-    const [closed, setClosed]   = useState(false);
-    const [muted, setMuted]     = useState(true);
-    const iframeRef             = useRef<HTMLIFrameElement>(null);
+    const [closed, setClosed] = useState(false);
+    const [muted, setMuted]   = useState(true);
+    const [ready, setReady]   = useState(false);
+    const iframeRef           = useRef<HTMLIFrameElement>(null);
+
+    // Defer iframe load until browser is idle / page has settled
+    useEffect(() => {
+        if (closed) return;
+        const id = 'requestIdleCallback' in window
+            ? window.requestIdleCallback(() => setReady(true), { timeout: DEFER_MS })
+            : window.setTimeout(() => setReady(true), DEFER_MS) as unknown as number;
+        return () => {
+            if ('cancelIdleCallback' in window) window.cancelIdleCallback(id);
+            else clearTimeout(id as unknown as ReturnType<typeof setTimeout>);
+        };
+    }, [closed]);
 
     if (closed) return null;
 
@@ -50,17 +64,24 @@ export default function FloatingVideo() {
                 </div>
             </div>
 
-            {/* Video */}
-            <div className="relative aspect-video">
-                <iframe
-                    ref={iframeRef}
-                    src={src}
-                    title="Haryanto Kandani - Achievement Motivator"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    className="h-full w-full"
-                />
-                {/* Block YouTube UI overlay (skip/prev/logo) */}
-                <div className="absolute inset-0 z-10" />
+            {/* Video — only rendered after browser idle / 3s delay */}
+            <div className="relative aspect-video bg-black">
+                {ready ? (
+                    <>
+                        <iframe
+                            ref={iframeRef}
+                            src={src}
+                            title="Haryanto Kandani - Achievement Motivator"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            className="h-full w-full"
+                        />
+                        <div className="absolute inset-0 z-10" />
+                    </>
+                ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                        <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-white/60" />
+                    </div>
+                )}
             </div>
         </div>
     );
