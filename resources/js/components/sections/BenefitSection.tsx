@@ -1,4 +1,4 @@
-import { CheckCircle2, RefreshCw } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import SectionCta from '@/components/ui/section-cta';
 
@@ -40,17 +40,6 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
                         </li>
                     ))}
                 </ul>
-
-                {/* Reseat benefit callout */}
-                <div className="mt-6 flex items-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/8 px-5 py-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15">
-                        <RefreshCw size={18} className="text-emerald-400" />
-                    </div>
-                    <div>
-                        <p className="font-bold text-emerald-400">Ikut 1×, Batch Berikutnya Gratis — Selamanya</p>
-                        <p className="mt-0.5 text-sm text-slate-400">Sekali daftar, Anda bisa ulangi training di batch berikutnya tanpa biaya tambahan.</p>
-                    </div>
-                </div>
             </div>
 
             <SectionCta

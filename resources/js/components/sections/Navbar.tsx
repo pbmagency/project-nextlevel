@@ -28,10 +28,10 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
                 {/* CTA */}
                 <a
                     href="#pricing"
-                    onClick={() => onCtaClick('navbar', 'Daftar Sekarang', '#pricing')}
+                    onClick={() => onCtaClick('navbar', 'Amankan Seat', '#pricing')}
                 >
                     <Button variant="primary" size="sm">
-                        Daftar Sekarang
+                        Amankan Seat
                     </Button>
                 </a>
             </div>

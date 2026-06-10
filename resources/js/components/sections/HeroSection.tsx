@@ -23,7 +23,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 {/* Scale wrapper — origin bottom-right so head lands at headline level */}
                 <div className="absolute inset-0 origin-bottom-right scale-[0.88] lg:scale-[0.82]">
                     <img
-                        src="/storage/mentor/haryanto-hero-transparent.webp"
+                        src="/storage/mentor/image-removebg-preview.webp"
                         alt=""
                         className="h-full w-full object-cover"
                         style={{ transform: 'scaleX(-1) translateX(-8%)', objectPosition: '80% top' }}
@@ -39,10 +39,10 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
             {/* Content */}
             <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
 
-                {/* Context label */}
-                <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-300 backdrop-blur-sm">
+                {/* Context label — desktop only */}
+                <p className="mb-4 hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-300 backdrop-blur-sm lg:inline-flex">
                     <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-                    Sales &amp; Marketing Skills Training — Next Level
+                    Sales &amp; Marketing Training
                 </p>
 
                 {/* Editorial headline */}
@@ -50,7 +50,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     <span
                         className="block font-black uppercase text-blue-400"
                         style={{
-                            fontSize: 'clamp(2.2rem, 5.5vw, 4rem)',
+                            fontSize: 'clamp(2.2rem, 5.5vw, 5.5rem)',
                             textShadow: '0 4px 24px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)',
                         }}
                     >
@@ -59,7 +59,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     <span
                         className="block font-black uppercase text-white"
                         style={{
-                            fontSize: 'clamp(4rem, 10vw, 7.5rem)',
+                            fontSize: 'clamp(4rem, 10vw, 10rem)',
                             textShadow: '0 4px 32px rgba(0,0,0,0.95), 0 2px 12px rgba(0,0,0,0.9)',
                         }}
                     >
@@ -67,7 +67,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     </span>
                     <span
                         className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 font-bold text-white"
-                        style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)' }}
+                        style={{ fontSize: 'clamp(1.1rem, 2.5vw, 2rem)' }}
                     >
                         Saat Target Bulanan Konsisten Tercapai
                     </span>

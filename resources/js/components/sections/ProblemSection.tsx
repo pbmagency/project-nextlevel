@@ -3,11 +3,9 @@ import SectionWrapper from '@/components/ui/section-wrapper';
 
 const SCENARIOS = [
     'Sudah presentasi panjang lebar, prospek bilang "nanti dikabarin ya"',
-    'Tahu produk lebih baik dari kompetitor, tapi kalah di negosiasi harga',
     'Sudah kerja ekstra keras, tapi angka closing tetap stagnan setiap bulan',
     'Prospek tertarik di awal, tapi menghilang setelah penawaran',
     'Sudah masuk pertengahan bulan, tapi target masih terasa jauh',
-    'Sudah kasih tim training berkali-kali, tapi angka closing tim tidak bergerak juga',
 ];
 
 const ROOT_FACTORS = [
@@ -105,7 +103,7 @@ export default function ProblemSection() {
                     <div className="flex flex-col justify-center border-t border-white/5 bg-[#111118] p-6 lg:border-l lg:border-t-0 lg:p-8">
                         <p className="text-2xl font-black text-white sm:text-3xl">
                             Padahal Anda{' '}
-                            <span className="text-blue-400">capable.</span>
+                            <span className="text-blue-400">CAPABLE.</span>
                         </p>
                         <p className="mt-3 text-sm leading-relaxed text-slate-400">
                             Yang kurang bukan kerja keras Anda. Yang kurang hanya framework dan teknik yang tepat.

@@ -1,4 +1,4 @@
-import { CheckCircle, Gift, Headphones, Lock, RefreshCw, ShieldCheck, Tag, ThumbsUp, Zap } from 'lucide-react';
+import { CheckCircle, Gift, Headphones, Lock, ShieldCheck, Tag, ThumbsUp, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import { generateEventId } from '@/hooks/use-analytics';
@@ -15,9 +15,8 @@ const INCLUDES = [
 ];
 
 const GUARANTEES = [
-    { icon: RefreshCw,   title: 'Batch Berikutnya Gratis', desc: 'Ikut sekali, ulangi training di batch berikutnya tanpa biaya tambahan — selamanya.' },
     { icon: ShieldCheck, title: 'Materi Terbukti',         desc: 'Semua strategi diuji 20+ tahun langsung di lapangan.' },
-    { icon: ThumbsUp,    title: 'Garansi Uang Kembali',    desc: 'Sudah ikut full day tapi tidak puas? Minta refund langsung ke panitia — kami kembalikan penuh, tanpa syarat ribet.' },
+    { icon: ThumbsUp,    title: 'Garansi Uang Kembali',    desc: 'Sudah ikut full day tapi tidak puas? Minta refund langsung ke panitia, kami kembalikan penuh tanpa syarat ribet.' },
     { icon: Headphones,  title: 'Dukungan Penuh',          desc: 'Tim kami siap membantu Anda setelah mengikuti program.' },
 ];
 
@@ -81,16 +80,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                             </div>
                         </div>
 
-                        {/* Reseat highlight */}
-                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3">
-                            <Gift size={18} className="shrink-0 text-emerald-400" />
-                            <div>
-                                <p className="text-sm font-bold text-emerald-400">Ikut 1×, Batch Berikutnya Gratis</p>
-                                <p className="text-xs text-emerald-400/70">Ulangi setiap batch tanpa bayar lagi — selamanya.</p>
-                            </div>
-                        </div>
-
-                        <ul className="mt-4 space-y-2.5">
+                        <ul className="mt-6 space-y-2.5">
                             {INCLUDES.map((item) => (
                                 <li key={item} className="flex items-start gap-2.5 text-sm text-slate-400">
                                     <CheckCircle size={16} className="mt-0.5 shrink-0 text-blue-500" />
@@ -99,13 +89,22 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                             ))}
                         </ul>
 
+                        {/* Reseat highlight */}
+                        <div className="mt-6 flex items-center gap-3 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3">
+                            <Gift size={18} className="shrink-0 text-emerald-400" />
+                            <div>
+                                <p className="text-sm font-bold text-emerald-400">Ikut sekali, batch berikutnya gratis</p>
+                                <p className="text-xs text-emerald-400/70">Ulangi setiap batch tanpa bayar lagi, selamanya.</p>
+                            </div>
+                        </div>
+
                         <Button
                             variant="primary"
                             size="lg"
-                            className="mt-8 w-full"
+                            className="mt-6 w-full"
                             onClick={handleRegister}
                         >
-                            Bayar Sekarang  Rp 2.000.000
+                            Amankan Seat  Rp 2.000.000
                         </Button>
 
                         <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400">
@@ -123,7 +122,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
             </div>
 
             {/* Guarantee cards — below pricing */}
-            <div className="mx-auto mt-8 grid max-w-lg gap-3 sm:grid-cols-2 sm:max-w-2xl">
+            <div className="mx-auto mt-8 grid max-w-lg gap-3 sm:max-w-3xl sm:grid-cols-3">
                 {GUARANTEES.map(({ icon: Icon, title, desc }) => (
                     <div key={title} className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#111118] p-4">
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10">
