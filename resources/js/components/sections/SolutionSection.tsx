@@ -26,10 +26,6 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                 <div className="mx-auto max-w-5xl">
 
                     <div className="mb-12 text-center">
-                        <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-300 backdrop-blur-sm">
-                            <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
-                            Sales &amp; Marketing Training
-                        </p>
                         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
                             Solusinya Ada di Sini
                         </p>
@@ -49,13 +45,16 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                             <img
                                 src={IMG}
                                 alt="Haryanto Kandani sedang mengajar"
-                                className="w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                                className="w-full object-cover object-top transition-transform duration-300 lg:group-hover:scale-105"
                                 loading="lazy"
                             />
                         </div>
 
                         {/* Kanan: goals */}
                         <div>
+                            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-500">
+                                Sales &amp; Marketing Training
+                            </p>
                             <p className="leading-relaxed text-slate-400">
                                 Bersama <strong className="text-white">Coach Haryanto Kandani</strong>, Anda tidak hanya belajar teori.
                                 Anda mendapatkan framework yang sudah terbukti selama{' '}
