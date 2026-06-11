@@ -26,7 +26,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                         src="/storage/mentor/image-removebg-preview.webp"
                         alt=""
                         className="h-full w-full object-cover"
-                        style={{ transform: 'scaleX(-1) translateX(-8%)', objectPosition: '80% top' }}
+                        style={{ transform: 'scaleX(-1)', objectPosition: '40% top' }}
                         loading="eager"
                     />
                 </div>
