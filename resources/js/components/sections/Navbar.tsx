@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { WA_URL } from '@/lib/whatsapp';
 
 interface NavbarProps {
     onCtaClick: (location: string, text: string, dest: string) => void;
@@ -27,8 +28,10 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
 
                 {/* CTA */}
                 <a
-                    href="#pricing"
-                    onClick={() => onCtaClick('navbar', 'Amankan Seat', '#pricing')}
+                    href={WA_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => onCtaClick('navbar', 'Amankan Seat', WA_URL)}
                 >
                     <Button variant="primary" size="sm">
                         Amankan Seat

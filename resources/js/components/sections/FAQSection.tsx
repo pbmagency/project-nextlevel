@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/ui/section-wrapper';
-
-const WA_NUMBER = '6281385059742';
-const WA_TEXT = encodeURIComponent('Halo, saya ingin mendaftar Sales & Marketing Skills Training.');
+import { WA_URL } from '@/lib/whatsapp';
 
 const FAQS = [
     { q: 'Siapa saja yang cocok mengikuti training ini?', a: 'Training ini dirancang untuk siapa saja yang bekerja di bidang penjualan, mulai dari sales asuransi, properti, otomotif, medical representative, network marketing, hingga pemilik bisnis yang ingin timnya closing lebih konsisten. Baik yang baru terjun ke dunia sales maupun yang sudah berpengalaman tapi hasilnya stagnan.' },
@@ -38,7 +36,6 @@ interface FAQSectionProps {
 }
 
 export default function FAQSection({ onCtaClick }: FAQSectionProps) {
-    const waUrl = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
     return (
         <SectionWrapper id="faq" bg="white" className="py-20">
             <div className="mx-auto max-w-2xl">
@@ -53,7 +50,7 @@ export default function FAQSection({ onCtaClick }: FAQSectionProps) {
 
                 <div className="mt-10 text-center">
                     <p className="mb-4 text-slate-400">Masih ada pertanyaan lain?</p>
-                    <a href={waUrl} target="_blank" rel="noopener noreferrer" onClick={() => onCtaClick('faq_primary', 'Hubungi Kami via WhatsApp', waUrl)}>
+                    <a href={WA_URL} target="_blank" rel="noopener noreferrer" onClick={() => onCtaClick('faq_primary', 'Hubungi Kami via WhatsApp', WA_URL)}>
                         <Button variant="primary" size="lg">
                             <MessageCircle size={18} />
                             Hubungi Kami via WhatsApp

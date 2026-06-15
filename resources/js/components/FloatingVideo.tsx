@@ -2,35 +2,100 @@ import { useEffect, useRef, useState } from 'react';
 import { Volume2, VolumeX, X } from 'lucide-react';
 
 const VIDEO_ID = 'qkjNsTmorDs';
-const DEFER_MS  = 3000;
+const DEFER_MS = 3000;
+
+function sendPlayerCommand(
+    iframe: HTMLIFrameElement | null,
+    func: string,
+    args: unknown[] = [],
+) {
+    iframe?.contentWindow?.postMessage(
+        JSON.stringify({ event: 'command', func, args }),
+        '*',
+    );
+}
 
 export default function FloatingVideo() {
     const [closed, setClosed] = useState(false);
-    const [muted, setMuted]   = useState(true);
-    const [ready, setReady]   = useState(false);
-    const iframeRef           = useRef<HTMLIFrameElement>(null);
+    const [muted, setMuted] = useState(true);
+    const [ready, setReady] = useState(false);
+    const iframeRef = useRef<HTMLIFrameElement>(null);
 
     // Defer iframe load until browser is idle / page has settled
     useEffect(() => {
         if (closed) return;
-        const id = 'requestIdleCallback' in window
-            ? window.requestIdleCallback(() => setReady(true), { timeout: DEFER_MS })
-            : window.setTimeout(() => setReady(true), DEFER_MS) as unknown as number;
+
+        const idleWindow = window as Window & {
+            requestIdleCallback?: (
+                callback: () => void,
+                options?: { timeout: number },
+            ) => number;
+            cancelIdleCallback?: (id: number) => void;
+        };
+
+        const id = idleWindow.requestIdleCallback
+            ? idleWindow.requestIdleCallback(() => setReady(true), {
+                  timeout: DEFER_MS,
+              })
+            : globalThis.setTimeout(() => setReady(true), DEFER_MS);
+
         return () => {
-            if ('cancelIdleCallback' in window) window.cancelIdleCallback(id);
-            else clearTimeout(id as unknown as ReturnType<typeof setTimeout>);
+            if (idleWindow.cancelIdleCallback) idleWindow.cancelIdleCallback(id);
+            else globalThis.clearTimeout(id);
         };
     }, [closed]);
+
+    useEffect(() => {
+        if (!ready || closed) return;
+
+        const handlePlayerMessage = (event: MessageEvent) => {
+            if (event.source !== iframeRef.current?.contentWindow) return;
+
+            let data: unknown = event.data;
+            if (typeof data === 'string') {
+                try {
+                    data = JSON.parse(data);
+                } catch {
+                    return;
+                }
+            }
+
+            if (
+                typeof data !== 'object' ||
+                data === null ||
+                !('event' in data) ||
+                data.event !== 'infoDelivery' ||
+                !('info' in data) ||
+                typeof data.info !== 'object' ||
+                data.info === null ||
+                !('playerState' in data.info) ||
+                data.info.playerState !== 0
+            ) {
+                return;
+            }
+
+            sendPlayerCommand(iframeRef.current, 'seekTo', [0, true]);
+            sendPlayerCommand(iframeRef.current, 'playVideo');
+        };
+
+        window.addEventListener('message', handlePlayerMessage);
+        return () => window.removeEventListener('message', handlePlayerMessage);
+    }, [closed, ready]);
 
     if (closed) return null;
 
     const toggleMute = () => {
         const cmd = muted ? 'unMute' : 'mute';
+        sendPlayerCommand(iframeRef.current, cmd);
+        setMuted(!muted);
+    };
+
+    const handlePlayerLoad = () => {
         iframeRef.current?.contentWindow?.postMessage(
-            JSON.stringify({ event: 'command', func: cmd, args: [] }),
+            JSON.stringify({ event: 'listening', id: VIDEO_ID }),
             '*',
         );
-        setMuted(!muted);
+        sendPlayerCommand(iframeRef.current, 'playVideo');
     };
 
     const src =
@@ -72,6 +137,7 @@ export default function FloatingVideo() {
                             ref={iframeRef}
                             src={src}
                             title="Haryanto Kandani - Achievement Motivator"
+                            onLoad={handlePlayerLoad}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             className="h-full w-full"
                         />

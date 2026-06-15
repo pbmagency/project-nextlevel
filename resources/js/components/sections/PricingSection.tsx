@@ -2,9 +2,7 @@ import { CheckCircle, Gift, Headphones, Lock, ShieldCheck, Tag, ThumbsUp, Zap } 
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '@/components/ui/section-wrapper';
 import { generateEventId } from '@/hooks/use-analytics';
-
-const WA_NUMBER = '6281385059742';
-const WA_TEXT   = encodeURIComponent('Halo, saya ingin mendaftar Sales & Marketing Skills Training. Mohon informasi lebih lanjut.');
+import { WA_URL } from '@/lib/whatsapp';
 
 const INCLUDES = [
     'Buffet Lunch & Coffee Break',
@@ -25,12 +23,10 @@ interface PricingSectionProps {
 }
 
 export default function PricingSection({ onPayClick }: PricingSectionProps) {
-    const waUrl = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
-
     const handleRegister = () => {
         const eventId = generateEventId();
-        onPayClick('Bayar Sekarang', waUrl, eventId);
-        window.open(waUrl, '_blank');
+        onPayClick('Bayar Sekarang', WA_URL, eventId);
+        window.open(WA_URL, '_blank', 'noopener,noreferrer');
     };
 
     return (
