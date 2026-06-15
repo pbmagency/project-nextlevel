@@ -1,4 +1,5 @@
 import { Clock, MapPin } from 'lucide-react';
+import NextLevelLogo from '@/components/next-level-logo';
 
 const SOCIALS = [
     {
@@ -45,12 +46,7 @@ export default function Footer() {
 
                     {/* Brand */}
                     <div>
-                        <div className="flex items-center gap-2">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-                                <span className="text-sm font-black text-white">N</span>
-                            </div>
-                            <span className="font-black text-white">Next Level</span>
-                        </div>
+                        <NextLevelLogo className="h-10 w-44" />
                         <p className="mt-4 text-sm leading-relaxed">
                             Spesialis pelatihan Sales & Marketing. Menginspirasi lebih dari 1.000.000 orang
                             di 30+ kota besar Indonesia.

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import NextLevelLogo from '@/components/next-level-logo';
 import { WA_URL } from '@/lib/whatsapp';
 
 interface NavbarProps {
@@ -20,10 +21,8 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
         <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/5' : ''}`}>
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
                 {/* Logo */}
-                <a href="#" className="flex items-center gap-2">
-                    <span className="text-lg font-bold tracking-tight text-white">
-                        Next <span className="text-blue-400">Level</span>
-                    </span>
+                <a href="#" aria-label="Next Level">
+                    <NextLevelLogo className="h-8 w-36" />
                 </a>
 
                 {/* CTA */}
