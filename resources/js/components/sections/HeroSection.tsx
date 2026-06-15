@@ -14,7 +14,7 @@ const TRUST_BULLETS = [
 
 export default function HeroSection({ onCtaClick }: HeroSectionProps) {
     return (
-        <section className="relative flex min-h-[83dvh] flex-col justify-end overflow-hidden bg-[#0A0A0F] pb-6 pt-20 lg:min-h-dvh lg:justify-center lg:pb-24 lg:pt-24">
+        <section className="relative flex min-h-dvh flex-col justify-end overflow-hidden bg-[#0A0A0F] pb-8 pt-24 lg:justify-center lg:pb-24">
             {/* Speaker */}
             <div
                 className="pointer-events-none absolute bottom-0 right-0 top-14 w-full select-none lg:inset-y-0 lg:w-[58%]"
@@ -35,7 +35,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 <div className="absolute inset-y-0 left-0 hidden w-64 bg-gradient-to-r from-[#0A0A0F] to-transparent lg:block" />
             </div>
 
-            <div className="relative z-10 mx-auto w-full max-w-6xl translate-y-4 px-4 sm:px-6 lg:translate-y-0 lg:px-8">
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
                 <p className="mb-4 inline-flex items-center rounded-full border border-blue-400/30 bg-[#0A0A0F]/90 px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-blue-300 shadow-lg shadow-black/30 sm:px-4">
                     Sales &amp; Marketing Training
                 </p>
