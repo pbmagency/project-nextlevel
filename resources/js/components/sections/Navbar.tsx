@@ -32,7 +32,7 @@ export default function Navbar({ onCtaClick }: NavbarProps) {
                     rel="noopener noreferrer"
                     onClick={() => onCtaClick('navbar', 'Amankan Seat', WA_URL)}
                 >
-                    <Button variant="primary" size="sm">
+                    <Button variant="primary" size="md">
                         Amankan Seat
                     </Button>
                 </a>
