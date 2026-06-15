@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX, X } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX, X } from "lucide-react";
 
-const VIDEO_ID = 'qkjNsTmorDs';
+const VIDEO_ID = "qkjNsTmorDs";
 const DEFER_MS = 3000;
 
 function sendPlayerCommand(
@@ -10,8 +10,8 @@ function sendPlayerCommand(
     args: unknown[] = [],
 ) {
     iframe?.contentWindow?.postMessage(
-        JSON.stringify({ event: 'command', func, args }),
-        '*',
+        JSON.stringify({ event: "command", func, args }),
+        "*",
     );
 }
 
@@ -40,7 +40,8 @@ export default function FloatingVideo() {
             : globalThis.setTimeout(() => setReady(true), DEFER_MS);
 
         return () => {
-            if (idleWindow.cancelIdleCallback) idleWindow.cancelIdleCallback(id);
+            if (idleWindow.cancelIdleCallback)
+                idleWindow.cancelIdleCallback(id);
             else globalThis.clearTimeout(id);
         };
     }, [closed]);
@@ -52,7 +53,7 @@ export default function FloatingVideo() {
             if (event.source !== iframeRef.current?.contentWindow) return;
 
             let data: unknown = event.data;
-            if (typeof data === 'string') {
+            if (typeof data === "string") {
                 try {
                     data = JSON.parse(data);
                 } catch {
@@ -61,41 +62,41 @@ export default function FloatingVideo() {
             }
 
             if (
-                typeof data !== 'object' ||
+                typeof data !== "object" ||
                 data === null ||
-                !('event' in data) ||
-                data.event !== 'infoDelivery' ||
-                !('info' in data) ||
-                typeof data.info !== 'object' ||
+                !("event" in data) ||
+                data.event !== "infoDelivery" ||
+                !("info" in data) ||
+                typeof data.info !== "object" ||
                 data.info === null ||
-                !('playerState' in data.info) ||
+                !("playerState" in data.info) ||
                 data.info.playerState !== 0
             ) {
                 return;
             }
 
-            sendPlayerCommand(iframeRef.current, 'seekTo', [0, true]);
-            sendPlayerCommand(iframeRef.current, 'playVideo');
+            sendPlayerCommand(iframeRef.current, "seekTo", [0, true]);
+            sendPlayerCommand(iframeRef.current, "playVideo");
         };
 
-        window.addEventListener('message', handlePlayerMessage);
-        return () => window.removeEventListener('message', handlePlayerMessage);
+        window.addEventListener("message", handlePlayerMessage);
+        return () => window.removeEventListener("message", handlePlayerMessage);
     }, [closed, ready]);
 
     if (closed) return null;
 
     const toggleMute = () => {
-        const cmd = muted ? 'unMute' : 'mute';
+        const cmd = muted ? "unMute" : "mute";
         sendPlayerCommand(iframeRef.current, cmd);
         setMuted(!muted);
     };
 
     const handlePlayerLoad = () => {
         iframeRef.current?.contentWindow?.postMessage(
-            JSON.stringify({ event: 'listening', id: VIDEO_ID }),
-            '*',
+            JSON.stringify({ event: "listening", id: VIDEO_ID }),
+            "*",
         );
-        sendPlayerCommand(iframeRef.current, 'playVideo');
+        sendPlayerCommand(iframeRef.current, "playVideo");
     };
 
     const src =
@@ -108,14 +109,14 @@ export default function FloatingVideo() {
         <div className="fixed bottom-4 right-4 z-40 w-56 overflow-hidden rounded-2xl shadow-2xl shadow-black/70 ring-1 ring-white/10 sm:bottom-6 sm:right-6 sm:w-72">
             {/* Top bar */}
             <div className="flex items-center justify-between bg-black/80 px-3 py-1.5 backdrop-blur-sm">
-                <span className="text-xs font-semibold text-white/70">
+                <span className="text-sm font-semibold text-white/90">
                     Coach Haryanto Kandani
                 </span>
                 <div className="flex items-center gap-1.5">
                     <button
                         onClick={toggleMute}
                         className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
-                        aria-label={muted ? 'Aktifkan suara' : 'Matikan suara'}
+                        aria-label={muted ? "Aktifkan suara" : "Matikan suara"}
                     >
                         {muted ? <VolumeX size={12} /> : <Volume2 size={12} />}
                     </button>

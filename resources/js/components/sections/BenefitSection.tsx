@@ -1,14 +1,32 @@
-import { CheckCircle2 } from 'lucide-react';
-import SectionWrapper from '@/components/ui/section-wrapper';
-import SectionCta from '@/components/ui/section-cta';
+import { CheckCircle2 } from "lucide-react";
+import SectionWrapper from "@/components/ui/section-wrapper";
+import SectionCta from "@/components/ui/section-cta";
 
 const MATERI = [
-    { title: 'Success Mindset & Fighting Spirit', desc: 'Membangun mental juara dan semangat pantang menyerah sebagai sales profesional' },
-    { title: 'The Psychology of Selling', desc: 'Memahami psikologi di balik keputusan konsumen dalam membeli produk' },
-    { title: 'Teknik Negosiasi', desc: 'Seni bernegosiasi agar kesepakatan berjalan sukses tanpa mengorbankan margin profit' },
-    { title: 'Handling Objection', desc: 'Strategi mematahkan berbagai alasan, keraguan, dan keberatan dari calon pembeli' },
-    { title: 'Closing the Sales', desc: 'Metode taktis mengeksekusi penutupan penjualan secara cepat dan instan' },
-    { title: 'Hypno Selling', desc: 'Teknik komunikasi penjualan yang mempengaruhi keputusan pembelian secara natural' },
+    {
+        title: "Success Mindset & Fighting Spirit",
+        desc: "Membangun mental juara dan semangat pantang menyerah sebagai sales profesional",
+    },
+    {
+        title: "The Psychology of Selling",
+        desc: "Memahami psikologi di balik keputusan konsumen dalam membeli produk",
+    },
+    {
+        title: "Teknik Negosiasi",
+        desc: "Seni bernegosiasi agar kesepakatan berjalan sukses tanpa mengorbankan margin profit",
+    },
+    {
+        title: "Handling Objection",
+        desc: "Strategi mematahkan berbagai alasan, keraguan, dan keberatan dari calon pembeli",
+    },
+    {
+        title: "Closing the Sales",
+        desc: "Metode taktis mengeksekusi penutupan penjualan secara cepat dan instan",
+    },
+    {
+        title: "Hypno Selling",
+        desc: "Teknik komunikasi penjualan yang mempengaruhi keputusan pembelian secara natural",
+    },
 ];
 
 interface BenefitSectionProps {
@@ -30,12 +48,21 @@ export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
             <div className="mx-auto mt-12 max-w-4xl">
                 <ul className="grid gap-3 sm:grid-cols-2">
                     {MATERI.map((item) => (
-                        <li key={item.title} className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#0A0A0F] px-4 py-3.5 text-sm leading-relaxed sm:text-base">
-                            <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-blue-500" />
+                        <li
+                            key={item.title}
+                            className="flex items-start gap-3 rounded-xl border border-white/5 bg-[#0A0A0F] px-4 py-3.5 text-base font-medium leading-relaxed"
+                        >
+                            <CheckCircle2
+                                size={17}
+                                className="mt-0.5 shrink-0 text-blue-500"
+                            />
                             <span>
-                                <span className="font-semibold text-white">{item.title}:</span>
-                                {' '}
-                                <span className="text-slate-400">{item.desc}</span>
+                                <span className="font-semibold text-white">
+                                    {item.title}:
+                                </span>{" "}
+                                <span className="text-slate-300">
+                                    {item.desc}
+                                </span>
                             </span>
                         </li>
                     ))}

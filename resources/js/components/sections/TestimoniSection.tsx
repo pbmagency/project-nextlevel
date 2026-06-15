@@ -1,44 +1,44 @@
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Star, X } from 'lucide-react';
-import SectionWrapper from '@/components/ui/section-wrapper';
-import SectionCta from '@/components/ui/section-cta';
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, Star, X } from "lucide-react";
+import SectionWrapper from "@/components/ui/section-wrapper";
+import SectionCta from "@/components/ui/section-cta";
 
 const TESTIMONIALS = [
     {
-        name: 'Robert Tan',
-        role: 'Principal, Multiland Indonesia Property Agent',
-        photo: '/storage/testimoni/robert-tan.webp',
-        text: 'Sungguh luar biasa! Sejak mengikuti seminar yang Bapak Haryanto Kandani bawakan, team marketing kami mencapai hasil yang sangat luar biasa tahun ini. Target yang diberikan oleh perusahaan dapat diraih oleh agen-agen marketing kami hanya dalam waktu 5 bulan.',
+        name: "Robert Tan",
+        role: "Principal, Multiland Indonesia Property Agent",
+        photo: "/storage/testimoni/robert-tan.webp",
+        text: "Sungguh luar biasa! Sejak mengikuti seminar yang Bapak Haryanto Kandani bawakan, team marketing kami mencapai hasil yang sangat luar biasa tahun ini. Target yang diberikan oleh perusahaan dapat diraih oleh agen-agen marketing kami hanya dalam waktu 5 bulan.",
     },
     {
-        name: 'Daniel Indrianto',
-        role: 'Asst. CEO Bukit Mediterania Samarinda, Member of Agung Podomoro Group',
-        photo: '/storage/testimoni/daniel-indrianto.webp',
+        name: "Daniel Indrianto",
+        role: "Asst. CEO Bukit Mediterania Samarinda, Member of Agung Podomoro Group",
+        photo: "/storage/testimoni/daniel-indrianto.webp",
         text: "Mr. Haryanto's motivation lecture is really moving ourselves instantly to get motivated. His lecture is lively, fun, easy to digest, and straight professionalism. Overall is excellent!",
     },
     {
-        name: 'Hengky Tan Malaka',
-        role: 'Wealth Director, PT. AXA Financial Indonesia',
-        photo: '/storage/testimoni/hengky-tan-malaka.webp',
-        text: 'Saat mengikuti seminar Pak Haryanto Kandani pendekatannya logis dengan bahasa yang sederhana tapi dapat menyentuh, membuat suatu perasaan bergejolak sehingga menimbulkan keyakinan yang kuat dalam memotivasi diri. Hal ini menjadi modal utama kesuksesan.',
+        name: "Hengky Tan Malaka",
+        role: "Wealth Director, PT. AXA Financial Indonesia",
+        photo: "/storage/testimoni/hengky-tan-malaka.webp",
+        text: "Saat mengikuti seminar Pak Haryanto Kandani pendekatannya logis dengan bahasa yang sederhana tapi dapat menyentuh, membuat suatu perasaan bergejolak sehingga menimbulkan keyakinan yang kuat dalam memotivasi diri. Hal ini menjadi modal utama kesuksesan.",
     },
 ];
 
 const PROOF_IMAGES = [
-    '/storage/testimoni/proof/20180730_115219.webp.webp',
-    '/storage/testimoni/proof/20180730_121151.webp.webp',
-    '/storage/testimoni/proof/20180730_135732.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-132430_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-154419_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-160458_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-163049_Gallery.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-163254_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-163614_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180720-190359_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180728-085827_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180730-115538_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180730-120129_WhatsApp-Business.webp.webp',
-    '/storage/testimoni/proof/SmartSelect_20180730-232548_WhatsApp-Business.webp.webp',
+    "/storage/testimoni/proof/20180730_115219.webp.webp",
+    "/storage/testimoni/proof/20180730_121151.webp.webp",
+    "/storage/testimoni/proof/20180730_135732.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-132430_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-154419_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-160458_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-163049_Gallery.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-163254_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-163614_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180720-190359_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180728-085827_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180730-115538_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180730-120129_WhatsApp-Business.webp.webp",
+    "/storage/testimoni/proof/SmartSelect_20180730-232548_WhatsApp-Business.webp.webp",
 ];
 
 const FEATURED = PROOF_IMAGES.slice(0, 3);
@@ -48,13 +48,24 @@ function StarRating() {
     return (
         <div className="flex gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} size={12} className="text-amber-400" fill="currentColor" />
+                <Star
+                    key={i}
+                    size={12}
+                    className="text-amber-400"
+                    fill="currentColor"
+                />
             ))}
         </div>
     );
 }
 
-function ProofLightbox({ images, index, onClose, onPrev, onNext }: {
+function ProofLightbox({
+    images,
+    index,
+    onClose,
+    onPrev,
+    onNext,
+}: {
     images: string[];
     index: number;
     onClose: () => void;
@@ -74,22 +85,33 @@ function ProofLightbox({ images, index, onClose, onPrev, onNext }: {
                 <X size={18} />
             </button>
             <button
-                onClick={(e) => { e.stopPropagation(); onPrev(); }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onPrev();
+                }}
                 className="absolute left-4 p-2 text-white/60 transition-colors hover:text-white"
                 aria-label="Sebelumnya"
             >
                 <ChevronLeft size={36} />
             </button>
-            <div className="flex flex-col items-center gap-3 px-16" onClick={(e) => e.stopPropagation()}>
+            <div
+                className="flex flex-col items-center gap-3 px-16"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <img
                     src={images[index]}
                     alt={`Bukti peserta ${index + 1}`}
                     className="max-h-[82vh] max-w-[360px] w-full rounded-2xl object-contain shadow-2xl"
                 />
-                <p className="text-xs text-white/40">{index + 1} / {images.length}</p>
+                <p className="text-xs text-white/40">
+                    {index + 1} / {images.length}
+                </p>
             </div>
             <button
-                onClick={(e) => { e.stopPropagation(); onNext(); }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onNext();
+                }}
                 className="absolute right-4 p-2 text-white/60 transition-colors hover:text-white"
                 aria-label="Berikutnya"
             >
@@ -103,19 +125,28 @@ interface TestimoniSectionProps {
     onCtaClick: (location: string, text: string, dest: string) => void;
 }
 
-export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) {
+export default function TestimoniSection({
+    onCtaClick,
+}: TestimoniSectionProps) {
     const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
     const [proofIndex, setProofIndex] = useState<number | null>(null);
 
     const openProof = (i: number) => setProofIndex(i);
     const closeProof = () => setProofIndex(null);
-    const prevProof = () => setProofIndex((i) => i !== null ? (i - 1 + PROOF_IMAGES.length) % PROOF_IMAGES.length : null);
-    const nextProof = () => setProofIndex((i) => i !== null ? (i + 1) % PROOF_IMAGES.length : null);
+    const prevProof = () =>
+        setProofIndex((i) =>
+            i !== null
+                ? (i - 1 + PROOF_IMAGES.length) % PROOF_IMAGES.length
+                : null,
+        );
+    const nextProof = () =>
+        setProofIndex((i) =>
+            i !== null ? (i + 1) % PROOF_IMAGES.length : null,
+        );
 
     return (
         <>
             <SectionWrapper id="testimoni" bg="slate" className="py-20">
-
                 {/* Header */}
                 <div className="mx-auto max-w-2xl text-center">
                     <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
@@ -128,7 +159,9 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
 
                 {/* Proof section — di atas */}
                 <div className="mt-10">
-                    <p className="mb-4 text-center text-xs text-slate-600">Klik untuk memperbesar</p>
+                    <p className="mb-4 text-center text-sm font-medium text-slate-300">
+                        Klik untuk memperbesar
+                    </p>
 
                     {/* Featured top 3 */}
                     <div className="mx-auto grid max-w-3xl grid-cols-3 gap-3">
@@ -136,7 +169,10 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                             <div
                                 key={src}
                                 className="group relative cursor-zoom-in overflow-hidden rounded-2xl"
-                                style={{ aspectRatio: '9/16', boxShadow: '0 6px 24px rgba(0,0,0,0.4)' }}
+                                style={{
+                                    aspectRatio: "9/16",
+                                    boxShadow: "0 6px 24px rgba(0,0,0,0.4)",
+                                }}
                                 onClick={() => openProof(i)}
                             >
                                 <img
@@ -158,17 +194,32 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                     <div
                         className="mt-4 overflow-hidden"
                         style={{
-                            maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
-                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+                            maskImage:
+                                "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
+                            WebkitMaskImage:
+                                "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
                         }}
                     >
-                        <div className="infinite-track" style={{ animationDuration: '55s' }}>
+                        <div
+                            className="infinite-track"
+                            style={{ animationDuration: "55s" }}
+                        >
                             {[...CAROUSEL, ...CAROUSEL].map((src, i) => (
                                 <div
                                     key={i}
                                     className="group relative mx-2 shrink-0 cursor-zoom-in overflow-hidden rounded-xl"
-                                    style={{ width: '120px', aspectRatio: '9/16', boxShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
-                                    onClick={() => openProof((i % CAROUSEL.length) + FEATURED.length)}
+                                    style={{
+                                        width: "120px",
+                                        aspectRatio: "9/16",
+                                        boxShadow:
+                                            "0 4px 16px rgba(0,0,0,0.35)",
+                                    }}
+                                    onClick={() =>
+                                        openProof(
+                                            (i % CAROUSEL.length) +
+                                                FEATURED.length,
+                                        )
+                                    }
                                 >
                                     <img
                                         src={src}
@@ -191,7 +242,7 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                             className="flex flex-col rounded-2xl border border-white/5 bg-[#161620] px-5 py-5 shadow-sm"
                         >
                             <StarRating />
-                            <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-slate-300 italic">
+                            <blockquote className="mt-3 flex-1 text-base font-medium leading-relaxed text-slate-200 italic">
                                 "{t.text}"
                             </blockquote>
                             <div className="mt-4 flex items-center gap-3 border-t border-white/10 pt-4">
@@ -203,8 +254,12 @@ export default function TestimoniSection({ onCtaClick }: TestimoniSectionProps) 
                                     onClick={() => setLightboxSrc(t.photo)}
                                 />
                                 <div>
-                                    <p className="text-sm font-bold text-white">{t.name}</p>
-                                    <p className="mt-0.5 text-xs leading-snug text-slate-400">{t.role}</p>
+                                    <p className="text-base font-bold text-white">
+                                        {t.name}
+                                    </p>
+                                    <p className="mt-1 text-sm font-medium leading-snug text-slate-300">
+                                        {t.role}
+                                    </p>
                                 </div>
                             </div>
                         </div>

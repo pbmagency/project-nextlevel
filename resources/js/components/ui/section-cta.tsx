@@ -1,6 +1,6 @@
-import { CheckCircle2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { WA_URL } from '@/lib/whatsapp';
+import { CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { WA_URL } from "@/lib/whatsapp";
 
 interface SectionCtaProps {
     href?: string;
@@ -22,32 +22,39 @@ interface SectionCtaProps {
  */
 export default function SectionCta({
     href = WA_URL,
-    text = 'Daftar Sekarang',
+    text = "Daftar Sekarang",
     showMentorCta = false,
     socialProof,
-    location = 'section',
+    location = "section",
     onClick,
     dark = false,
-    className = '',
+    className = "",
 }: SectionCtaProps) {
     const items = socialProof
-        ? socialProof.split(' • ').map((s) => s.trim()).filter(Boolean)
+        ? socialProof
+              .split(" • ")
+              .map((s) => s.trim())
+              .filter(Boolean)
         : [];
 
-    const iconColor = 'text-blue-400';
-    const textColor = dark ? 'text-slate-500' : 'text-slate-400';
+    const iconColor = "text-blue-400";
+    const textColor = dark ? "text-slate-300" : "text-slate-300";
 
     return (
         <div className={`mt-10 text-center ${className}`}>
             <div className="mx-auto flex w-full max-w-sm flex-col gap-2 sm:max-w-none sm:flex-row sm:justify-center sm:gap-3">
                 <a
                     href={href}
-                    target={href === WA_URL ? '_blank' : undefined}
-                    rel={href === WA_URL ? 'noopener noreferrer' : undefined}
+                    target={href === WA_URL ? "_blank" : undefined}
+                    rel={href === WA_URL ? "noopener noreferrer" : undefined}
                     onClick={() => onClick?.(location, text, href)}
                     className="w-full sm:w-auto"
                 >
-                    <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        className="w-full sm:w-auto"
+                    >
                         {text}
                     </Button>
                 </a>
@@ -55,10 +62,16 @@ export default function SectionCta({
                 {showMentorCta && (
                     <a
                         href="#mentor"
-                        onClick={() => onClick?.(location, 'Kenali Fasilitator', '#mentor')}
+                        onClick={() =>
+                            onClick?.(location, "Kenali Fasilitator", "#mentor")
+                        }
                         className="w-full sm:w-auto"
                     >
-                        <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            className="w-full sm:w-auto"
+                        >
                             Kenali Fasilitator
                         </Button>
                     </a>
@@ -70,9 +83,12 @@ export default function SectionCta({
                     {items.map((item) => (
                         <span
                             key={item}
-                            className={`flex items-center gap-1.5 text-xs font-medium sm:text-sm ${textColor}`}
+                            className={`flex items-center gap-1.5 text-sm font-semibold ${textColor}`}
                         >
-                            <CheckCircle2 size={14} className={`shrink-0 ${iconColor}`} />
+                            <CheckCircle2
+                                size={14}
+                                className={`shrink-0 ${iconColor}`}
+                            />
                             {item}
                         </span>
                     ))}

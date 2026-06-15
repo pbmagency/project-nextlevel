@@ -36,7 +36,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
             </div>
 
             <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-                <p className="mb-4 inline-flex items-center rounded-full border border-blue-400/30 bg-[#0A0A0F]/90 px-3.5 py-2 text-sm font-bold uppercase tracking-[0.12em] text-blue-300 shadow-lg shadow-black/30 sm:px-4">
+                <p className="mb-4 inline-flex items-center rounded-full border border-blue-400/30 bg-[#0A0A0F]/90 px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-blue-300 shadow-lg shadow-black/30 sm:px-4">
                     Sales &amp; Marketing Training
                 </p>
 
@@ -69,7 +69,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                     </span>
                 </h1>
 
-                <p className="mt-5 max-w-2xl text-lg font-semibold leading-relaxed text-slate-100 sm:text-xl">
+                <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100">
                     Kuasai teknik negosiasi, handling objection, dan closing
                     bersama Coach Haryanto Kandani dalam 1 hari intensif.
                 </p>
