@@ -35,7 +35,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 <div className="absolute inset-y-0 left-0 hidden w-64 bg-gradient-to-r from-[#0A0A0F] to-transparent lg:block" />
             </div>
 
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto w-full max-w-6xl translate-y-4 px-4 sm:px-6 lg:translate-y-0 lg:px-8">
                 <p className="mb-4 inline-flex items-center rounded-full border border-blue-400/30 bg-[#0A0A0F]/90 px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-blue-300 shadow-lg shadow-black/30 sm:px-4">
                     Sales &amp; Marketing Training
                 </p>
