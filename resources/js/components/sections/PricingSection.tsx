@@ -146,7 +146,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
 
                         <Button
                             variant="primary"
-                            size="lg"
+                            size="xl"
                             className="mt-6 w-full"
                             onClick={handleRegister}
                         >

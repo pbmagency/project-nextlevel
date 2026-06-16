@@ -71,9 +71,10 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 interface FAQSectionProps {
     onCtaClick: (location: string, text: string, dest: string) => void;
+    onInitiateCheckout: () => void;
 }
 
-export default function FAQSection({ onCtaClick }: FAQSectionProps) {
+export default function FAQSection({ onCtaClick, onInitiateCheckout }: FAQSectionProps) {
     return (
         <SectionWrapper id="faq-section" bg="white" className="py-20">
             <div className="mx-auto max-w-2xl">
@@ -100,13 +101,14 @@ export default function FAQSection({ onCtaClick }: FAQSectionProps) {
                         href={WA_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() =>
+                        onClick={() => {
+                            onInitiateCheckout();
                             onCtaClick(
                                 "faq_primary",
                                 "Hubungi Kami via WhatsApp",
                                 WA_URL,
-                            )
-                        }
+                            );
+                        }}
                     >
                         <Button variant="primary" size="lg">
                             <MessageCircle size={18} />

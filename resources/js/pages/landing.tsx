@@ -111,7 +111,10 @@ export default function Landing() {
                     <ClientBannerSection />
 
                     {/* ── 11. FAQ ──────────────────────────── */}
-                    <FAQSection onCtaClick={handleCtaClick} />
+                    <FAQSection
+                        onCtaClick={handleCtaClick}
+                        onInitiateCheckout={trackInitiateCheckout}
+                    />
                 </main>
 
                 {/* ── Footer ───────────────────────────────── */}
