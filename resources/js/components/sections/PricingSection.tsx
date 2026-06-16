@@ -51,7 +51,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
     };
 
     return (
-        <SectionWrapper id="pricing" bg="white" className="py-20">
+        <SectionWrapper id="pricing-section" bg="white" className="py-20">
             {/* Header */}
             <div className="mx-auto max-w-2xl text-center">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">
@@ -150,7 +150,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                             className="mt-6 w-full"
                             onClick={handleRegister}
                         >
-                            Amankan Seat Rp 2.000.000
+                            Amankan Seat
                         </Button>
 
                         <p className="mt-4 flex items-center justify-center gap-1.5 text-sm font-medium text-slate-300">

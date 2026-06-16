@@ -1,10 +1,10 @@
+import { AlertTriangle, Monitor, Smartphone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatPercent, safeNumber, toSafeArray } from '@/lib/safe-data';
 import type { DeviceComparisonProps, DeviceMetrics } from '@/types/analytics';
-import { AlertTriangle, Monitor, Smartphone } from 'lucide-react';
 
-const DEFAULT_DEVICE: DeviceMetrics = { visits: 0, payments: 0, conversion_rate: 0 };
+const DEFAULT_DEVICE: DeviceMetrics = { visits: 0, leads: 0, conversion_rate: 0 };
 
 export function DeviceComparison({ data }: DeviceComparisonProps) {
     const safeData = toSafeArray(data);

@@ -1,30 +1,42 @@
-import { useEffect, useRef } from 'react';
-import { useAnalytics } from './use-analytics';
+import { useEffect, useRef } from "react";
+import { useAnalytics } from "./use-analytics";
 
 export function useScrollTracking() {
     const { trackScroll } = useAnalytics();
-    const scrollDepths  = useRef(new Set<number>());
+    const scrollDepths = useRef(new Set<number>());
     const lastScrollTime = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
             const now = Date.now();
-            if (now - lastScrollTime.current < 200) return;
+
+            // Throttle scroll events to avoid spam
+            if (now - lastScrollTime.current < 200) {
+                return;
+            }
+
             lastScrollTime.current = now;
 
-            const scrollHeight  = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = Math.round((window.scrollY / scrollHeight) * 100);
+            const scrollHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const scrollTop = window.scrollY;
+            const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
 
-            [25, 50, 75, 90].forEach((milestone) => {
-                if (scrollPercent >= milestone && !scrollDepths.current.has(milestone)) {
+            // Track depth milestones
+            const milestones = [25, 50, 75, 90];
+            milestones.forEach((milestone) => {
+                if (
+                    scrollPercent >= milestone &&
+                    !scrollDepths.current.has(milestone)
+                ) {
                     scrollDepths.current.add(milestone);
                     trackScroll(milestone);
                 }
             });
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [trackScroll]);
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [trackScroll]);
 }

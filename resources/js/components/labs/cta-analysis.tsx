@@ -1,9 +1,9 @@
+import { MousePointerClick, TrendingUp } from 'lucide-react';
+import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatPercent, toSafeArray } from '@/lib/safe-data';
 import type { CtaAnalysisProps, CtaLocation } from '@/types/analytics';
-import { MousePointerClick, TrendingUp } from 'lucide-react';
-import { useMemo } from 'react';
 
 export function CtaAnalysis({ data }: CtaAnalysisProps) {
     const safeData = toSafeArray(data);
@@ -13,6 +13,7 @@ export function CtaAnalysis({ data }: CtaAnalysisProps) {
         return [...safeData]
             .map((lp) => {
                 const locations = toSafeArray<CtaLocation>(lp.cta_locations);
+
                 return {
                     ...lp,
                     cta_locations: [...locations].sort((a, b) => (b.leads ?? 0) - (a.leads ?? 0)),
@@ -140,6 +141,7 @@ export function CtaAnalysis({ data }: CtaAnalysisProps) {
                                 <div className="bg-muted/50 space-y-2 rounded-lg p-3">
                                     {lp.cta_locations.map((cta, index) => {
                                         const isTop = index === 0 && (cta.leads ?? 0) > 0;
+
                                         return (
                                             <div
                                                 key={cta.location}

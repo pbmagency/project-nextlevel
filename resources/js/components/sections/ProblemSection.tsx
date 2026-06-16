@@ -23,7 +23,7 @@ const WORST_CASE = [
 
 export default function ProblemSection() {
     return (
-        <SectionWrapper id="problem" bg="dark" className="py-20">
+        <SectionWrapper id="problem-section" bg="dark" className="py-20">
             <div className="mx-auto max-w-5xl">
                 {/* Row 1 — both cols stretch to same height */}
                 <div className="grid gap-4 lg:grid-cols-2 lg:items-start lg:gap-8">

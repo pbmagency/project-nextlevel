@@ -75,7 +75,7 @@ interface FAQSectionProps {
 
 export default function FAQSection({ onCtaClick }: FAQSectionProps) {
     return (
-        <SectionWrapper id="faq" bg="white" className="py-20">
+        <SectionWrapper id="faq-section" bg="white" className="py-20">
             <div className="mx-auto max-w-2xl">
                 <div className="mb-10 text-center">
                     <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">

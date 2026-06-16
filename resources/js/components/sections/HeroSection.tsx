@@ -14,7 +14,10 @@ const TRUST_BULLETS = [
 
 export default function HeroSection({ onCtaClick }: HeroSectionProps) {
     return (
-        <section className="relative flex min-h-dvh flex-col justify-end overflow-hidden bg-[#0A0A0F] pb-8 pt-24 lg:justify-center lg:pb-24">
+        <section
+            id="hero-section"
+            className="relative flex min-h-dvh flex-col justify-end overflow-hidden bg-[#0A0A0F] pb-8 pt-24 lg:justify-center lg:pb-24"
+        >
             {/* Speaker */}
             <div
                 className="pointer-events-none absolute bottom-0 right-0 top-14 w-full select-none lg:inset-y-0 lg:w-[58%]"
@@ -71,20 +74,18 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
 
                 <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100">
                     Kuasai teknik negosiasi, handling objection, dan closing
-                    bersama Coach Haryanto Kandani dalam 1 hari intensif.
+                    bersama Coach Haryanto Kandani dalam 1 hari training
+                    intensif.
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <a
-                        href={WA_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="w-full sm:w-auto"
                         onClick={() =>
                             onCtaClick(
                                 "hero_primary",
                                 "Daftar Sekarang",
-                                WA_URL,
+                                "#pricing-section",
                             )
                         }
                     >
@@ -97,13 +98,13 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                         </Button>
                     </a>
                     <a
-                        href="#testimoni"
+                        href="#testimoni-section"
                         className="w-full sm:w-auto"
                         onClick={() =>
                             onCtaClick(
                                 "hero_secondary",
                                 "Lihat Testimoni",
-                                "#testimoni",
+                                "#testimoni-section",
                             )
                         }
                     >

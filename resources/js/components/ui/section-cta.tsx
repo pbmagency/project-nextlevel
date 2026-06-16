@@ -1,6 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { WA_URL } from "@/lib/whatsapp";
 
 interface SectionCtaProps {
     href?: string;
@@ -21,8 +20,8 @@ interface SectionCtaProps {
  * Dipakai di semua section kecuali Problem, Social Proof, dan Mentor.
  */
 export default function SectionCta({
-    href = WA_URL,
-    text = "Daftar Sekarang",
+    href = "#pricing-section",
+    text = "Amankan Seat Sekarang",
     showMentorCta = false,
     socialProof,
     location = "section",
@@ -45,8 +44,12 @@ export default function SectionCta({
             <div className="mx-auto flex w-full max-w-sm flex-col gap-2 sm:max-w-none sm:flex-row sm:justify-center sm:gap-3">
                 <a
                     href={href}
-                    target={href === WA_URL ? "_blank" : undefined}
-                    rel={href === WA_URL ? "noopener noreferrer" : undefined}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                        href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                    }
                     onClick={() => onClick?.(location, text, href)}
                     className="w-full sm:w-auto"
                 >
@@ -61,7 +64,7 @@ export default function SectionCta({
 
                 {showMentorCta && (
                     <a
-                        href="#mentor"
+                        href="#mentor-section"
                         onClick={() =>
                             onClick?.(location, "Kenali Fasilitator", "#mentor")
                         }

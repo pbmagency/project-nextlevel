@@ -2,7 +2,7 @@ const LOGO_SRC = "/storage/misc/logo-perusahaan.webp";
 
 export default function ClientBannerSection() {
     return (
-        <section className="bg-[#0A0A0F] py-12">
+        <section className="bg-[#0A0A0F] py-12" id="client-banner">
             <p className="mb-6 px-4 text-center text-sm font-bold uppercase tracking-[0.18em] text-slate-300">
                 Dipercaya oleh 100+ perusahaan dari berbagai industri
             </p>

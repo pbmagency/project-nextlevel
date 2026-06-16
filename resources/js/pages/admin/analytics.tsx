@@ -1,43 +1,47 @@
-import { ConversionFunnel } from '@/components/analytics/conversion-funnel';
-import { MetricCard } from '@/components/analytics/metric-card';
-import { ReferralChart } from '@/components/analytics/referral-chart';
-import { RevenueChart } from '@/components/analytics/revenue-chart';
-import { Button } from '@/components/ui/button';
+import { Head, router } from "@inertiajs/react";
+
+import {
+    CreditCard,
+    DollarSign,
+    Download,
+    Eye,
+    ShoppingCart,
+    Target,
+    TrendingUp,
+} from "lucide-react";
+import { useState } from "react";
+import { ConversionFunnel } from "@/components/analytics/conversion-funnel";
+import { MetricCard } from "@/components/analytics/metric-card";
+import { ReferralChart } from "@/components/analytics/referral-chart";
+import { RevenueChart } from "@/components/analytics/revenue-chart";
+import { Button } from "@/components/ui/button";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from '@/components/ui/select';
-import AdminLayout from '@/layouts/admin-layout';
-import { type BreadcrumbItem } from '@/types';
-import { Head, router } from '@inertiajs/react';
-import {
-    CreditCard,
-    DollarSign,
-    Download,
-    Eye,
-    Target,
-    TrendingUp,
-} from 'lucide-react';
-import { useState } from 'react';
+} from "@/components/ui/select";
+import AdminLayout from "@/layouts/admin-layout";
+import type { BreadcrumbItem } from "@/types";
 
 const breadcrumbs: BreadcrumbItem[] = [
-    { title: 'Dashboard', href: '/admin' },
-    { title: 'Analytics' },
+    { title: "Dashboard", href: "/admin" },
+    { title: "Analytics", href: "/admin/analytics" },
 ];
-
 interface AnalyticsProps {
     stats: {
         total_visits: number;
         unique_visitors: number;
         engagement_rate: number;
-        conversion_rate: number;
+        engaged_users: number;
+        initiate_checkout_rate: number;
+        initiate_checkout_count: number;
+        lead_rate: number;
+        leads: number;
         conversion_to_payment_rate: number;
         payment_rate: number;
         total_revenue: number;
-        registrations: number;
         payments: number;
     };
     chartData: Record<string, any[]>;
@@ -64,24 +68,17 @@ export default function Analytics({
 
     const handleRangeChange = (range: string) => {
         setSelectedRange(range);
-        router.get(
-            '/admin',
-            { range },
-            { preserveState: true },
-        );
+        router.get("/admin/analytics", { range }, { preserveState: true });
     };
 
     const handleExport = () => {
-        window.open(
-            `/admin/export?range=${selectedRange}`,
-            '_blank',
-        );
+        window.open(`/admin/export?range=${selectedRange}`, "_blank");
     };
 
     const formatCurrency = (amount: number) => {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
             minimumFractionDigits: 0,
         }).format(amount);
     };
@@ -158,16 +155,22 @@ export default function Analytics({
                                 title="Engagement Rate"
                                 value={`${stats.engagement_rate}%`}
                                 icon={TrendingUp}
-                                description="15+ second dwell time"
+                                description={`${stats.engaged_users} engaged (15s+ dwell & >25% scroll)`}
                             />
                             <MetricCard
-                                title="Conversion Rate"
-                                value={`${stats.conversion_rate}%`}
+                                title="Initiate Checkout Rate"
+                                value={`${stats.initiate_checkout_rate}%`}
+                                icon={ShoppingCart}
+                                description={`${stats.initiate_checkout_count} initiated checkout`}
+                            />
+                            <MetricCard
+                                title="Lead Rate"
+                                value={`${stats.lead_rate}%`}
                                 icon={Target}
-                                description={`${stats.registrations} registrations`}
+                                description={`${stats.leads} leads from checkout`}
                             />
                             <MetricCard
-                                title="Conversion to Payment Rate"
+                                title="Lead to Payment Rate"
                                 value={`${stats.conversion_to_payment_rate}%`}
                                 icon={CreditCard}
                                 description={`${stats.payments} successful payments`}
@@ -211,7 +214,7 @@ export default function Analytics({
                                 </div>
                                 <div className="mt-1 text-sm text-muted-foreground">
                                     {referralData[0]?.referral_source ||
-                                        'No data'}
+                                        "No data"}
                                     {referralData[0] &&
                                         ` (${referralData[0].count} visits)`}
                                 </div>
@@ -227,7 +230,7 @@ export default function Analytics({
                                               stats.total_revenue /
                                                   stats.total_visits,
                                           )
-                                        : 'Rp 0'}
+                                        : "Rp 0"}
                                 </div>
                             </div>
 
@@ -241,7 +244,7 @@ export default function Analytics({
                                               stats.total_revenue /
                                                   stats.unique_visitors,
                                           )
-                                        : 'Rp 0'}
+                                        : "Rp 0"}
                                 </div>
                             </div>
                         </div>

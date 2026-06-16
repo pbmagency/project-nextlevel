@@ -146,7 +146,7 @@ export default function TestimoniSection({
 
     return (
         <>
-            <SectionWrapper id="testimoni" bg="slate" className="py-20">
+            <SectionWrapper id="testimoni-section" bg="slate" className="py-20">
                 {/* Header */}
                 <div className="mx-auto max-w-2xl text-center">
                     <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">

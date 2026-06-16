@@ -22,7 +22,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
 
     return (
         <>
-            <SectionWrapper id="solution" bg="white" className="py-20">
+            <SectionWrapper id="solution-section" bg="white" className="py-20">
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-12 text-center">
                         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
@@ -100,7 +100,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                     </div>
 
                     <SectionCta
-                        location="solution"
+                        location="solution-section"
                         onClick={onCtaClick}
                         showMentorCta
                         socialProof="Telah melatih 100.000+ Sales • 20 tahun pengalaman"

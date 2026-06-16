@@ -35,7 +35,7 @@ interface BenefitSectionProps {
 
 export default function BenefitSection({ onCtaClick }: BenefitSectionProps) {
     return (
-        <SectionWrapper id="benefit" bg="slate" className="py-20">
+        <SectionWrapper id="benefit-section" bg="slate" className="py-20">
             <div className="mx-auto max-w-2xl text-center">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
                     Materi Training

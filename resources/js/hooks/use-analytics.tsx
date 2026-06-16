@@ -1,23 +1,39 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from "react";
 
-const LANDING_SOURCE_KEY  = 'landing_source';
-const REFERRAL_SOURCE_KEY = 'referral_source';
+const LANDING_SOURCE_KEY = "landing_source";
 
+/**
+ * Generate a unique event ID for Meta Pixel ↔ CAPI deduplication.
+ */
 export function generateEventId(): string {
-    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    if (typeof crypto !== "undefined" && crypto.randomUUID) {
         return crypto.randomUUID();
     }
+
     return `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
 }
 
+/**
+ * Get a cookie value by name.
+ */
 function getCookieValue(name: string): string | null {
     const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
+
     return match ? decodeURIComponent(match[2]) : null;
 }
 
 interface AnalyticsEvent {
-    event_type: 'visit' | 'scroll' | 'engagement' | 'conversion' | 'payment' | 'cta_click';
-    event_data?: Record<string, unknown>;
+    event_type:
+        | "visit"
+        | "scroll"
+        | "engagement"
+        | "conversion"
+        | "payment"
+        | "cta_click"
+        | "initiate_checkout"
+        | "lead"
+        | "section_view";
+    event_data?: Record<string, any>;
     referral_source?: string;
     utm_source?: string;
     utm_medium?: string;
@@ -26,130 +42,313 @@ interface AnalyticsEvent {
     utm_term?: string;
 }
 
+/**
+ * Get landing source from sessionStorage
+ */
 export function getLandingSource(): string {
-    if (typeof window === 'undefined') return 'unknown';
-    return sessionStorage.getItem(LANDING_SOURCE_KEY) || window.location.pathname;
+    if (typeof window === "undefined") {
+        return "unknown";
+    }
+
+    return (
+        sessionStorage.getItem(LANDING_SOURCE_KEY) || window.location.pathname
+    );
 }
 
 export function useAnalytics() {
     const coursePrice = import.meta.env.VITE_COURSE_PRICE;
 
-    // Store landing source and referral source once on first visit
+    // Initialize landing source on mount
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-        if (!sessionStorage.getItem(LANDING_SOURCE_KEY)) {
-            sessionStorage.setItem(LANDING_SOURCE_KEY, window.location.pathname);
+        if (typeof window === "undefined") {
+            return;
         }
-        if (!sessionStorage.getItem(REFERRAL_SOURCE_KEY)) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const getExternalReferrer = () => {
-                if (!document.referrer) return '';
-                try {
-                    return new URL(document.referrer).hostname === window.location.hostname ? '' : document.referrer;
-                } catch { return ''; }
-            };
-            const source = urlParams.get('ref') || getExternalReferrer() || 'direct';
-            sessionStorage.setItem(REFERRAL_SOURCE_KEY, source);
+
+        // Only set if not already present (preserve original entry point)
+        if (!sessionStorage.getItem(LANDING_SOURCE_KEY)) {
+            const cleanPath = window.location.pathname;
+            sessionStorage.setItem(LANDING_SOURCE_KEY, cleanPath);
         }
     }, []);
 
     const track = useCallback(async (event: AnalyticsEvent) => {
         try {
-            const landingSource  = getLandingSource();
-            const referralSource = sessionStorage.getItem(REFERRAL_SOURCE_KEY) || 'direct';
-            const urlParams      = new URLSearchParams(window.location.search);
+            // Get landing source from session storage
+            const landingSource = getLandingSource();
 
-            const payload = {
-                ...event,
-                event_data: { ...event.event_data, landing_source: landingSource },
-                referral_source: event.referral_source || referralSource,
-                utm_source:   event.utm_source   || urlParams.get('utm_source'),
-                utm_medium:   event.utm_medium   || urlParams.get('utm_medium'),
-                utm_campaign: event.utm_campaign || urlParams.get('utm_campaign'),
-                utm_content:  event.utm_content  || urlParams.get('utm_content'),
-                utm_term:     event.utm_term     || urlParams.get('utm_term'),
+            // Get URL parameters for UTM tracking
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Inject landing_source into event_data
+            const enrichedEventData = {
+                ...event.event_data,
+                landing_source: landingSource,
             };
 
-            await fetch('/analytics/track', {
-                method: 'POST',
-                credentials: 'same-origin',
+            const eventData = {
+                ...event,
+                event_data: enrichedEventData,
+                referral_source:
+                    event.referral_source ||
+                    urlParams.get("ref") ||
+                    document.referrer ||
+                    "direct",
+                utm_source: event.utm_source || urlParams.get("utm_source"),
+                utm_medium: event.utm_medium || urlParams.get("utm_medium"),
+                utm_campaign:
+                    event.utm_campaign || urlParams.get("utm_campaign"),
+                utm_content: event.utm_content || urlParams.get("utm_content"),
+                utm_term: event.utm_term || urlParams.get("utm_term"),
+            };
+
+            await fetch("/analytics/track", {
+                method: "POST",
+                credentials: "same-origin",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+                    "Content-Type": "application/json",
+
+                    "X-CSRF-TOKEN":
+                        document
+                            .querySelector('meta[name="csrf-token"]')
+                            ?.getAttribute("content") || "",
                 },
-                body: JSON.stringify(payload),
+                body: JSON.stringify(eventData),
             });
         } catch (error) {
-            // Silent fail — analytics must never break the page
-            console.debug('Analytics tracking failed:', error);
+            // Silent fail for analytics
+            console.debug("Analytics tracking failed:", error);
         }
     }, []);
 
     const trackVisit = useCallback(() => {
-        const eventId = (window as unknown as Record<string, unknown>).__META_PAGE_VIEW_EVENT_ID as string || generateEventId();
+        // Read the event ID generated by the Meta Pixel in app.blade.php
+        const eventId =
+            (window as any).__META_PAGE_VIEW_EVENT_ID || generateEventId();
+
         track({
-            event_type: 'visit',
+            event_type: "visit",
             event_data: {
                 page: window.location.pathname,
                 timestamp: new Date().toISOString(),
                 event_id: eventId,
-                _fbp: getCookieValue('_fbp'),
-                _fbc: getCookieValue('_fbc'),
+                _fbp: getCookieValue("_fbp"),
+                _fbc: getCookieValue("_fbc"),
             },
         });
     }, [track]);
 
-    const trackScroll = useCallback((depth: number) => {
-        track({
-            event_type: 'scroll',
-            event_data: { depth, page: window.location.pathname, timestamp: new Date().toISOString() },
-        });
-    }, [track]);
+    const trackScroll = useCallback(
+        (depth: number) => {
+            track({
+                event_type: "scroll",
+                event_data: {
+                    depth,
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                },
+            });
+        },
+        [track],
+    );
 
-    const trackEngagement = useCallback((type: string, data?: Record<string, unknown>) => {
-        track({
-            event_type: 'engagement',
-            event_data: { type, page: window.location.pathname, timestamp: new Date().toISOString(), ...data },
-        });
-    }, [track]);
+    const trackEngagement = useCallback(
+        (type: string, data?: Record<string, any>) => {
+            track({
+                event_type: "engagement",
+                event_data: {
+                    type,
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    ...data,
+                },
+            });
+        },
+        [track],
+    );
 
-    const trackConversion = useCallback((type: string, data?: Record<string, unknown>) => {
-        track({
-            event_type: 'conversion',
-            event_data: { type, page: window.location.pathname, timestamp: new Date().toISOString(), ...data },
-        });
-    }, [track]);
+    const trackConversion = useCallback(
+        (type: string, data?: Record<string, any>) => {
+            track({
+                event_type: "conversion",
+                event_data: {
+                    type,
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    ...data,
+                },
+            });
+        },
+        [track],
+    );
 
-    const trackPayment = useCallback((status: string, data?: Record<string, unknown>) => {
-        track({
-            event_type: 'payment',
-            event_data: { status, amount: coursePrice, currency: 'IDR', timestamp: new Date().toISOString(), ...data },
-        });
-    }, [track, coursePrice]);
+    const trackPayment = useCallback(
+        (status: string, data?: Record<string, any>) => {
+            track({
+                event_type: "payment",
+                event_data: {
+                    status,
+                    amount: coursePrice,
+                    currency: "IDR",
+                    timestamp: new Date().toISOString(),
+                    ...data,
+                },
+            });
+        },
+        [track, coursePrice],
+    );
 
-    const trackCTA = useCallback((
-        location: string,
-        text: string,
-        destination?: string,
-        metaEvent?: string,
-        eventId?: string,
-        extraData?: Record<string, unknown>,
-    ) => {
-        track({
-            event_type: 'cta_click',
-            event_data: {
-                location,
-                text,
-                destination: destination || 'unknown',
-                page: window.location.pathname,
-                timestamp: new Date().toISOString(),
-                meta_event: metaEvent,
-                event_id: eventId,
-                ...(metaEvent ? { _fbp: getCookieValue('_fbp'), _fbc: getCookieValue('_fbc') } : {}),
-                ...extraData,
-            },
-        });
-    }, [track]);
+    const trackCTA = useCallback(
+        (
+            location: string,
+            text: string,
+            destination?: string,
+            metaEvent?: string,
+            eventId?: string,
+        ) => {
+            // Fire client-side Meta Pixel event for browser-side attribution
+            if (metaEvent && typeof (window as any).fbq === "function") {
+                const pixelEventId = eventId || generateEventId();
+                (window as any).fbq(
+                    "track",
+                    metaEvent,
+                    {},
+                    { eventID: pixelEventId },
+                );
+            }
 
-    return { track, trackVisit, trackScroll, trackEngagement, trackConversion, trackPayment, trackCTA };
+            track({
+                event_type: "cta_click",
+                event_data: {
+                    location,
+                    text,
+                    destination: destination || "unknown",
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    meta_event: metaEvent,
+                    event_id: eventId,
+                    ...(metaEvent
+                        ? {
+                              _fbp: getCookieValue("_fbp"),
+                              _fbc: getCookieValue("_fbc"),
+                          }
+                        : {}),
+                },
+            });
+        },
+        [track],
+    );
+
+    const trackInitiateCheckout = useCallback(
+        (data?: Record<string, any>) => {
+            track({
+                event_type: "initiate_checkout",
+                event_data: {
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    ...data,
+                },
+            });
+        },
+        [track],
+    );
+
+    const trackLead = useCallback(
+        (type: string, data?: Record<string, any>) => {
+            // Gunakan event_id dari caller jika ada, atau generate baru
+            const eventId: string = data?.event_id ?? generateEventId();
+
+            // 1. Browser-side Meta Pixel AddToCart
+            if (typeof (window as any).fbq === "function") {
+                const pixelPayload = data?.value
+                    ? { value: data.value, currency: data.currency ?? "IDR" }
+                    : {};
+                (window as any).fbq("track", "AddToCart", pixelPayload, {
+                    eventID: eventId,
+                });
+            }
+
+            // 2. Server-side CAPI via backend (dedup via same eventId)
+            track({
+                event_type: "lead",
+                event_data: {
+                    type,
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    event_id: eventId,
+                    meta_event: "AddToCart",
+                    _fbp: getCookieValue("_fbp"),
+                    _fbc: getCookieValue("_fbc"),
+                    ...data,
+                },
+            });
+        },
+        [track],
+    );
+
+    /**
+     * Track a Purchase: fires fbq('track', 'Purchase') client-side for pixel
+     * attribution, and sends the same event_id to the backend so CAPI deduplicates.
+     */
+    const trackPurchase = useCallback(
+        (amount: number, currency = "IDR", data?: Record<string, any>) => {
+            const eventId = generateEventId();
+
+            // 1. Browser-side Meta Pixel (for attribution in Meta Ads Manager)
+            if (typeof (window as any).fbq === "function") {
+                (window as any).fbq(
+                    "track",
+                    "Purchase",
+                    { value: amount, currency },
+                    { eventID: eventId },
+                );
+            }
+
+            // 2. Server-side CAPI via our backend (deduplication via same eventId)
+            track({
+                event_type: "lead",
+                event_data: {
+                    type: "purchase",
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    event_id: eventId,
+                    meta_event: "Purchase",
+                    amount,
+                    currency,
+                    _fbp: getCookieValue("_fbp"),
+                    _fbc: getCookieValue("_fbc"),
+                    ...data,
+                },
+            });
+        },
+        [track],
+    );
+
+    const trackSectionView = useCallback(
+        (sectionId: string, data?: Record<string, any>) => {
+            track({
+                event_type: "section_view",
+                event_data: {
+                    section: sectionId,
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString(),
+                    ...data,
+                },
+            });
+        },
+        [track],
+    );
+
+    return {
+        track,
+        trackVisit,
+        trackScroll,
+        trackEngagement,
+        trackConversion,
+        trackPayment,
+        trackCTA,
+        trackInitiateCheckout,
+        trackLead,
+        trackPurchase,
+        trackSectionView,
+    };
 }

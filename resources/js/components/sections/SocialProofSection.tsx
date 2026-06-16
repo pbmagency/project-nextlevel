@@ -23,7 +23,7 @@ export default function SocialProofSection() {
     return (
         <>
             <SectionWrapper
-                id="social-proof"
+                id="social-proof-section"
                 bg="dark"
                 className="pt-8 pb-10 lg:py-12"
             >
