@@ -1,5 +1,6 @@
 import {
     CheckCircle,
+    Clock,
     Gift,
     Headphones,
     Lock,
@@ -8,10 +9,124 @@ import {
     ThumbsUp,
     Zap,
 } from "lucide-react";
+import { memo, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/ui/section-wrapper";
 import { generateEventId } from "@/hooks/use-analytics";
 import { WA_URL } from "@/lib/whatsapp";
+
+/* ─── Persistent 6-hour countdown ─────────────────────────────────────────── */
+const STORAGE_KEY = "pricing_countdown_expiry";
+const DURATION_MS = 12 * 60 * 60 * 1000; // 6 hours
+
+function getOrCreateExpiry(): number {
+    try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            const expiry = parseInt(stored, 10);
+            if (!isNaN(expiry) && expiry > Date.now()) return expiry;
+        }
+    } catch {
+        // localStorage unavailable (SSR / private mode)
+    }
+    const expiry = Date.now() + DURATION_MS;
+    try {
+        localStorage.setItem(STORAGE_KEY, String(expiry));
+    } catch {
+        // ignore
+    }
+    return expiry;
+}
+
+interface TimeLeft {
+    hours: string;
+    minutes: string;
+    seconds: string;
+}
+
+function useCountdown(): TimeLeft {
+    const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+        hours: "06",
+        minutes: "00",
+        seconds: "00",
+    });
+
+    useEffect(() => {
+        let expiry = getOrCreateExpiry();
+
+        function tick() {
+            const remaining = expiry - Date.now();
+            if (remaining <= 0) {
+                // Reset for another 6-hour window
+                expiry = Date.now() + DURATION_MS;
+                try {
+                    localStorage.setItem(STORAGE_KEY, String(expiry));
+                } catch {
+                    // ignore
+                }
+            }
+            const totalSec = Math.max(
+                0,
+                Math.floor((expiry - Date.now()) / 1000),
+            );
+            const h = Math.floor(totalSec / 3600);
+            const m = Math.floor((totalSec % 3600) / 60);
+            const s = totalSec % 60;
+            setTimeLeft({
+                hours: String(h).padStart(2, "0"),
+                minutes: String(m).padStart(2, "0"),
+                seconds: String(s).padStart(2, "0"),
+            });
+        }
+
+        tick();
+        const id = setInterval(tick, 1000);
+        return () => clearInterval(id);
+    }, []);
+
+    return timeLeft;
+}
+
+/* ─── Digit block — memo so only changed units re-render ────────────────────── */
+const DigitBlock = memo(function DigitBlock({
+    value,
+    label,
+}: {
+    value: string;
+    label: string;
+}) {
+    return (
+        <div className="flex flex-col items-center gap-1.5">
+            <div className="relative flex overflow-hidden rounded-xl border border-blue-500/25 bg-[#0A0A0F]">
+                {value.split("").map((d, i) => (
+                    <span
+                        key={i}
+                        className="flex w-9 items-center justify-center py-3 text-2xl font-black tabular-nums text-blue-300 sm:w-11 sm:text-3xl"
+                    >
+                        {d}
+                    </span>
+                ))}
+                {/* subtle bottom glow line */}
+                <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
+                />
+            </div>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                {label}
+            </span>
+        </div>
+    );
+});
+
+/* ─── Separator — static, never re-renders ──────────────────────────────────── */
+const Sep = memo(function Sep() {
+    return (
+        <span className="mb-5 self-center text-xl font-black text-blue-500/30">
+            :
+        </span>
+    );
+});
 
 const INCLUDES = [
     "Buffet Lunch & Coffee Break",
@@ -44,6 +159,8 @@ interface PricingSectionProps {
 }
 
 export default function PricingSection({ onPayClick }: PricingSectionProps) {
+    const { hours, minutes, seconds } = useCountdown();
+
     const handleRegister = () => {
         const eventId = generateEventId();
         onPayClick("Bayar Sekarang", WA_URL, eventId);
@@ -55,7 +172,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
             {/* Header */}
             <div className="mx-auto max-w-2xl text-center">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">
-                    Investasi Anda
+                    Investasi Terbaik
                 </p>
                 <h2 className="text-3xl font-black text-white sm:text-4xl">
                     Satu Hari yang Mengubah Karir Anda
@@ -141,6 +258,26 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                                     Ulangi setiap batch tanpa bayar lagi,
                                     selamanya.
                                 </p>
+                            </div>
+                        </div>
+
+                        {/* ── Countdown timer ── */}
+                        <div className="mt-6 overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-[#0a0c14] to-[#0A0A0F]">
+                            <div className="flex items-center gap-2 border-b border-blue-500/10 px-4 py-2.5">
+                                <Clock
+                                    size={14}
+                                    className="shrink-0 text-blue-400"
+                                />
+                                <p className="text-xs font-bold uppercase tracking-widest text-blue-400">
+                                    Harga Early Bird Berakhir Dalam
+                                </p>
+                            </div>
+                            <div className="flex items-start justify-center gap-2 px-4 py-4">
+                                <DigitBlock value={hours} label="Jam" />
+                                <Sep />
+                                <DigitBlock value={minutes} label="Menit" />
+                                <Sep />
+                                <DigitBlock value={seconds} label="Detik" />
                             </div>
                         </div>
 

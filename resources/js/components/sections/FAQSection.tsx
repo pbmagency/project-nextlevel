@@ -39,7 +39,7 @@ const FAQS = [
     },
     {
         q: "Bagaimana cara mendaftar?",
-        a: 'Klik tombol "Daftar Sekarang" di halaman ini. Anda akan langsung terhubung dengan tim kami via WhatsApp untuk menyelesaikan proses pendaftaran dan pembayaran.',
+        a: 'Klik tombol "Amankan Seat" di halaman ini. Anda akan langsung terhubung dengan tim kami via WhatsApp untuk menyelesaikan proses pendaftaran dan pembayaran.',
     },
 ];
 
@@ -74,7 +74,10 @@ interface FAQSectionProps {
     onInitiateCheckout: () => void;
 }
 
-export default function FAQSection({ onCtaClick, onInitiateCheckout }: FAQSectionProps) {
+export default function FAQSection({
+    onCtaClick,
+    onInitiateCheckout,
+}: FAQSectionProps) {
     return (
         <SectionWrapper id="faq-section" bg="white" className="py-20">
             <div className="mx-auto max-w-2xl">

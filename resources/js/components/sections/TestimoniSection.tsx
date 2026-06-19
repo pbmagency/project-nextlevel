@@ -150,20 +150,19 @@ export default function TestimoniSection({
                 {/* Header */}
                 <div className="mx-auto max-w-2xl text-center">
                     <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
-                        Apa Kata Mereka
+                        Testimoni Alumni
                     </p>
-                    <h2 className="text-3xl font-black text-white sm:text-4xl">
-                        Hasil Nyata dari Peserta Kami
+                    <h2 className="text-2xl font-black text-white sm:text-4xl">
+                        Lihat Kata Mereka Tentang Kami
                     </h2>
                 </div>
 
                 {/* Proof section — di atas */}
-                <div className="mt-10">
+                {/* <div className="mt-10">
                     <p className="mb-4 text-center text-sm font-medium text-slate-300">
                         Klik untuk memperbesar
                     </p>
 
-                    {/* Featured top 3 */}
                     <div className="mx-auto grid max-w-3xl grid-cols-3 gap-3">
                         {FEATURED.map((src, i) => (
                             <div
@@ -190,7 +189,6 @@ export default function TestimoniSection({
                         ))}
                     </div>
 
-                    {/* Infinite carousel — remaining 11 */}
                     <div
                         className="mt-4 overflow-hidden"
                         style={{
@@ -232,7 +230,7 @@ export default function TestimoniSection({
                             ))}
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Text testimonials — di bawah proof */}
                 <div className="mt-16 grid gap-4 sm:grid-cols-3">

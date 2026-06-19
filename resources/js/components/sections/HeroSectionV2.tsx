@@ -45,9 +45,8 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
 
                 <h1 className="leading-[0.88] tracking-tight">
                     <span
-                        className="block font-black uppercase text-blue-400"
+                        className="block text-[2.2rem] font-black uppercase text-blue-400 sm:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.5rem]"
                         style={{
-                            fontSize: "clamp(2.2rem, 5.5vw, 5.5rem)",
                             textShadow:
                                 "0 4px 24px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)",
                         }}
@@ -55,28 +54,35 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                         Rasakan
                     </span>
                     <span
-                        className="block font-black uppercase text-white"
+                        className="block text-[4rem] font-black uppercase text-white sm:text-[6rem] lg:text-[8rem] xl:text-[10rem]"
                         style={{
-                            fontSize: "clamp(4rem, 10vw, 10rem)",
                             textShadow:
                                 "0 4px 32px rgba(0,0,0,0.95), 0 2px 12px rgba(0,0,0,0.9)",
                         }}
                     >
                         Leganya
                     </span>
-                    <span
-                        className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 font-bold text-white"
-                        style={{ fontSize: "clamp(1.1rem, 2.5vw, 2rem)" }}
-                    >
+                    <span className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 text-[1.1rem] font-bold text-white sm:text-xl lg:text-2xl xl:text-[2rem]">
                         Saat Target Bulanan Konsisten Tercapai
                     </span>
                 </h1>
 
-                <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100">
-                    Kuasai teknik negosiasi, handling objection, dan closing
-                    bersama Coach Haryanto Kandani dalam 1 hari training
-                    intensif.
+                <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100 capitalize">
+                    Training Offline intensif 1 hari yang bantu Anda closing
+                    konsisten dengan framework yang tepat.
                 </p>
+
+                <div className="mt-5 flex flex-col gap-2 text-sm font-medium text-slate-200 sm:flex-row sm:flex-wrap sm:gap-x-5 lg:inline-flex lg:rounded-xl lg:bg-black/55 lg:px-4 lg:py-3 lg:backdrop-blur-sm">
+                    {TRUST_BULLETS.map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                            <CheckCircle
+                                size={16}
+                                className="shrink-0 text-blue-400"
+                            />
+                            {item}
+                        </span>
+                    ))}
+                </div>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <a
@@ -116,18 +122,6 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             Lihat Testimoni
                         </Button>
                     </a>
-                </div>
-
-                <div className="mt-5 flex flex-col gap-2 text-sm font-medium text-slate-200 sm:flex-row sm:flex-wrap sm:gap-x-5 lg:inline-flex lg:rounded-xl lg:bg-black/55 lg:px-4 lg:py-3 lg:backdrop-blur-sm">
-                    {TRUST_BULLETS.map((item) => (
-                        <span key={item} className="flex items-center gap-1.5">
-                            <CheckCircle
-                                size={16}
-                                className="shrink-0 text-blue-400"
-                            />
-                            {item}
-                        </span>
-                    ))}
                 </div>
             </div>
         </section>

@@ -33,7 +33,7 @@ export default function SocialProofSection() {
                 </p>
 
                 {/* 12-logo grid */}
-                <div className="mx-auto grid max-w-2xl grid-cols-3 gap-3 sm:gap-4">
+                <div className="mx-auto grid max-w-4xl grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
                     {LOGOS.map(({ src, alt }) => (
                         <div
                             key={alt}

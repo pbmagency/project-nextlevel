@@ -18,7 +18,7 @@ const STATS = [
 ];
 
 const HIGHLIGHTS = [
-    "Praktisi Sales & Marketing sekaligus Founder Next Level Training & Motivation",
+    "Praktisi Sales & Marketing lebih dari 20 tahun",
     "Melayani ratusan klien perusahaan nasional, multinasional, BUMN & pemerintahan",
     "Menginspirasi lebih dari 1.000.000 orang offline & online",
     "Coaching atlit PON & Asian Games, berhasil meraih medali emas",
