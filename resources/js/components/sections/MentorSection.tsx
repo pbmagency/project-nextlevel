@@ -35,7 +35,7 @@ const NOTABLE_CLIENTS = [
     "IBM",
 ];
 
-const VIDEO_ID = "qkjNsTmorDs";
+const VIDEO_ID = "irx8z27RrgA";
 
 export default function MentorSection() {
     const [videoOpen, setVideoOpen] = useState(false);

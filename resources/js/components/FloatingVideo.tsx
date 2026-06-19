@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX, X } from "lucide-react";
 
 const VIDEO_SRC =
-    "https://player.mediadelivery.net/embed/686796/4fbc161c-57ef-4633-af97-ddfcebc00d27";
+    "https://player.mediadelivery.net/embed/686796/9accf7ff-194a-45e9-b02c-1f935df0be67";
+const VIDEO_DELAY_MS = 1500;
 
 export default function FloatingVideo() {
     const [closed, setClosed] = useState(false);
     const [muted, setMuted] = useState(true);
+    const [ready, setReady] = useState(false);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(() => {
+        const loadVideo = () => {
+            timerRef.current = globalThis.setTimeout(
+                () => setReady(true),
+                VIDEO_DELAY_MS,
+            );
+        };
+
+        if (document.readyState === "complete") loadVideo();
+        else window.addEventListener("load", loadVideo, { once: true });
+
+        return () => {
+            window.removeEventListener("load", loadVideo);
+            if (timerRef.current) globalThis.clearTimeout(timerRef.current);
+        };
+    }, []);
 
     const src = `${VIDEO_SRC}?autoplay=true&loop=true&muted=${muted}&preload=true&responsive=true&playsinline=true`;
 
@@ -38,15 +58,26 @@ export default function FloatingVideo() {
             </div>
 
             <div className="relative aspect-video bg-black">
-                <iframe
-                    src={src}
-                    title="Haryanto Kandani - Achievement Motivator"
-                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
-                    allowFullScreen
-                    tabIndex={-1}
-                    className="pointer-events-none absolute inset-0 h-full w-full border-0"
-                />
-                <div className="absolute inset-0 z-10" aria-hidden="true" />
+                {ready ? (
+                    <>
+                        <iframe
+                            src={src}
+                            title="Haryanto Kandani - Achievement Motivator"
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+                            allowFullScreen
+                            tabIndex={-1}
+                            className="pointer-events-none absolute inset-0 h-full w-full border-0"
+                        />
+                        <div
+                            className="absolute inset-0 z-10"
+                            aria-hidden="true"
+                        />
+                    </>
+                ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                        <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-white/60" />
+                    </div>
+                )}
             </div>
         </div>
     );
