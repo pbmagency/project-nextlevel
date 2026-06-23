@@ -31,7 +31,10 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                         style={{
                             transform: "scaleX(-1)",
                         }}
+                        width={3704}
+                        height={2469}
                         loading="eager"
+                        fetchPriority="high"
                     />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/90 to-transparent lg:h-[45%] lg:via-[#0A0A0F]/70" />

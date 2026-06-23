@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @if (request()->routeIs('home'))
+        <link rel="preload" as="image" href="/storage/mentor/final-hero-hd-transparent.webp"
+            type="image/webp" fetchpriority="high">
+    @endif
+
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
