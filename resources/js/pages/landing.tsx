@@ -58,9 +58,7 @@ export default function Landing() {
     return (
         <>
             <Head>
-                <title>
-                    Sales & Marketing Skills Training | Haryanto Kandani
-                </title>
+                <title>Sales & Marketing Skills Training</title>
                 <meta
                     name="description"
                     content="Kuasai 4 pilar sales terbaik: Psychology of Selling, Negotiation, Handling Objection & Closing. Training offline seharian di Doubletree by Hilton. Hanya Rp 2.000.000."
