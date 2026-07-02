@@ -124,6 +124,10 @@ export function useAnalytics() {
         const eventId =
             (window as any).__META_PAGE_VIEW_EVENT_ID || generateEventId();
 
+        if (typeof (window as any).fbq === "function") {
+            (window as any).fbq("track", "PageView", {}, { eventID: eventId });
+        }
+
         track({
             event_type: "visit",
             event_data: {
@@ -256,12 +260,12 @@ export function useAnalytics() {
             // Gunakan event_id dari caller jika ada, atau generate baru
             const eventId: string = data?.event_id ?? generateEventId();
 
-            // 1. Browser-side Meta Pixel AddToCart
+            // 1. Browser-side Meta Pixel Lead
             if (typeof (window as any).fbq === "function") {
                 const pixelPayload = data?.value
                     ? { value: data.value, currency: data.currency ?? "IDR" }
                     : {};
-                (window as any).fbq("track", "AddToCart", pixelPayload, {
+                (window as any).fbq("track", "Lead", pixelPayload, {
                     eventID: eventId,
                 });
             }
@@ -274,7 +278,7 @@ export function useAnalytics() {
                     page: window.location.pathname,
                     timestamp: new Date().toISOString(),
                     event_id: eventId,
-                    meta_event: "AddToCart",
+                    meta_event: "Lead",
                     _fbp: getCookieValue("_fbp"),
                     _fbc: getCookieValue("_fbc"),
                     ...data,

@@ -5,6 +5,7 @@ use App\Http\Controllers\LabsController;
 use Illuminate\Support\Facades\Route;
 // ── Public landing page ───────────────────────────────────────────────────────
 Route::inertia('/', 'landing')->name('home');
+Route::inertia('/v2', 'landingv2')->name('home2');
 
 // ── Analytics tracking endpoint (public, uses session CSRF) ──────────────────
 Route::post('/analytics/track', [AnalyticsController::class, 'track'])->name('analytics.track');
@@ -21,4 +22,4 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::post('/labs/clear-cache', [LabsController::class, 'clearCache'])->name('labs.clear-cache');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -59,9 +59,9 @@ class MetaConversionService
     }
 
     /**
-     * Send an AddToCart event to Meta Conversions API.
+     * Send a Lead event to Meta Conversions API.
      */
-    public function sendAddToCart(Request $request, string $eventId): void
+    public function sendLead(Request $request, string $eventId): void
     {
         if (! $this->isConfigured()) {
             return;
@@ -70,18 +70,18 @@ class MetaConversionService
         $userData = $this->buildUserData($request);
 
         $content = (new Content)
-            ->setProductId('panduan-23-langkah')
+            ->setProductId('training-sales-marketing')
             ->setQuantity(1);
 
         $customData = (new CustomData)
-            ->setContentName('Panduan 23 Langkah Bangun Bisnis Lokal')
+            ->setContentName('Marketing & Sales Training')
             ->setContentType('product')
-            ->setValue(97000)
+            ->setValue(2000000)
             ->setCurrency('IDR')
             ->setContents([$content]);
 
         $event = (new Event)
-            ->setEventName('AddToCart')
+            ->setEventName('Lead')
             ->setEventTime(time())
             ->setEventId($eventId)
             ->setEventSourceUrl($request->header('Referer', $request->url()))
