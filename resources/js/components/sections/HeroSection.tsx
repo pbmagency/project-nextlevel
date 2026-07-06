@@ -73,9 +73,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100">
-                    Kuasai teknik negosiasi, handling objection, dan closing
-                    bersama Coach Haryanto Kandani dalam 1 hari training
-                    intensif.
+                    Bangun tim yang mandiri dalam negosiasi, handling objection, dan closing bersama Coach Haryanto Kandani 1 hari training intensif.
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
