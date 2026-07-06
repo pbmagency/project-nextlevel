@@ -71,8 +71,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100 capitalize">
-                    Training Offline intensif 1 hari yang bantu Anda closing
-                    konsisten dengan framework yang tepat.
+                    Bangun tim yang mandiri dalam negosiasi, handling objection, dan closing bersama Coach Haryanto Kandani 1 hari training intensif.
                 </p>
 
                 <div className="mt-5 flex flex-col gap-2 text-sm font-medium text-slate-200 sm:flex-row sm:flex-wrap sm:gap-x-5 lg:inline-flex lg:rounded-xl lg:bg-black/55 lg:px-4 lg:py-3 lg:backdrop-blur-sm">

@@ -68,7 +68,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                         className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 font-bold text-white"
                         style={{ fontSize: "clamp(1.1rem, 2.5vw, 2rem)" }}
                     >
-                        Saat Target Bulanan Konsisten Tercapai
+                        Saat Tim Sales Capal Target Tampa Diawasi
                     </span>
                 </h1>
 

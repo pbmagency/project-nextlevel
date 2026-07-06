@@ -175,7 +175,7 @@ export default function PricingSection({ onPayClick }: PricingSectionProps) {
                     Investasi Terbaik
                 </p>
                 <h2 className="text-3xl font-black text-white sm:text-4xl">
-                    Satu Hari yang Mengubah Karir Anda
+                    Satu Hari yang Mengubah Performa Tim Anda
                 </h2>
                 <p className="mt-4 font-medium text-slate-300">
                     Program ini hanya diadakan <strong>6 bulan sekali</strong>.

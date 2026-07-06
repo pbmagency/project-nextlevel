@@ -2,22 +2,22 @@ import { AlertCircle, CheckCircle2, ChevronDown, X } from "lucide-react";
 import SectionWrapper from "@/components/ui/section-wrapper";
 
 const SCENARIOS = [
-    'Sudah presentasi panjang lebar, prospek bilang "nanti dikabarin ya"',
-    "Sudah kerja ekstra keras, tapi angka closing tetap stagnan setiap bulan",
-    "Prospek tertarik di awal, tapi menghilang setelah penawaran",
-    "Sudah masuk pertengahan bulan, tapi target masih terasa jauh",
+    'Sudah latih tim sales berkali-kali, tapi hasilnya"',
+    "Tim sales masih terlalu bergantung pada, arahan Anda",
+    "Performa tim buruk sehingga target sulit tercapai secara konsisten",
+    "Anda masih harus ambil alih alih agar target bulanan bisa tercapai",
 ];
 
 const ROOT_FACTORS = [
     "Seberapa kuat teknik Anda dalam menjual",
     "Seberapa efektif cara Anda menangani penolakan",
-    "Seberapa besar trust yang Anda bangun sejak awal",
+    "Seberapa besar trust yang tim Anda bangun sejak awal",
 ];
 
 const WORST_CASE = [
     "Closing rate tidak bergerak bulan demi bulan",
-    "Target terus meleset, karir stagnan",
-    "Income tidak mencerminkan kerja keras Anda",
+    "Target terus meleset, bisnis atau karir stagnan",
+    "Burnt out karena Anda harus selalu turn tangan",
     "Budget training sudah keluar, tapi tim tidak juga menunjukkan hasil",
 ];
 
@@ -59,20 +59,19 @@ export default function ProblemSection() {
                                 </p>
                                 {/* Fix 3: more extreme size contrast */}
                                 <h2 className="text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-4xl">
-                                    Yang bikin sales{" "}
+                                    Terus mengawasi dan menekan tim sales tidak akan membuat{" "}
                                     <span className="relative text-blue-400">
-                                        closing konsisten
+                                        closing jadi konsisten
                                         <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-blue-400/40" />
-                                    </span>{" "}
-                                    bukan cuma kerja keras atau pengetahuan
-                                    produk Anda.
+                                    </span>
+                                    
                                 </h2>
                             </div>
 
                             <div>
                                 {/* Fix 3: smaller subtext, clear contrast from headline */}
                                 <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-slate-300">
-                                    Tapi seberapa dalam Anda menguasai:
+                                    Tapi seberapa dalam tim anda menguasai:
                                 </p>
                                 <ul className="flex flex-col gap-3">
                                     {ROOT_FACTORS.map((f) => (
@@ -128,8 +127,7 @@ export default function ProblemSection() {
                             <span className="text-blue-400">CAPABLE.</span>
                         </p>
                         <p className="mt-3 text-base font-medium leading-relaxed text-slate-300">
-                            Yang kurang bukan kerja keras Anda. Yang kurang
-                            hanya framework dan teknik yang tepat.
+                            Yang kurang bukan pengawasan Anda. Yang kurang hanya framework dan teknik sales yang belum diketahui tim.
                         </p>
                         <p className="mt-4 text-sm font-bold uppercase tracking-widest text-blue-400">
                             Dan itu bisa dipelajari dalam 1 hari.

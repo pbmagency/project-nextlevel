@@ -7,8 +7,8 @@ const GOALS = [
     "Closing rate naik signifikan dalam 30 hari pertama",
     "Percaya diri menghadapi keberatan dan negosiasi berat",
     "Setiap percakapan dengan prospek lebih terarah dan efektif",
-    "Tidak lagi bergantung pada keberuntungan untuk closing",
-    "Diakui sebagai top performer di tim Anda",
+    "Tidak lagi bergantung pada Anda untuk closing",
+    "Mencetak calon leader sales dari dalam tim Anda",
 ];
 
 const IMG = "/storage/mentor/haryanto-mengajar_upscaled.webp";
@@ -29,7 +29,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                             Solusinya Ada di Sini
                         </p>
                         <h2 className="text-2xl font-black text-white sm:text-3xl lg:text-4xl">
-                            1 Hari yang Mengubah Cara Anda Menjual{" "}
+                            1 Hari yang Mengubah Cara Tim Anda Menjual{" "}
                             <span className="text-blue-400">Selamanya</span>
                         </h2>
                     </div>
