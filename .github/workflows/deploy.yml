@@ -12,6 +12,7 @@ jobs:
     env:
       SERVER_IP: "72.61.142.238"
       SERVER_USER: "root"
+      DOMAIN_USERNAME: 'pbmag2242'
       TARGET_DIR_LARAVEL: "/home/pbmagency.id/laravel-sub1"
       TARGET_DIR_PUBLIC: "/home/pbmagency.id/sub1"
 
