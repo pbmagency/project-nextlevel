@@ -2,22 +2,22 @@ import { AlertCircle, CheckCircle2, ChevronDown, X } from "lucide-react";
 import SectionWrapper from "@/components/ui/section-wrapper";
 
 const SCENARIOS = [
-    'Sudah latih tim sales berkali-kali, tapi hasilnya"',
-    "Tim sales masih terlalu bergantung pada, arahan Anda",
+    'Sudah latih tim sales berkali-kali, tapi hasilnya hasilny tetap buruk"',
+    "Tim sales masih terlalu bergantung pada arahan Anda",
     "Performa tim buruk sehingga target sulit tercapai secara konsisten",
-    "Anda masih harus ambil alih alih agar target bulanan bisa tercapai",
+    "Anda masih harus ambil alih alih agar target bulanan bisa tercapai.",
 ];
 
 const ROOT_FACTORS = [
-    "Seberapa kuat teknik Anda dalam menjual",
-    "Seberapa efektif cara Anda menangani penolakan",
+    "Seberapa kuat teknik tim Anda dalam menjual",
+    "Seberapa efektif cara tim Anda menangani penolakan",
     "Seberapa besar trust yang tim Anda bangun sejak awal",
 ];
 
 const WORST_CASE = [
     "Closing rate tidak bergerak bulan demi bulan",
     "Target terus meleset, bisnis atau karir stagnan",
-    "Burnt out karena Anda harus selalu turn tangan",
+    "Burnt out karena Anda harus selalu turun tangan",
     "Budget training sudah keluar, tapi tim tidak juga menunjukkan hasil",
 ];
 

@@ -67,7 +67,7 @@ export default function SolutionSection({ onCtaClick }: SolutionSectionProps) {
                             </p>
 
                             <p className="mt-4 font-semibold text-white">
-                                Setelah 1 hari bersama kami, Anda akan mampu:
+                                Setelah 1 hari bersama kami,Tim Anda akan mampu:
                             </p>
 
                             <ul className="mt-4 space-y-3">
