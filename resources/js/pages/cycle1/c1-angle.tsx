@@ -8,8 +8,8 @@ import { useSectionTracking } from "@/hooks/use-section-tracking";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/test-hero/HeroSection1";
 import SocialProofSection from "@/components/sections/SocialProofSection";
-import ProblemSection from "@/components/sections/cycle2-test-problem/ProblemSection2";
-import SolutionSection from "@/components/sections/cycle2-test-solution/SolutionSection2";
+import ProblemSection from "@/components/sections/cycle1-test-problem/ProblemSection1";
+import SolutionSection from "@/components/sections/cycle1-test-solution/SolutionSection1";
 import TestimoniSection from "@/components/sections/TestimoniSection";
 import BenefitSection from "@/components/sections/BenefitSection";
 import MentorSection from "@/components/sections/MentorSection";
@@ -17,7 +17,6 @@ import PricingSection from "@/components/sections/PricingSection";
 import FAQSection from "@/components/sections/FAQSection";
 import ClientBannerSection from "@/components/sections/ClientBannerSection";
 import Footer from "@/components/sections/Footer";
-import FloatingVideo from "@/components/FloatingVideo";
 
 // Force dark mode for landing page
 if (typeof document !== "undefined") {
@@ -117,9 +116,6 @@ export default function Landing() {
 
                 {/* ── Footer ───────────────────────────────── */}
                 <Footer />
-
-                {/* ── Floating Video ────────────────────────── */}
-                <FloatingVideo />
             </div>
         </>
     );

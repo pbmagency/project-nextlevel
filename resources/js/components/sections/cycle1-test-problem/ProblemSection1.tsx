@@ -2,10 +2,10 @@ import { AlertCircle, CheckCircle2, ChevronDown, X } from "lucide-react";
 import SectionWrapper from "@/components/ui/section-wrapper";
 
 const SCENARIOS = [
-    'Sudah latih tim sales berkali-kali, tapi hasilnya hasilny tetap buruk"',
+    'Sudah latih tim sales berkali-kali, tapi hasilnya tetap buruk"',
     "Tim sales masih terlalu bergantung pada arahan Anda",
     "Performa tim buruk sehingga target sulit tercapai secara konsisten",
-    "Anda masih harus ambil alih alih agar target bulanan bisa tercapai.",
+    "Anda masih harus ambil alih agar target bulanan bisa tercapai.",
 ];
 
 const ROOT_FACTORS = [

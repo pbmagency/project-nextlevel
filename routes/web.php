@@ -5,7 +5,7 @@ use App\Http\Controllers\LabsController;
 use Illuminate\Support\Facades\Route;
 // ── Public landing page ───────────────────────────────────────────────────────
 Route::inertia('/', 'landing')->name('home');
-Route::inertia('/c2-pr-sl-test-2', 'cycle2/pr-sl-test-2')->name('home2');
+Route::inertia('/c1-angle', 'cycle1/c1-angle')->name('home2');
 
 // ── Analytics tracking endpoint (public, uses session CSRF) ──────────────────
 Route::post('/analytics/track', [AnalyticsController::class, 'track'])->name('analytics.track');
