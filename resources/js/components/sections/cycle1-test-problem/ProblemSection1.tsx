@@ -123,7 +123,7 @@ export default function ProblemSection() {
                     {/* Kanan: empathy uplift */}
                     <div className="flex flex-col justify-center border-t border-white/5 bg-[#111118] p-6 lg:border-l lg:border-t-0 lg:p-8">
                         <p className="text-2xl font-black text-white sm:text-3xl">
-                            Padahal Anda{" "}
+                            Padahal Tim Anda Anda{" "}
                             <span className="text-blue-400">CAPABLE.</span>
                         </p>
                         <p className="mt-3 text-base font-medium leading-relaxed text-slate-300">
