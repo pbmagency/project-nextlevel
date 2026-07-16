@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
+import { compression } from 'vite-plugin-compression2';
 
 export default defineConfig({
     plugins: [
@@ -18,6 +19,9 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
+        // Add Gzip and Brotli compression just like full-bright!
+        compression({ algorithm: 'gzip', exclude: [/\.(br)$/, /\.(gz)$/] }),
+        compression({ algorithm: 'brotliCompress', exclude: [/\.(br)$/, /\.(gz)$/] }),
     ],
     resolve: {
         alias: {
@@ -28,14 +32,19 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks(id) {
-                    if (id.includes('node_modules/react') || id.includes('node_modules/@inertiajs')) {
-                        return 'vendor';
+                    // React core — always needed, long-lived cache
+                    if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+                        return 'react-vendor';
                     }
-                    if (id.includes('node_modules/@radix-ui') || id.includes('node_modules/lucide-react') || id.includes('node_modules/@headlessui')) {
-                        return 'ui';
+                    // Lucide icons — shared across pages
+                    if (id.includes('node_modules/lucide-react')) {
+                        return 'icons-vendor';
                     }
-                }
-            }
-        }
+                    // We DO NOT bundle Radix UI or Headless UI here anymore. 
+                    // Vite will naturally code-split them, fixing the "Unused JS" warning!
+                },
+            },
+        },
+        chunkSizeWarningLimit: 1000,
     }
 });
