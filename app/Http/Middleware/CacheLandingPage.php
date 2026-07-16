@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * Server-side HTML cache for the public landing page.
+ *
+ * Anonymous GET requests for landing pages are served from cache after the first hit,
+ * dramatically reducing TTFB on subsequent requests.
+ */
+class CacheLandingPage
+{
+    private const TTL_SECONDS = 604800; // 7 days
+
+    public function handle(Request $request, Closure $next): Response
+    {
+        // Check if the current route is one of our landing pages
+        $isLandingPage = in_array($request->path(), ['/', 'c1-angle']);
+        
+        if (! $request->isMethod('GET') || $request->user() || ! $isLandingPage) {
+            return $next($request);
+        }
+
+        // Create a unique cache key based on the URL path
+        $pathKey = str_replace('/', '_', $request->path());
+        $cacheKey = "landing_page_html_{$pathKey}:" . self::manifestVersion();
+
+        if (Cache::has($cacheKey)) {
+            /** @var string $html */
+            $html = Cache::get($cacheKey);
+
+            return response($html, 200, ['Content-Type' => 'text/html; charset=UTF-8']);
+        }
+
+        /** @var Response $response */
+        $response = $next($request);
+
+        if ($response->getStatusCode() === 200) {
+            Cache::put($cacheKey, $response->getContent(), self::TTL_SECONDS);
+        }
+
+        return $response;
+    }
+
+    private static function manifestVersion(): string
+    {
+        $manifest = public_path('build/manifest.json');
+
+        if (file_exists($manifest)) {
+            return (string) filemtime($manifest);
+        }
+
+        return 'dev';
+    }
+}
