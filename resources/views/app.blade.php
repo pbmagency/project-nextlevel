@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @if (request()->routeIs('home'))
+    {{-- Preload the LCP Hero Image for both landing pages --}}
+    @if (request()->routeIs('home') || request()->routeIs('home2'))
         <link rel="preload" as="image" href="/storage/mentor/final-hero-hd-transparent.webp"
             type="image/webp" fetchpriority="high">
     @endif

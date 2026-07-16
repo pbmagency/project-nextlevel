@@ -7,6 +7,7 @@ import { useDwellTime } from "@/hooks/use-dwell-time";
 import { useSectionTracking } from "@/hooks/use-section-tracking";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSectionV2";
+import { WA_URL } from "@/lib/whatsapp";
 
 const SocialProofSection = lazy(() => import("@/components/sections/SocialProofSection"));
 const ProblemSection = lazy(() => import("@/components/sections/ProblemSectionV2"));
@@ -41,7 +42,8 @@ export default function Landing() {
 
     const handleCtaClick = (location: string, text: string, dest: string) => {
         trackCTA(location, text, dest);
-        window.location.href = dest;
+        // Force redirect to WhatsApp instead of the 'dest' prop
+        window.location.href = WA_URL;
     };
 
     const handlePayClick = (text: string, dest: string, eventId: string) => {

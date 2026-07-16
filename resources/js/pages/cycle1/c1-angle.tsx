@@ -7,11 +7,11 @@ import { useDwellTime } from "@/hooks/use-dwell-time";
 import { useSectionTracking } from "@/hooks/use-section-tracking";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/test-hero/HeroSection1";
-import SocialProofSection from "@/components/sections/SocialProofSection";
-import ProblemSection from "@/components/sections/cycle1-test-problem/ProblemSection1";
 import { WA_URL } from "@/lib/whatsapp";
 
 // ── Lazy Loaded Components (Below The Fold) ──
+const SocialProofSection = lazy(() => import("@/components/sections/SocialProofSection"));
+const ProblemSection = lazy(() => import("@/components/sections/cycle1-test-problem/ProblemSection1"));
 const SolutionSection = lazy(() => import("@/components/sections/cycle1-test-solution/SolutionSection1"));
 const TestimoniSection = lazy(() => import("@/components/sections/TestimoniSection"));
 const BenefitSection = lazy(() => import("@/components/sections/BenefitSection"));
@@ -88,14 +88,14 @@ export default function Landing() {
                     {/* ── 1. Hero ──────────────────────────── */}
                     <HeroSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 2. Social Proof ──────────────────── */}
-                    <SocialProofSection />
-
-                    {/* ── 3. Problem ───────────────────────── */}
-                    <ProblemSection />
-
                     {/* ── Below The Fold (Lazy Loaded) ─────── */}
                     <Suspense fallback={<div className="flex h-96 w-full items-center justify-center text-slate-500">Loading...</div>}>
+                        {/* ── 2. Social Proof ──────────────────── */}
+                        <SocialProofSection />
+
+                        {/* ── 3. Problem ───────────────────────── */}
+                        <ProblemSection />
+                    
                         {/* ── 4. Solution / Workshop ───────────── */}
                         <SolutionSection onCtaClick={handleCtaClick} />
 
