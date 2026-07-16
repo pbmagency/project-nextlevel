@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { Head } from "@inertiajs/react";
 
 import { useAnalytics } from "@/hooks/use-analytics";
@@ -7,17 +7,18 @@ import { useDwellTime } from "@/hooks/use-dwell-time";
 import { useSectionTracking } from "@/hooks/use-section-tracking";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/HeroSectionV2";
-import SocialProofSection from "@/components/sections/SocialProofSection";
-import ProblemSection from "@/components/sections/ProblemSectionV2";
-import SolutionSection from "@/components/sections/SolutionSectionV2";
-import TestimoniSection from "@/components/sections/TestimoniSection";
-import BenefitSection from "@/components/sections/BenefitSection";
-import MentorSection from "@/components/sections/MentorSection";
-import PricingSection from "@/components/sections/PricingSection";
-import FAQSection from "@/components/sections/FAQSection";
-import ClientBannerSection from "@/components/sections/ClientBannerSection";
-import Footer from "@/components/sections/Footer";
-import FloatingVideo from "@/components/FloatingVideo";
+
+const SocialProofSection = lazy(() => import("@/components/sections/SocialProofSection"));
+const ProblemSection = lazy(() => import("@/components/sections/ProblemSectionV2"));
+const SolutionSection = lazy(() => import("@/components/sections/SolutionSectionV2"));
+const TestimoniSection = lazy(() => import("@/components/sections/TestimoniSection"));
+const BenefitSection = lazy(() => import("@/components/sections/BenefitSection"));
+const MentorSection = lazy(() => import("@/components/sections/MentorSection"));
+const PricingSection = lazy(() => import("@/components/sections/PricingSection"));
+const FAQSection = lazy(() => import("@/components/sections/FAQSection"));
+const ClientBannerSection = lazy(() => import("@/components/sections/ClientBannerSection"));
+const Footer = lazy(() => import("@/components/sections/Footer"));
+const FloatingVideo = lazy(() => import("@/components/FloatingVideo"));
 
 // Force dark mode for landing page
 if (typeof document !== "undefined") {
@@ -84,42 +85,46 @@ export default function Landing() {
                     {/* ── 1. Hero ──────────────────────────── */}
                     <HeroSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 2. Social Proof ──────────────────── */}
-                    <SocialProofSection />
+                    <Suspense fallback={<div className="min-h-[200px]" />}>
+                        {/* ── 2. Social Proof ──────────────────── */}
+                        <SocialProofSection />
 
-                    {/* ── 3. Problem ───────────────────────── */}
-                    <ProblemSection />
+                        {/* ── 3. Problem ───────────────────────── */}
+                        <ProblemSection />
 
-                    {/* ── 4. Solution / Workshop ───────────── */}
-                    <SolutionSection onCtaClick={handleCtaClick} />
+                        {/* ── 4. Solution / Workshop ───────────── */}
+                        <SolutionSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 6. Testimonials ──────────────────── */}
-                    <TestimoniSection onCtaClick={handleCtaClick} />
+                        {/* ── 6. Testimonials ──────────────────── */}
+                        <TestimoniSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 7. Benefits / Curriculum ─────────── */}
-                    <BenefitSection onCtaClick={handleCtaClick} />
+                        {/* ── 7. Benefits / Curriculum ─────────── */}
+                        <BenefitSection onCtaClick={handleCtaClick} />
 
-                    {/* ── 8. Mentor / Pengajar ─────────────── */}
-                    <MentorSection />
+                        {/* ── 8. Mentor / Pengajar ─────────────── */}
+                        <MentorSection />
 
-                    {/* ── 9. Pricing ───────────────────────── */}
-                    <PricingSection onPayClick={handlePayClick} />
+                        {/* ── 9. Pricing ───────────────────────── */}
+                        <PricingSection onPayClick={handlePayClick} />
 
-                    {/* ── 10. Client Banner ────────────────── */}
-                    <ClientBannerSection />
+                        {/* ── 10. Client Banner ────────────────── */}
+                        <ClientBannerSection />
 
-                    {/* ── 11. FAQ ──────────────────────────── */}
-                    <FAQSection
-                        onCtaClick={handleCtaClick}
-                        onInitiateCheckout={trackInitiateCheckout}
-                    />
+                        {/* ── 11. FAQ ──────────────────────────── */}
+                        <FAQSection
+                            onCtaClick={handleCtaClick}
+                            onInitiateCheckout={trackInitiateCheckout}
+                        />
+                    </Suspense>
                 </main>
 
-                {/* ── Footer ───────────────────────────────── */}
-                <Footer />
+                <Suspense fallback={<div className="min-h-[100px]" />}>
+                    {/* ── Footer ───────────────────────────────── */}
+                    <Footer />
 
-                {/* ── Floating Video ────────────────────────── */}
-                <FloatingVideo />
+                    {/* ── Floating Video ────────────────────────── */}
+                    <FloatingVideo />
+                </Suspense>
             </div>
         </>
     );
