@@ -52,7 +52,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                                 "0 4px 24px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)",
                         }}
                     >
-                        Rasakan
+                        BANGUN TIM SALES
                     </span>
                     <span
                         className="block font-black uppercase text-white"
@@ -62,18 +62,18 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                                 "0 4px 32px rgba(0,0,0,0.95), 0 2px 12px rgba(0,0,0,0.9)",
                         }}
                     >
-                        Leganya
+                        MANDIRI
                     </span>
                     <span
                         className="mt-2 inline-block rounded-lg bg-blue-600 px-3 py-1.5 font-bold text-white"
                         style={{ fontSize: "clamp(1.1rem, 2.5vw, 2rem)" }}
                     >
-                        Saat Tim Sales Capai Target Tanpa Diawasi
+                        Bisa Closing Tanpa Bergantung pada Anda
                     </span>
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100">
-                    Bangun tim yang mandiri dalam negosiasi, handling objection, dan closing bersama Coach Haryanto Kandani 1 hari training intensif.
+                    Masih sering turun tangan? Latih tim menguasai negosiasi, handling pbjection, dan closing dalam 1 hari bersama Coach Haryanto Kandani.
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -92,7 +92,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             size="xl"
                             className="w-full min-w-50 text-lg sm:w-auto"
                         >
-                            Daftar Sekarang
+                            Reserversi Seat Sekarang
                         </Button>
                     </a>
                     <a
