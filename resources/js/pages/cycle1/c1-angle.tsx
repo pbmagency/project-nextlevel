@@ -17,6 +17,8 @@ import PricingSection from "@/components/sections/PricingSection";
 import FAQSection from "@/components/sections/FAQSection";
 import ClientBannerSection from "@/components/sections/ClientBannerSection";
 import Footer from "@/components/sections/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { WA_URL } from "@/lib/whatsapp";
 
 // Force dark mode for landing page
 if (typeof document !== "undefined") {
@@ -39,7 +41,8 @@ export default function Landing() {
 
     const handleCtaClick = (location: string, text: string, dest: string) => {
         trackCTA(location, text, dest);
-        window.location.href = dest;
+        // Force redirect to WhatsApp instead of the 'dest' prop
+        window.location.href = WA_URL;
     };
 
     const handlePayClick = (text: string, dest: string, eventId: string) => {
@@ -116,6 +119,9 @@ export default function Landing() {
 
                 {/* ── Footer ───────────────────────────────── */}
                 <Footer />
+                
+                {/* ── Floating WhatsApp ────────────────────── */}
+                <FloatingWhatsApp />
             </div>
         </>
     );

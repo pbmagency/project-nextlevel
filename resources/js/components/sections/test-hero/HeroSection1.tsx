@@ -73,7 +73,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base font-semibold leading-relaxed text-slate-100">
-                    Masih sering turun tangan? Latih tim menguasai negosiasi, handling pbjection, dan closing dalam 1 hari bersama Coach Haryanto Kandani.
+                    Masih sering turun tangan? Latih tim menguasai negosiasi, handling objection, dan closing dalam 1 hari bersama Coach Haryanto Kandani.
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -92,7 +92,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             size="xl"
                             className="w-full min-w-50 text-lg sm:w-auto"
                         >
-                            Reserversi Seat Sekarang
+                            Reservasi Seat Sekarang
                         </Button>
                     </a>
                     <a
