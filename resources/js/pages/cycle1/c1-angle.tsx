@@ -7,11 +7,10 @@ import { useDwellTime } from "@/hooks/use-dwell-time";
 import { useSectionTracking } from "@/hooks/use-section-tracking";
 import Navbar from "@/components/sections/Navbar";
 import HeroSection from "@/components/sections/test-hero/HeroSection1";
+import SocialProofSection from "@/components/sections/SocialProofSection";
+import ProblemSection from "@/components/sections/cycle1-test-problem/ProblemSection1";
 import { WA_URL } from "@/lib/whatsapp";
 
-// ── Lazy Loaded Components (Below The Fold) ──
-const SocialProofSection = lazy(() => import("@/components/sections/SocialProofSection"));
-const ProblemSection = lazy(() => import("@/components/sections/cycle1-test-problem/ProblemSection1"));
 const SolutionSection = lazy(() => import("@/components/sections/cycle1-test-solution/SolutionSection1"));
 const TestimoniSection = lazy(() => import("@/components/sections/TestimoniSection"));
 const BenefitSection = lazy(() => import("@/components/sections/BenefitSection"));
@@ -43,7 +42,25 @@ export default function Landing() {
 
     const handleCtaClick = (location: string, text: string, dest: string) => {
         trackCTA(location, text, dest);
-        // Force redirect to WhatsApp instead of the 'dest' prop
+        
+        // If it's not the primary blue button, just let it scroll to the section!
+        if (dest !== "#pricing-section") {
+            return;
+        }
+
+        // --- NEW: Track Lead and Initiate Checkout for Blue Buttons! ---
+        const eventId = "wa-cta-" + Date.now();
+        trackLead("wa-inquiry", {
+            button_text: text,
+            destination: WA_URL,
+            event_id: eventId,
+            value: 2000000,
+            currency: "IDR",
+        });
+        trackInitiateCheckout();
+        // -------------------------------------------------------------
+
+        // Only primary buttons go directly to WhatsApp
         window.location.href = WA_URL;
     };
 
@@ -88,14 +105,14 @@ export default function Landing() {
                     {/* ── 1. Hero ──────────────────────────── */}
                     <HeroSection onCtaClick={handleCtaClick} />
 
-                    {/* ── Below The Fold (Lazy Loaded) ─────── */}
-                    <Suspense fallback={<div className="flex h-96 w-full items-center justify-center text-slate-500">Loading...</div>}>
-                        {/* ── 2. Social Proof ──────────────────── */}
-                        <SocialProofSection />
+                    {/* ── 2. Social Proof ──────────────────── */}
+                    <SocialProofSection />
 
-                        {/* ── 3. Problem ───────────────────────── */}
-                        <ProblemSection />
-                    
+                    {/* ── 3. Problem ───────────────────────── */}
+                    <ProblemSection />
+
+                    {/* ── Below The Fold ─────────────────────── */}
+                    <Suspense fallback={<div className="h-96 w-full flex items-center justify-center text-slate-500">Loading...</div>}>
                         {/* ── 4. Solution / Workshop ───────────── */}
                         <SolutionSection onCtaClick={handleCtaClick} />
 
@@ -125,7 +142,7 @@ export default function Landing() {
                 <Suspense fallback={null}>
                     {/* ── Footer ───────────────────────────────── */}
                     <Footer />
-                    
+
                     {/* ── Floating WhatsApp ────────────────────── */}
                     <FloatingWhatsApp />
                 </Suspense>

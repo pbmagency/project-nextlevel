@@ -92,7 +92,7 @@ export default function HeroSection({ onCtaClick }: HeroSectionProps) {
                             size="xl"
                             className="w-full min-w-50 text-lg sm:w-auto"
                         >
-                            Reservasi Seat Sekarang
+                            Amankan Seat Sekarang
                         </Button>
                     </a>
                     <a
