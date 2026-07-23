@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 // ── Public landing page ───────────────────────────────────────────────────────
 Route::inertia('/', 'landing')->name('home');
 Route::inertia('/c1-angle', 'cycle1/c1-angle')->name('home2');
-
+Route::inertia('/c1-angle', 'cycle2/c2-hero')->name('home3');
 // ── Analytics tracking endpoint (public, uses session CSRF) ──────────────────
 Route::post('/analytics/track', [AnalyticsController::class, 'track'])->name('analytics.track');
 
